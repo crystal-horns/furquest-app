@@ -11,12 +11,20 @@ import {AppRoutingModule} from './app-routing.module';
 import {AuthService} from "./services/auth.service";
 import {AuthGuardService} from "./services/auth-guard.service";
 import {IonicStorageModule} from "@ionic/storage";
-import {HttpClientModule} from "@angular/common/http";
-import { TranslateModule } from '@ngx-translate/core';
+import {HttpClientModule, HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {TokenInterceptor} from "./interceptors/token.interceptor";
+import {UserModule} from "./components/user/user.module";
 
+export function createTranslateLoader(http: HttpClient) {
+    return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
+}
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [
+        AppComponent
+    ],
     entryComponents: [],
     imports: [
         BrowserModule,
@@ -24,14 +32,26 @@ import { TranslateModule } from '@ngx-translate/core';
         AppRoutingModule,
         IonicStorageModule.forRoot(),
         HttpClientModule,
-        TranslateModule.forRoot()
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: (createTranslateLoader),
+                deps: [HttpClient]
+            }
+        }),
+        UserModule
     ],
     providers: [
         StatusBar,
         SplashScreen,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
         AuthService,
-        AuthGuardService
+        AuthGuardService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: TokenInterceptor,
+            multi: true
+        }
     ],
     bootstrap: [AppComponent]
 })

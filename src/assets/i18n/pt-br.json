@@ -1,0 +1,21 @@
+{
+  "app": {
+    "titles": {
+      "login": "Login",
+      "home": "Home",
+      "profile": "Perfil",
+      "guild": "Guild",
+      "events": "Eventos",
+      "steps": "Passos",
+      "tips": "Dicas",
+      "about": "Sobre"
+    },
+    "logout": "Logout"
+  },
+
+  "login": {
+    "user": "Usuário",
+    "password": "Senha",
+    "login-btn": "Login"
+  }
+}
