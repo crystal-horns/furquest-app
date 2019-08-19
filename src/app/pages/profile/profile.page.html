@@ -1,9 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>profile</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button *ngIf="canGoBack"></ion-back-button>
+      <ion-menu-button *ngIf="!canGoBack"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>{{ 'app.titles.profile' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
 </ion-content>

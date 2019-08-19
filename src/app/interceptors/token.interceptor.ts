@@ -6,18 +6,18 @@ import {
     HttpInterceptor
 } from '@angular/common/http';
 import {Observable} from "rxjs";
-import {AuthService} from "../services/auth.service";
+import {Storage} from "@ionic/storage";
 import {fromPromise} from "rxjs/internal-compatibility";
 import {mergeMap} from "rxjs/operators";
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-    constructor(public authService: AuthService) {
+    constructor(public storage: Storage) {
     }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        return fromPromise(this.authService.getAuthToken()).pipe(
+        return fromPromise(this.storage.get('USER_DATA')).pipe(
             mergeMap(token => {
                 if (token) {
                     request = request.clone({

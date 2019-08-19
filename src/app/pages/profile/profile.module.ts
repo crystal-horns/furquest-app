@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { ProfilePage } from './profile.page';
+import {UserModule} from "../../components/user/user.module";
+import {TranslateModule} from "@ngx-translate/core";
 
 const routes: Routes = [
   {
@@ -16,10 +18,12 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    RouterModule.forChild(routes)
+      CommonModule,
+      FormsModule,
+      IonicModule,
+      RouterModule.forChild(routes),
+      UserModule,
+      TranslateModule
   ],
   declarations: [ProfilePage]
 })

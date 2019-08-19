@@ -1,0 +1,4 @@
+<div no-padding (click)="goCurrentQuest()" *ngIf="currentQuest">
+    <ion-img [src]="imagePath + currentQuest.quest_route.quest_id + '/' + currentQuest.quest_route.quest.image"></ion-img>
+    <ion-label>{{ currentQuest.quest_route.quest.name }}</ion-label>
+</div>

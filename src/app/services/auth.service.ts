@@ -16,6 +16,7 @@ export class AuthService {
   private authState: BehaviorSubject<number> = new BehaviorSubject(0);
   private loginApi: string = environment.apiUrl + 'login';
   private logoutApi: string = environment.apiUrl + 'logout';
+  private userCurrentApi: string = environment.apiUrl + 'users/current';
 
   constructor(
       private router: Router,
@@ -38,9 +39,16 @@ export class AuthService {
    */
   login(formData) {
     try {
-      this.http.post(this.loginApi, formData, httpOptions).subscribe(response => {
-        this.storage.set('USER_DATA', response).then(() => {
-          this.authState.next(1);
+      // Get access token and store it
+      this.http.post(this.loginApi, formData, httpOptions).subscribe(token => {
+        this.storage.set('USER_DATA', token).then(() => {
+          // Wiht the token store (so interceptor can use it), gets the user's profile and update stored data
+          this.http.get(this.userCurrentApi, httpOptions).subscribe(data => {
+            const userData = {...token, ...data};
+            this.storage.set('USER_DATA', userData).then(() => {
+              this.authState.next(1);
+            });
+          });
         });
       });
     } catch (e) {
@@ -62,10 +70,10 @@ export class AuthService {
   }
 
   /**
-   * Return the Auth Token or false
+   * Return the Userdata storage
    * @return Promise<any>
    */
-  getAuthToken(): Promise<any> {
+  getUserData(): Promise<any> {
     return this.storage.get('USER_DATA');
   }
 

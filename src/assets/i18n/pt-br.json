@@ -5,7 +5,7 @@
       "home": "Home",
       "profile": "Perfil",
       "guild": "Guild",
-      "events": "Eventos",
+      "events": "Missões",
       "steps": "Passos",
       "tips": "Dicas",
       "about": "Sobre"
@@ -17,5 +17,12 @@
     "user": "Usuário",
     "password": "Senha",
     "login-btn": "Login"
+  },
+
+  "home": {
+    "quest": {
+      "current": "Missão Atual",
+      "more": "Ver todas as missões"
+    }
   }
 }

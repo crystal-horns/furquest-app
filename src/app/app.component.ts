@@ -51,7 +51,7 @@ export class AppComponent {
         },
         {
           title: 'app.titles.events',
-          url: '/events'
+          url: '/quests'
         }
       ];
 

@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { HomePage } from './home.page';
 import {TranslateModule} from "@ngx-translate/core";
 import {UserModule} from "../../components/user/user.module";
+import {QuestModule} from "../../components/quest/quest.module";
 
 const routes: Routes = [
   {
@@ -23,7 +24,8 @@ const routes: Routes = [
       IonicModule,
       RouterModule.forChild(routes),
       TranslateModule,
-      UserModule
+      UserModule,
+      QuestModule
   ],
   declarations: [HomePage]
 })

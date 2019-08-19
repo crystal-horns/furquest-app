@@ -9,7 +9,7 @@ const routes: Routes = [
     {path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule', canActivate: [AuthGuardService]},
     {path: 'guild', loadChildren: './pages/guild/guild.module#GuildPageModule', canActivate: [AuthGuardService]},
     {
-        path: 'events',
+        path: 'quests',
         children: [
             {
                 path: '',

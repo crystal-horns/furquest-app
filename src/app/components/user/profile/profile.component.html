@@ -1,7 +1,8 @@
-<ion-avatar class="profile">
-  <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-  <!--<ion-img [src]="item.src"></ion-img>-->
-</ion-avatar>
-<h3 text-center>{{ 'User' }}</h3>
-<h4 text-center no-margin>{{ 'Fursona' }}</h4>
-<h4 text-center no-margin>{{ 'Guild' }}</h4>
+<div (click)="openProfile()" *ngIf="userData">
+    <ion-avatar class="profile">
+        <ion-img [src]="(userData.photo ? imgPath + userData.id + '/' + userData.photo : '')"></ion-img>
+    </ion-avatar>
+    <h2 text-center>{{ userData.social_name || userData.name }}</h2>
+    <h4 text-center no-margin *ngIf="userData.species">{{ userData.species }}</h4>
+    <h4 text-center no-margin *ngIf="userData.guilds">Guild {{ userData.guilds[0].name }}</h4>
+</div>

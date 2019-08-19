@@ -1,0 +1,34 @@
+form {
+  height: 100vh;
+  display: flex!important;
+  align-content: center!important;
+  align-items: center!important;
+
+  background: #54428E;
+  animation: colorchange 20s infinite;
+  -webkit-animation: colorchange 20s infinite;
+}
+
+@keyframes colorchange
+{
+  0%   {background: #54428E;}
+  20%  {background: #3A77BC;}
+  40%  {background: #628AC6;}
+  60%  {background: #4CA399;}
+  80%  {background: #F4E285;}
+  100% {background: #54428E;}
+}
+
+@-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
+{
+  0%   {background: #54428E;}
+  20%  {background: #3A77BC;}
+  40%  {background: #628AC6;}
+  60%  {background: #4CA399;}
+  80%  {background: #F4E285;}
+  100% {background: #54428E;}
+}
+
+ion-card {
+  background: #FFF;
+}

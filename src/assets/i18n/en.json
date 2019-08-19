@@ -5,7 +5,7 @@
       "home": "Home",
       "profile": "Profile",
       "guild": "Guild",
-      "events": "Events",
+      "events": "Quests",
       "steps": "Steps",
       "tips": "Tips",
       "about": "About"
@@ -17,5 +17,12 @@
     "user": "User",
     "password": "Password",
     "login-btn": "Login"
+  },
+
+  "home": {
+    "quest": {
+      "current": "Current Quest",
+      "more": "See all quests"
+    }
   }
 }
