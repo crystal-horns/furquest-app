@@ -43,16 +43,14 @@
               <ion-list-header margin-top>
                 {{ 'quests.past' | translate }}
               </ion-list-header>
-
-              <ion-item *ngFor="let quest of quests">
-                <ion-card class="past" (click)="goQuest(quest.id)">
-                  <ion-card-content no-padding>
-                    <ion-img [src]="imagePath + quest.quest_route.quest_id + '/' + quest.quest_route.quest.image"></ion-img>
-                    <ion-label>{{ quest.quest_route.quest.name }}</ion-label>
-                  </ion-card-content>
-                </ion-card>
-              </ion-item>
             </ion-list>
+
+            <ion-card class="past" margin-bottom (click)="goQuest(quest.id)" *ngFor="let quest of quests"
+                      style="background-image: url('{{ imagePath + quest.quest_route.quest_id + '/' + quest.quest_route.quest.image }}')">
+              <ion-card-content no-padding>
+                <ion-label>{{ quest.quest_route.quest.name }}</ion-label>
+              </ion-card-content>
+            </ion-card>
           </ion-col>
         </ion-row>
       </div>
