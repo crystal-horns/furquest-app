@@ -18,13 +18,11 @@ export class QuestCurrentComponent implements OnInit {
       private router: Router
   ) { }
 
-  ngOnInit() {
-    this.questService.getCurrent().then(quest => {
-      this.currentQuest = <UserQuest>quest;
-    });
+  async ngOnInit() {
+    this.currentQuest = await this.questService.getCurrent();
   }
 
   goCurrentQuest() {
-    this.router.navigate([`quests/${this.currentQuest.quest_route.quest_id}`])
+    this.router.navigate([`quests/${this.currentQuest.id}`]);
   }
 }

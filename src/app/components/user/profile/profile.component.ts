@@ -20,10 +20,8 @@ export class ProfileComponent implements OnInit {
       private authService: AuthService
   ) { }
 
-  ngOnInit() {
-    this.authService.getUserData().then((data) => {
-      this.userData = data;
-    });
+  async ngOnInit() {
+    this.userData = await this.authService.getUserData();
   }
 
   openProfile() {

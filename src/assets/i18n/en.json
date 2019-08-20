@@ -24,5 +24,11 @@
       "current": "Current Quest",
       "more": "See all quests"
     }
+  },
+
+  "quests": {
+    "no-quests": "Oops, no quests for you yet.",
+    "current": "Current Quest",
+    "past": "Past Quests"
   }
 }

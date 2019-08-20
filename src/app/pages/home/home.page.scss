@@ -1,8 +1,29 @@
-ion-item-divider {
-  padding-top: 10px;
-  h2 {
+ion-buttons {
+  margin-bottom: -50px;
+  color: #FFF;
+}
+.header {
+  padding-top: 35px;
+  padding-bottom: 50px;
+  background: linear-gradient(135deg, #5B56C2, #88498D);
+  color: #FFF;
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
     display: block;
-    text-align: center;
-    width: 100%;
+    width: 0;
+    height: 0;
+    border-left: 1000px solid transparent;
+    border-bottom: 80px solid #EEE;
   }
+}
+
+ion-list-header {
+  font-size: 16px;
+  min-height: 25px;
+}
+ion-card {
+  background: #FFF;
 }

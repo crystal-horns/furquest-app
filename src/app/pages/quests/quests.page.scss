@@ -1,4 +1,12 @@
-ion-label {
+ion-list-header {
+  font-size: 16px;
+  min-height: 25px;
+}
+ion-card {
+  background: #FFF;
+}
+
+.current ion-label {
   display: block;
   position: relative;
   z-index: 1;

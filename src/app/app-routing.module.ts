@@ -13,18 +13,18 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                loadChildren: './pages/events/events.module#EventsPageModule'
+                loadChildren: './pages/quests/quests.module#EventsPageModule'
             },
             {
                 path: ':eventId',
                 children: [
                     {
                         path: '',
-                        loadChildren: './pages/events/event/event.module#EventPageModule'
+                        loadChildren: './pages/quests/quest/quest.module#EventPageModule'
                     },
                     {
                         path: ':stepId',
-                        loadChildren: './pages/events/event/step/step.module#StepPageModule'
+                        loadChildren: './pages/quests/quest/step/step.module#StepPageModule'
                     }
                 ]
             }

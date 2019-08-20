@@ -11,6 +11,7 @@ const httpOptions = {
 })
 export class QuestsService {
   private questCurrentUrl = environment.apiUrl + 'users/current/quests/current';
+  private questAllUrl = environment.apiUrl + 'users/current/quests';
 
   constructor(
     private http: HttpClient
@@ -19,9 +20,18 @@ export class QuestsService {
   /**
    * Gets current quest
    *
-   * @return Promise<object>
+   * @return Promise<UserQuest>
    */
-  getCurrent(): Promise<object> {
-    return this.http.get(this.questCurrentUrl, httpOptions).toPromise();
+  getCurrent(): Promise<UserQuest> {
+    return <Promise<UserQuest>>this.http.get(this.questCurrentUrl, httpOptions).toPromise();
+  }
+
+  /**
+   * Gets all quests
+   *
+   * @return Promise<UserQuest[]>
+   */
+  getAll(): Promise<UserQuest[]> {
+    return <Promise<UserQuest[]>>this.http.get(this.questAllUrl, httpOptions).toPromise();
   }
 }

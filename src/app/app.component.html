@@ -2,18 +2,18 @@
   <ion-split-pane>
     <ion-menu type="overlay">
       <ion-content>
-        <ion-grid>
+        <ion-grid no-padding="">
           <ion-row class="ion-align-items-end">
-            <ion-col padding>
+            <ion-col class="sidebar-profile">
               <app-profile></app-profile>
             </ion-col>
           </ion-row>
           <ion-row>
-            <ion-col>
+            <ion-col padding>
               <ion-list>
                 <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
                   <ion-item text-center no-padding [routerDirection]="'root'" [routerLink]="[p.url]">
-                    <ion-label>
+                    <ion-label padding-start>
                       {{p.title | translate}}
                     </ion-label>
                   </ion-item>

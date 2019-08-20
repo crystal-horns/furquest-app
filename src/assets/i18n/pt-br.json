@@ -24,5 +24,11 @@
       "current": "Missão Atual",
       "more": "Ver todas as missões"
     }
+  },
+
+  "quests": {
+    "no-quests": "Oops, você ainda não tem nenhuma missão.",
+    "current": "Missão Atual",
+    "past": "Missões passadas"
   }
 }
