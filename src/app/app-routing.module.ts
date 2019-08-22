@@ -3,7 +3,7 @@ import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {AuthGuardService} from "./services/auth-guard.service";
 
 const routes: Routes = [
-    {path: '', redirectTo: 'loading', pathMatch: 'full'},
+    {path: '', redirectTo: 'home', pathMatch: 'full'},
     {path: 'login', loadChildren: './pages/login/login.module#LoginPageModule'},
     {path: 'home', loadChildren: './pages/home/home.module#HomePageModule', canActivate: [AuthGuardService]},
     {path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule', canActivate: [AuthGuardService]},
@@ -16,7 +16,7 @@ const routes: Routes = [
                 loadChildren: './pages/quests/quests.module#EventsPageModule'
             },
             {
-                path: ':eventId',
+                path: ':questId',
                 children: [
                     {
                         path: '',

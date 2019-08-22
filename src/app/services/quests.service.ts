@@ -10,8 +10,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class QuestsService {
-  private questCurrentUrl = environment.apiUrl + 'users/current/quests/current';
-  private questAllUrl = environment.apiUrl + 'users/current/quests';
+  private questApiUrl = environment.apiUrl + 'users/current/quests';
 
   constructor(
     private http: HttpClient
@@ -23,7 +22,7 @@ export class QuestsService {
    * @return Promise<UserQuest>
    */
   getCurrent(): Promise<UserQuest> {
-    return <Promise<UserQuest>>this.http.get(this.questCurrentUrl, httpOptions).toPromise();
+    return <Promise<UserQuest>>this.http.get(`${this.questApiUrl}/current`, httpOptions).toPromise();
   }
 
   /**
@@ -31,7 +30,17 @@ export class QuestsService {
    *
    * @return Promise<UserQuest[]>
    */
-  getAll(): Promise<UserQuest[]> {
-    return <Promise<UserQuest[]>>this.http.get(this.questAllUrl, httpOptions).toPromise();
+  getCollection(): Promise<UserQuest[]> {
+    return <Promise<UserQuest[]>>this.http.get(this.questApiUrl, httpOptions).toPromise();
+  }
+
+  /**
+   * Gets quest by Id
+   *
+   * @param id
+   * @return Promise<UserQuest>
+   */
+  getSingle(id): Promise<UserQuest> {
+    return <Promise<UserQuest>>this.http.get(`${this.questApiUrl}/${id}`, httpOptions).toPromise();
   }
 }

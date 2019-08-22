@@ -1,12 +1,28 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>event</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <ion-grid no-padding *ngIf="quest">
+    <ion-row no-padding>
+      <ion-col no-padding>
+        <div class="header"
+           [ngStyle]="{'background-image': 'url(' + imagePath + quest.quest_route.quest_id + '/' + quest.quest_route.quest.image + ')'}">
+          <ion-buttons slot="start">
+            <ion-back-button *ngIf="canGoBack" [ngClass]="{canGoBack: canGoBack}"></ion-back-button>
+            <ion-menu-button *ngIf="!canGoBack"></ion-menu-button>
+            <ion-label>{{ quest.quest_route.quest.name }}</ion-label>
+          </ion-buttons>
+        </div>
+      </ion-col>
+    </ion-row>
 
+    <ion-row>
+      <ion-col sizeMd="6" pushMd="3">
+        <ion-list>
+          <ion-list-header> {{ 'quest.steps' | translate }} </ion-list-header>
+          <ion-item no-padding *ngFor="let step of quest.user_quest_steps.reverse()" (click)="goStep(step.id)">
+            <ion-label padding>{{ step.status ? step.step.name : ("quest.current-step" | translate) }}</ion-label>
+            <ion-icon [icon]="step.status ? 'checkmark-circle' : 'arrow-dropright-circle'" slot="end"></ion-icon>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

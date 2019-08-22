@@ -10,13 +10,15 @@
       "tips": "Dicas",
       "about": "Sobre"
     },
-    "logout": "Logout"
+    "logout": "Logout",
+    "loading": "Carregando..."
   },
 
   "login": {
     "user": "Usuário",
     "password": "Senha",
-    "login-btn": "Login"
+    "login-btn": "Login",
+    "error": "Oops, algo deu errado..."
   },
 
   "home": {
@@ -30,5 +32,14 @@
     "no-quests": "Oops, você ainda não tem nenhuma missão.",
     "current": "Missão Atual",
     "past": "Missões passadas"
+  },
+
+  "quest": {
+    "steps": "Etapas",
+    "current-step": "Etapa atual"
+  },
+
+  "step": {
+    "tips": "Dicas"
   }
 }

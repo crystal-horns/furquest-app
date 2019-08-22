@@ -1,9 +1,11 @@
+ion-toolbar {
+  --background: linear-gradient(135deg, #F2941B, #FFCC35);
+  color: #FFF;
+}
+
 ion-list-header {
   font-size: 16px;
   min-height: 25px;
-}
-ion-card {
-  background: #FFF;
 }
 
 ion-label {
@@ -14,7 +16,7 @@ ion-label {
   font-size: 24px;
   font-weight: 500;
   color: #FFF;
-  margin-top: -40px;
+  top: 190px;
   padding-bottom: 5px;
   padding-left: 10px;
   &:before {
@@ -30,15 +32,23 @@ ion-label {
   }
 }
 
-ion-card.past {
-  height: 100px;
-  background-image: url(//furquest.lh/storage/quests/1/500.jpeg);
-  background-size: cover;
-  background-position: center;
+ion-card {
+  background: #FFF;
+  &.current ion-card-content {
+    height: 230px;
+    background-size: cover;
+    background-position: center;
+  }
 
-  ion-label {
-    font-size: 18px;
-    margin-top: 65px;
-    padding-bottom: 10px;
+  &.past {
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+
+    ion-label {
+      font-size: 18px;
+      top: 65px;
+      padding-bottom: 10px;
+    }
   }
 }

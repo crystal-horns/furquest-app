@@ -55,13 +55,6 @@ export class AppComponent {
         }
       ];
 
-      // Block sidebar on login
-      this.router.events.subscribe((event: RouterEvent) => {
-        if (event instanceof NavigationEnd && event.url === '/login') {
-          this.menuCtrl.enable(false);
-        }
-      });
-
       // Initializates app on the right page according to Auth
       this.authService.getAuthState().subscribe(state => {
         if (state == 1) {
@@ -69,10 +62,15 @@ export class AppComponent {
           this.menuCtrl.enable(true);
         } else if (state == 2) {
           this.router.navigate(['login']);
-        } else {
-          this.router.navigate(['']);
         }
-      })
+      });
+
+      // Block sidebar on login or redirect to typed route
+      this.router.events.subscribe((event: RouterEvent) => {
+        if (event instanceof NavigationEnd && event.url === '/login') {
+          this.menuCtrl.enable(false);
+        }
+      });
     });
   }
 

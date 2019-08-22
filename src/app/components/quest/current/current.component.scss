@@ -1,3 +1,13 @@
+ion-card {
+  background: #FFF;
+  height: 250px;
+  div {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
 ion-label {
   display: block;
   position: relative;
@@ -6,7 +16,7 @@ ion-label {
   font-size: 24px;
   font-weight: 500;
   color: #FFF;
-  margin-top: -40px;
+  top: 210px;
   padding-bottom: 5px;
   padding-left: 10px;
   &:before {

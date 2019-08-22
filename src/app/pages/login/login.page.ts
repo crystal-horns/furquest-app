@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/auth.service";
-import {AlertController} from "@ionic/angular";
+import {AlertController, LoadingController} from "@ionic/angular";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-login',
@@ -8,19 +9,35 @@ import {AlertController} from "@ionic/angular";
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  private lang = [];
+
   constructor(
+      private loadingCtrl: LoadingController,
       private alertCtrl: AlertController,
+      private translate: TranslateService,
       private authService: AuthService
   ) { }
 
   ngOnInit() {
+    this.translate.get('app.loading').subscribe(trans => {
+      this.lang['loading'] = trans;
+    });
+    this.translate.get('app.login.error').subscribe(trans => {
+      this.lang['login.error'] = trans;
+    });
   }
 
-  login(form) {
+  async login(form) {
+    const loading = await this.loadingCtrl.create({
+      message: this.lang['loading'],
+      duration: 2000
+    });
+    await loading.present();
+
     if (!this.authService.login(form.value)) {
       this.alertCtrl.create({
         header: 'Oops!',
-        message: 'Não foi possível '
+        message: this.lang['login.error']
       })
     }
   }

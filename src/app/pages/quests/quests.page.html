@@ -28,15 +28,15 @@
           </ion-list-header>
 
           <ion-card class="current" (click)="goQuest(current.id)">
-            <ion-card-content no-padding>
-              <ion-img [src]="imagePath + current.quest_route.quest_id + '/' + current.quest_route.quest.image"></ion-img>
+            <ion-card-content no-padding
+              [ngStyle]="{'background-image': 'url(' + imagePath + current.quest_route.quest_id + '/' + current.quest_route.quest.image + ')'}">
               <ion-label>{{ current.quest_route.quest.name }}</ion-label>
             </ion-card-content>
           </ion-card>
         </ion-col>
       </ion-row>
 
-      <div *ngIf="quests">
+      <div *ngIf="quests && quests.length">
         <ion-row no-padding>
           <ion-col sizeMd="6" pushMd="3" no-padding>
             <ion-list>
@@ -46,7 +46,7 @@
             </ion-list>
 
             <ion-card class="past" margin-bottom (click)="goQuest(quest.id)" *ngFor="let quest of quests"
-                      style="background-image: url('{{ imagePath + quest.quest_route.quest_id + '/' + quest.quest_route.quest.image }}')">
+                      [ngStyle]="{'background-image': 'url(' + imagePath + quest.quest_route.quest_id + '/' + quest.quest_route.quest.image + ')'}">
               <ion-card-content no-padding>
                 <ion-label>{{ quest.quest_route.quest.name }}</ion-label>
               </ion-card-content>

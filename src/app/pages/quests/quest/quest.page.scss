@@ -1,0 +1,35 @@
+.canGoBack {
+  display: block;
+  color: #FFF;
+}
+
+ion-list-header {
+  font-size: 16px;
+  min-height: 25px;
+}
+
+.header {
+  color: #FFF;
+  height: 130px;
+  background-size: cover;
+  background-position: center;
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 0;
+    background: rgba(17, 17, 17, 0.25);
+    width: 100%;
+    height: 130px;
+  }
+  ion-label {
+    display: block;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    font-size: 24px;
+    font-weight: 500;
+    color: #FFF;
+    padding-left: 10px;
+  }
+}

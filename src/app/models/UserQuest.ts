@@ -1,4 +1,5 @@
 import {QuestRoute} from "./QuestRoute";
+import {UserQuestStep} from "./UserQuestStep";
 
 export interface UserQuest {
     "id": number,
@@ -7,5 +8,6 @@ export interface UserQuest {
     "created_at": string,
     "updated_at": string,
     "deleted_at": string,
-    "quest_route": QuestRoute
+    "quest_route": QuestRoute,
+    "user_quest_steps": UserQuestStep[]
 }

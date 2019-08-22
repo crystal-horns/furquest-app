@@ -10,13 +10,15 @@
       "tips": "Tips",
       "about": "About"
     },
-    "logout": "Logout"
+    "logout": "Logout",
+    "loading": "Loading..."
   },
 
   "login": {
     "user": "User",
     "password": "Password",
-    "login-btn": "Login"
+    "login-btn": "Login",
+    "error": "Oops, something went wrong..."
   },
 
   "home": {
@@ -30,5 +32,14 @@
     "no-quests": "Oops, no quests for you yet.",
     "current": "Current Quest",
     "past": "Past Quests"
+  },
+
+  "quest": {
+    "steps": "Steps",
+    "current-step": "Current Step"
+  },
+
+  "step": {
+    "tips": "Tips"
   }
 }

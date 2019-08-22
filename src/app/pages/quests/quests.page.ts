@@ -20,7 +20,7 @@ export class QuestsPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.questsService.getAll().then((quests: UserQuest[]) => {
+    this.questsService.getCollection().then((quests: UserQuest[]) => {
       quests.reverse();
 
       this.current = quests.shift();
