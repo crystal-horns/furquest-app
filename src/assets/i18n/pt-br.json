@@ -1,0 +1,45 @@
+{
+  "app": {
+    "titles": {
+      "login": "Login",
+      "home": "Home",
+      "profile": "Perfil",
+      "guild": "Guild",
+      "events": "Missões",
+      "steps": "Passos",
+      "tips": "Dicas",
+      "about": "Sobre"
+    },
+    "logout": "Logout",
+    "loading": "Carregando..."
+  },
+
+  "login": {
+    "user": "Usuário",
+    "password": "Senha",
+    "login-btn": "Login",
+    "error": "Oops, algo deu errado..."
+  },
+
+  "home": {
+    "quest": {
+      "current": "Missão Atual",
+      "more": "Ver todas as missões"
+    }
+  },
+
+  "quests": {
+    "no-quests": "Oops, você ainda não tem nenhuma missão.",
+    "current": "Missão Atual",
+    "past": "Missões passadas"
+  },
+
+  "quest": {
+    "steps": "Etapas",
+    "current-step": "Etapa atual"
+  },
+
+  "step": {
+    "tips": "Dicas"
+  }
+}

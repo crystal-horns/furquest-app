@@ -1,3 +1,46 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-split-pane>
+    <ion-menu type="overlay">
+      <ion-content>
+        <ion-grid no-padding="">
+          <ion-row class="ion-align-items-end">
+            <ion-col class="sidebar-profile">
+              <app-profile></app-profile>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col padding>
+              <ion-list>
+                <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+                  <ion-item text-center no-padding [routerDirection]="'root'" [routerLink]="[p.url]">
+                    <ion-label padding-start>
+                      {{p.title | translate}}
+                    </ion-label>
+                  </ion-item>
+                </ion-menu-toggle>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-content>
+
+      <ion-footer>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button fill="clear">
+              {{ 'app.titles.about' | translate }}
+            </ion-button>
+          </ion-buttons>
+
+          <ion-buttons slot="end">
+            <ion-button fill="clear" (click)="logout()">
+              {{ 'app.logout' | translate }}
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-footer>
+    </ion-menu>
+
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
 </ion-app>

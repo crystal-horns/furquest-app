@@ -5,12 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { EventsPage } from './events.page';
+import { QuestPage } from './quest.page';
+import {TranslateModule} from "@ngx-translate/core";
 
 const routes: Routes = [
   {
     path: '',
-    component: EventsPage
+    component: QuestPage
   }
 ];
 
@@ -19,8 +20,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    TranslateModule
   ],
-  declarations: [EventsPage]
+  declarations: [QuestPage]
 })
-export class EventsPageModule {}
+export class EventPageModule {}

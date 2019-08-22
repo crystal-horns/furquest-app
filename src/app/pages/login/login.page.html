@@ -2,25 +2,25 @@
   <form #form="ngForm" (ngSubmit)="login(form)">
     <ion-grid>
       <ion-row>
-        <ion-col align-self-center sizeMd="6" sizeSm="12">
-          <div text-center>
-            <h3>Login</h3>
-          </div>
+        <ion-col align-self-center pushMd="3" sizeMd="6" sizeSm="12" text-center>
+          <img src="assets/icon/logo-negative-typo.png" alt="FurQuest" width="230">
+          
+          <ion-card>
+            <ion-card-content padding>
+              <ion-item>
+                <ion-label position="floating">User</ion-label>
+                <ion-input name="username" inputmode="email" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$" type="email" ngModel required></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Password</ion-label>
+                <ion-input name="password" type="password" ngModel required></ion-input>
+              </ion-item>
+            </ion-card-content>
 
-          <div padding>
-            <ion-item>
-              <ion-label position="floating">User</ion-label>
-              <ion-input name="username" inputmode="email" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$" type="email" ngModel required></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="floating">Password</ion-label>
-              <ion-input name="password" type="password" ngModel required></ion-input>
-            </ion-item>
-          </div>
-
-          <div padding>
-            <ion-button type="submit" size="large" fill="outline" [disabled]="form.invalid" expand="block">Login</ion-button>
-          </div>
+            <div padding>
+              <ion-button type="submit" size="large" fill="outline" [disabled]="form.invalid" expand="block">Login</ion-button>
+            </div>
+          </ion-card>
         </ion-col>
       </ion-row>
     </ion-grid>

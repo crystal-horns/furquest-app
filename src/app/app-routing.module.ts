@@ -3,28 +3,28 @@ import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {AuthGuardService} from "./services/auth-guard.service";
 
 const routes: Routes = [
-    {path: '', redirectTo: 'loading', pathMatch: 'full'},
+    {path: '', redirectTo: 'home', pathMatch: 'full'},
     {path: 'login', loadChildren: './pages/login/login.module#LoginPageModule'},
     {path: 'home', loadChildren: './pages/home/home.module#HomePageModule', canActivate: [AuthGuardService]},
     {path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule', canActivate: [AuthGuardService]},
     {path: 'guild', loadChildren: './pages/guild/guild.module#GuildPageModule', canActivate: [AuthGuardService]},
     {
-        path: 'events',
+        path: 'quests',
         children: [
             {
                 path: '',
-                loadChildren: './pages/events/events.module#EventsPageModule'
+                loadChildren: './pages/quests/quests.module#EventsPageModule'
             },
             {
-                path: ':eventId',
+                path: ':questId',
                 children: [
                     {
                         path: '',
-                        loadChildren: './pages/events/event/event.module#EventPageModule'
+                        loadChildren: './pages/quests/quest/quest.module#EventPageModule'
                     },
                     {
                         path: ':stepId',
-                        loadChildren: './pages/events/event/step/step.module#StepPageModule'
+                        loadChildren: './pages/quests/quest/step/step.module#StepPageModule'
                     }
                 ]
             }

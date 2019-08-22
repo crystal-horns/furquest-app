@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="step">{{ step.status ? step.step.name : ("quest.current-step" | translate) }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button><ion-icon icon='barcode'></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid no-padding *ngIf="step">
+    <ion-row>
+      <ion-col sizeMd="6" pushMd="3">
+        <ion-list>
+          <ion-list-header> {{ 'step.tips' | translate }} </ion-list-header>
+          <ion-item no-padding *ngFor="let tip of step.user_quest_step_tip.reverse()">
+            <ion-text padding>{{ tip.tip.content}}</ion-text>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

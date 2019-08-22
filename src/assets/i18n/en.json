@@ -1,0 +1,45 @@
+{
+  "app": {
+    "titles": {
+      "login": "Login",
+      "home": "Home",
+      "profile": "Profile",
+      "guild": "Guild",
+      "events": "Quests",
+      "steps": "Steps",
+      "tips": "Tips",
+      "about": "About"
+    },
+    "logout": "Logout",
+    "loading": "Loading..."
+  },
+
+  "login": {
+    "user": "User",
+    "password": "Password",
+    "login-btn": "Login",
+    "error": "Oops, something went wrong..."
+  },
+
+  "home": {
+    "quest": {
+      "current": "Current Quest",
+      "more": "See all quests"
+    }
+  },
+
+  "quests": {
+    "no-quests": "Oops, no quests for you yet.",
+    "current": "Current Quest",
+    "past": "Past Quests"
+  },
+
+  "quest": {
+    "steps": "Steps",
+    "current-step": "Current Step"
+  },
+
+  "step": {
+    "tips": "Tips"
+  }
+}

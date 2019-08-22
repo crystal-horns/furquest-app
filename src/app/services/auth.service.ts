@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 import {Router} from "@angular/router";
-import {Platform} from "@ionic/angular";
+import {NavController, Platform} from "@ionic/angular";
 import {Storage} from "@ionic/storage";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../environments/environment";
@@ -16,11 +16,13 @@ export class AuthService {
   private authState: BehaviorSubject<number> = new BehaviorSubject(0);
   private loginApi: string = environment.apiUrl + 'login';
   private logoutApi: string = environment.apiUrl + 'logout';
+  private userCurrentApi: string = environment.apiUrl + 'users/current';
 
   constructor(
       private router: Router,
       private platform: Platform,
       private storage: Storage,
+      private navCtrl: NavController,
       private http: HttpClient
   ) {
     this.platform.ready().then(() => {
@@ -37,11 +39,16 @@ export class AuthService {
    */
   login(formData) {
     try {
-      this.http.post(this.loginApi, formData, httpOptions).subscribe(response => {
-        this.storage.set('USER_DATA', response).then(() => {
-          this.authState.next(1);
-          console.log(this.storage.get('USER_DATA'));
-          this.router.navigate(['home']);
+      // Get access token and store it
+      this.http.post(this.loginApi, formData, httpOptions).subscribe(token => {
+        this.storage.set('USER_DATA', token).then(() => {
+          // Wiht the token store (so interceptor can use it), gets the user's profile and update stored data
+          this.http.get(this.userCurrentApi, httpOptions).subscribe(data => {
+            const userData = {...token, ...data};
+            this.storage.set('USER_DATA', userData).then(() => {
+              this.authState.next(1);
+            });
+          });
         });
       });
     } catch (e) {
@@ -54,11 +61,7 @@ export class AuthService {
    * Logout the current user
    */
   logout() {
-    let logoutHeader = {...httpOptions};
-    this.storage.get('USER_DATA').then(data => {
-      logoutHeader.headers.set('authorization', 'Bearer ' + data.access_token);
-    });
-    this.http.post(this.logoutApi, {}, logoutHeader).subscribe(() => {
+    this.http.post(this.logoutApi, {}, httpOptions).subscribe(() => {
       this.storage.remove('USER_DATA').then(() => {
         this.authState.next(2);
         this.router.navigate(['login']);
@@ -67,13 +70,11 @@ export class AuthService {
   }
 
   /**
-   * Return the Auth Token or false
-   * @return string
+   * Return the Userdata storage
+   * @return Promise<any>
    */
-  getAuthToken() {
-    this.storage.get('USER_DATA').then(data => {
-      return data.access_token;
-    });
+  getUserData(): Promise<any> {
+    return this.storage.get('USER_DATA');
   }
 
   /**

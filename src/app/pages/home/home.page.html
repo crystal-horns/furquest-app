@@ -1,9 +1,26 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>home</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-buttons slot="start">
+  <ion-menu-button autoHide="false"></ion-menu-button>
+</ion-buttons>
 
 <ion-content>
+  <ion-grid no-padding="">
+    <ion-row no-padding>
+      <ion-col no-padding>
+        <div class="header">
+          <app-profile padding-bottom></app-profile>
+        </div>
+      </ion-col>
+    </ion-row>
 
+    <ion-row>
+      <ion-col sizeMd="6" pushMd="3">
+        <ion-list-header margin-top>
+          {{ 'home.quest.current' | translate }}
+        </ion-list-header>
+
+        <app-quest-current no-padding></app-quest-current>
+        <ion-button expand="full" fill="clear" margin (click)="goQuests()">{{ 'home.quest.more' | translate }}</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
