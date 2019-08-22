@@ -64,7 +64,7 @@ export class AuthService {
     this.http.post(this.logoutApi, {}, httpOptions).subscribe(() => {
       this.storage.remove('USER_DATA').then(() => {
         this.authState.next(2);
-        this.router.navigate(['login']);
+        this.router.navigate(['']);
       });
     });
   }

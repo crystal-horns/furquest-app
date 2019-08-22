@@ -61,13 +61,13 @@ export class AppComponent {
           this.router.navigate(['home']);
           this.menuCtrl.enable(true);
         } else if (state == 2) {
-          this.router.navigate(['login']);
+          this.router.navigate(['']);
         }
       });
 
       // Block sidebar on login or redirect to typed route
       this.router.events.subscribe((event: RouterEvent) => {
-        if (event instanceof NavigationEnd && event.url === '/login') {
+        if (event instanceof NavigationEnd && (event.url === '/' || event.url === '')) {
           this.menuCtrl.enable(false);
         }
       });
