@@ -10,9 +10,9 @@ import {Router} from "@angular/router";
   styleUrls: ['./quests.page.scss'],
 })
 export class QuestsPage implements OnInit {
-  private current: UserQuest;
-  private quests: UserQuest[];
-  private imagePath = environment.resourceUrl + "quests/";
+  current: UserQuest;
+  quests: UserQuest[];
+  imagePath = environment.resourceUrl + "quests/";
 
   constructor(
       private router: Router,

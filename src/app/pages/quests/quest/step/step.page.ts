@@ -12,7 +12,7 @@ import {StepsService} from "../../../../services/steps.service";
   styleUrls: ['./step.page.scss'],
 })
 export class StepPage implements OnInit {
-  private step: UserQuestStep;
+  step: UserQuestStep;
   canGoBack: boolean = false;
 
   constructor(

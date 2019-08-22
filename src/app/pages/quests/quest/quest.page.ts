@@ -11,8 +11,8 @@ import {IonRouterOutlet} from "@ionic/angular";
   styleUrls: ['./quest.page.scss'],
 })
 export class QuestPage implements OnInit {
-  private quest: UserQuest;
-  private imagePath = environment.resourceUrl + "quests/";
+  quest: UserQuest;
+  imagePath = environment.resourceUrl + "quests/";
   canGoBack: boolean = false;
 
   constructor(
