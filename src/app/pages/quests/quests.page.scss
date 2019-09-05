@@ -1,6 +1,6 @@
 ion-toolbar {
   --background: linear-gradient(135deg, #F2941B, #FFCC35);
-  color: #FFF;
+  color: #F7F7F7;
 }
 
 ion-list-header {
@@ -15,7 +15,7 @@ ion-label {
   width: 100%;
   font-size: 24px;
   font-weight: 500;
-  color: #FFF;
+  color: #F7F7F7;
   top: 190px;
   padding-bottom: 5px;
   padding-left: 10px;
@@ -33,7 +33,7 @@ ion-label {
 }
 
 ion-card {
-  background: #FFF;
+  background: #F7F7F7;
   &.current ion-card-content {
     height: 230px;
     background-size: cover;

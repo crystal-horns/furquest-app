@@ -1,12 +1,12 @@
 ion-buttons {
   margin-bottom: -50px;
-  color: #FFF;
+  color: #F7F7F7;
 }
 .header {
   padding-top: 35px;
   padding-bottom: 50px;
   background: linear-gradient(135deg, #5B56C2, #88498D);
-  color: #FFF;
+  color: #F7F7F7;
   position: relative;
   &:before {
     content: '';
@@ -16,7 +16,7 @@ ion-buttons {
     width: 0;
     height: 0;
     border-left: 1000px solid transparent;
-    border-bottom: 80px solid #F5F5F5;
+    border-bottom: 80px solid #F7F7F7;
   }
 }
 
