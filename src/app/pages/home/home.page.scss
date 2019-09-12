@@ -1,7 +1,12 @@
 ion-buttons {
   margin-bottom: -50px;
-  color: #F7F7F7;
 }
+ion-buttons, ion-menu-button {
+  color: #F7F7F7;
+  --ion-toolbar-color: #F7F7F7;
+  --color: #F7F7F7;
+}
+
 .header {
   padding-top: 35px;
   padding-bottom: 50px;

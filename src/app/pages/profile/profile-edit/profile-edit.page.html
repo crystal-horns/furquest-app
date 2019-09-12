@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'app.titles.profileEdit' | translate }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button><label for="submit"><ion-icon icon='save' size="large"></ion-icon></label></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="user">
+  <form #form="ngForm" (ngSubmit)="save(form)">
+    <input type="submit" id="submit" value="Submit" style="display:none"/>
+
+    <ion-segment (ionChange)="segmentChanged($event)" value="personalData">
+      <ion-segment-button value="personalData">
+        <ion-label>Friends</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="contacts">
+        <ion-label>Enemies</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <ion-grid *ngIf="this.segmentView == 'personalData'">
+      <ion-row>
+        <ion-col>
+          a
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid *ngIf="this.segmentView == 'contacts'">
+      <ion-row>
+        <ion-col>
+          b
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
+

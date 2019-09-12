@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {AuthService} from "./services/auth.service";
 import {NavigationEnd, Router, RouterEvent} from "@angular/router";
 import {LanguageService} from "./services/language.service";
+import {User} from './models/User';
 
 @Component({
   selector: 'app-root',
@@ -36,24 +37,28 @@ export class AppComponent {
       this.languageService.setInitialAppLanguage();
 
       // Set Sidebar Menus
-      this.appPages = [
-        {
-          title: 'app.titles.home',
-          url: '/home'
-        },
-        {
-          title: 'app.titles.profile',
-          url: '/profile'
-        },
-        {
-          title: 'app.titles.guild',
-          url: '/guild'
-        },
-        {
-          title: 'app.titles.events',
-          url: '/quests'
-        }
-      ];
+      this.appPages = [];
+      this.authService.getUserData().then((user: User) => {
+        this.appPages =
+          [
+            {
+              title: 'app.titles.home',
+              url: '/home'
+            },
+            {
+              title: 'app.titles.profile',
+              url: `/profile/${user.id}`
+            },
+            {
+              title: 'app.titles.guild',
+              url: '/guild'
+            },
+            {
+              title: 'app.titles.events',
+              url: '/quests'
+            }
+          ];
+      });
 
       // Initializates app on the right page according to Auth
       this.authService.getAuthState().subscribe(state => {

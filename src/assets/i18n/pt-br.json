@@ -4,6 +4,7 @@
       "login": "Login",
       "home": "Home",
       "profile": "Perfil",
+      "profileEdit": "Editar Perfil",
       "guild": "Guild",
       "events": "Missões",
       "steps": "Passos",
@@ -40,6 +41,21 @@
   },
 
   "step": {
-    "tips": "Dicas"
-  }
+    "tips": "Dicas",
+    "finishBtn": "Finalizar Passo"
+  },
+
+  "profile":  {
+    "title": {
+      "contacts": "Contatos",
+      "bio": "Biografia"
+    },
+    "menu": {
+      "title": "Menu",
+      "changePassword": "Mudar senha",
+      "edit": "Editar perfil"
+    }
+  },
+
+
 }

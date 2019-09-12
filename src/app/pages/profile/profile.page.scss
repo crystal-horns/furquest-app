@@ -1,0 +1,58 @@
+ion-buttons, ion-menu-button {
+  color: #F7F7F7;
+  --ion-toolbar-color: #F7F7F7;
+  --color: #F7F7F7;
+}
+.back-button-has-icon-only.sc-ion-back-button-md-h, ion-back-button {
+  display: block;
+}
+ion-toolbar {
+  margin-bottom: -56px;
+  --ion-toolbar-background: transparent;
+}
+
+.header {
+  position: relative;
+  .header-background {
+    background: linear-gradient(135deg, #5B56C2, #88498D);
+    height: 100px;
+    position: absolute;
+    width: 100%;
+    z-index: 0;
+  }
+  .header-content {
+    padding: 35px 0;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+ion-list-header {
+  font-size: 16px;
+  min-height: 25px;
+}
+
+ion-button.btn-contact {
+  height: 60px;
+  &.phone {
+    --background: #989aa2;
+  }
+  &.telegram {
+    --background: #38AFE2;
+  }
+  &.furaffinity {
+    --background: #FAAF3A;
+  }
+  &.facebook {
+    --background: #197AF2;
+  }
+  &.twitter {
+    --background: #54ACEF;
+  }
+  &.deviantart {
+    --background: #04CC47;
+  }
+  &.other {
+    --background: #7044ff;
+  }
+}

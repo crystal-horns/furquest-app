@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {environment} from "../../environments/environment";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {UserQuestStep} from "../models/UserQuestStep";
+import {environment} from '../../environments/environment';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {UserQuestStep} from '../models/UserQuestStep';
 
 const httpOptions = {
   headers: new HttpHeaders().set('Content-Type', 'application/json')
@@ -24,6 +24,6 @@ export class StepsService {
    * @return Promise<UserQuestStep>
    */
   getSingle(quest, step): Promise<UserQuestStep> {
-    return <Promise<UserQuestStep>>this.http.get(`${this.stepsUrl}/${quest}/${step}`, httpOptions).toPromise();
+    return this.http.get(`${this.stepsUrl}/${quest}/${step}`, httpOptions).toPromise() as Promise<UserQuestStep>;
   }
 }

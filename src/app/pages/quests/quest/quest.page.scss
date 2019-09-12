@@ -1,6 +1,14 @@
-.canGoBack {
-  display: block;
+ion-toolbar, ion-buttons, ion-menu-button {
   color: #F7F7F7;
+  --ion-toolbar-color: #F7F7F7;
+  --color: #F7F7F7;
+}
+.back-button-has-icon-only.sc-ion-back-button-md-h, ion-back-button {
+  display: block;
+}
+ion-toolbar {
+  margin-bottom: -56px;
+  --ion-toolbar-background: transparent;
 }
 
 ion-list-header {

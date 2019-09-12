@@ -4,6 +4,7 @@
       "login": "Login",
       "home": "Home",
       "profile": "Profile",
+      "profileEdit": "Edit Profile",
       "guild": "Guild",
       "events": "Quests",
       "steps": "Steps",
@@ -40,6 +41,19 @@
   },
 
   "step": {
-    "tips": "Tips"
+    "tips": "Tips",
+    "finishBtn": "Finish Step"
+  },
+
+  "profile":  {
+    "title": {
+      "contacts": "Contacts",
+      "bio": "Bio"
+    },
+    "menu": {
+      "title": "Menu",
+      "changePassword": "Change password",
+      "edit": "Edit profile"
+    }
   }
 }

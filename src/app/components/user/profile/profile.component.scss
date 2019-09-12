@@ -4,10 +4,19 @@ ion-avatar.profile {
   width: 100%;
   height: 120px;
 
+  :host-context(.profile-page) & {
+    height: 150px;
+  }
+
   ion-img {
     max-width: 120px;
     max-height: 120px;
     margin: 0 auto;
     border: 5px solid #F7F7F7;
+
+    :host-context(.profile-page) & {
+      max-width: 150px;
+      max-height: 150px;
+    }
   }
 }

@@ -1,0 +1,24 @@
+<ion-header translucent no-border>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()"><ion-icon icon="close"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <div *ngIf="step.step.resolution_type == 2">
+    Single
+  </div>
+
+  <div *ngIf="step.step.resolution_type == 3">
+    Many
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-buttons>
+    <ion-button slot="center" (click)="dismissModal()" expand="full" fill="solid" color="tertiary" text-center size="lg">
+      {{ 'step.finishBtn' | translate }}
+    </ion-button>
+  </ion-buttons>
+</ion-footer>

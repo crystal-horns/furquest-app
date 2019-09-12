@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../../services/auth.service";
-import {AlertController, LoadingController} from "@ionic/angular";
-import {TranslateService} from "@ngx-translate/core";
+import {AuthService} from '../../services/auth.service';
+import {AlertController, LoadingController} from '@ionic/angular';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
@@ -9,8 +9,6 @@ import {TranslateService} from "@ngx-translate/core";
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  private lang = [];
-
   constructor(
       private loadingCtrl: LoadingController,
       private alertCtrl: AlertController,
@@ -18,18 +16,11 @@ export class LoginPage implements OnInit {
       private authService: AuthService
   ) { }
 
-  ngOnInit() {
-    this.translate.get('app.loading').subscribe(trans => {
-      this.lang['loading'] = trans;
-    });
-    this.translate.get('app.login.error').subscribe(trans => {
-      this.lang['login.error'] = trans;
-    });
-  }
+  ngOnInit() { }
 
   async login(form) {
     const loading = await this.loadingCtrl.create({
-      message: this.lang['loading'],
+      message: this.translate.instant('app.loading'),
       duration: 2000
     });
     await loading.present();
@@ -37,8 +28,8 @@ export class LoginPage implements OnInit {
     if (!this.authService.login(form.value)) {
       this.alertCtrl.create({
         header: 'Oops!',
-        message: this.lang['login.error']
-      })
+        message: this.translate.instant('app.login.error')
+      });
     }
   }
 }
