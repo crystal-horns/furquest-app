@@ -4,7 +4,7 @@
       "login": "Login",
       "home": "Home",
       "profile": "Perfil",
-      "profileEdit": "Editar Perfil",
+      "personalData": "Editar Perfil",
       "guild": "Guild",
       "events": "Missões",
       "steps": "Passos",
@@ -12,7 +12,14 @@
       "about": "Sobre"
     },
     "logout": "Logout",
-    "loading": "Carregando..."
+    "loading": "Carregando...",
+    "alerts": {
+      "success": "Sucesso!",
+      "error": "Oops..."
+    },
+    "alertMessages": {
+      "error": "Algo deu errado, por favor, tente novamente."
+    }
   },
 
   "login": {
@@ -53,9 +60,24 @@
     "menu": {
       "title": "Menu",
       "changePassword": "Mudar senha",
-      "edit": "Editar perfil"
+      "edit": "Editar perfil",
+      "editContacts": "Editar contatos",
+      "editPicture": "Editar foto"
     }
   },
 
-
+  "profileEdit":{
+    "personalData": {
+      "name": "Nome",
+      "social_name": "Fursona",
+      "species": "Espécie",
+      "bio": "Bio",
+      "document_warn": "Seu documento não será divulgado, salvo apenas para fins legais",
+      "document": "Document",
+      "document_type": "Tipo Documento"
+    },
+    "alertMessages": {
+      "success": "Perfil atualizado com sucesso!"
+    }
+  }
 }

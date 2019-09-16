@@ -46,6 +46,18 @@ export class ProfilePage implements OnInit {
         handler: () => {
           this.router.navigate(['profile/edit']);
         }
+      }, {
+        text: this.translateService.instant('profile.menu.editContacts'),
+        icon: 'people',
+        handler: () => {
+          this.router.navigate(['profile/edit-contacts']);
+        }
+      }, {
+        text: this.translateService.instant('profile.menu.editPicture'),
+        icon: 'camera',
+        handler: () => {
+          this.router.navigate(['profile/edit']);
+        }
       }]
     });
     await menu.present();

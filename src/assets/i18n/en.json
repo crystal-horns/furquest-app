@@ -4,7 +4,7 @@
       "login": "Login",
       "home": "Home",
       "profile": "Profile",
-      "profileEdit": "Edit Profile",
+      "personalData": "Edit Profile",
       "guild": "Guild",
       "events": "Quests",
       "steps": "Steps",
@@ -12,7 +12,14 @@
       "about": "About"
     },
     "logout": "Logout",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "alerts": {
+      "success": "Success!",
+      "error": "Oops..."
+    },
+    "alertMessages": {
+      "error": "Something went wrong, please, try again."
+    }
   },
 
   "login": {
@@ -53,7 +60,24 @@
     "menu": {
       "title": "Menu",
       "changePassword": "Change password",
-      "edit": "Edit profile"
+      "edit": "Edit profile",
+      "editContacts": "Edit contacts",
+      "editPicture": "Edit picture"
+    }
+  },
+
+  "profileEdit":{
+    "personalData": {
+      "name": "Name",
+      "social_name": "Fursona",
+      "species": "Species",
+      "bio": "Bio",
+      "document_warn": "Your document will not be shown, stored only for legal reasons",
+      "document": "Document",
+      "document_type": "Document Type"
+    },
+    "alertMessages": {
+      "success": "Profile updated with success!"
     }
   }
 }

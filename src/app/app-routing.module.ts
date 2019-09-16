@@ -17,6 +17,10 @@ const routes: Routes = [
                 loadChildren: './pages/profile/change-password/change-password.module#ChangePasswordPageModule'
             },
             {
+                path: 'edit-contacts',
+                loadChildren: './pages/profile/edit-contacts/edit-contacts.module#EditContactsPageModule'
+            },
+            {
                 path: ':id',
                 loadChildren: './pages/profile/profile.module#ProfilePageModule'
             }

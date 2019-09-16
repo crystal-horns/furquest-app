@@ -21,7 +21,7 @@ ion-toolbar {
     z-index: 0;
   }
   .header-content {
-    padding: 35px 0;
+    padding: 35px 0 0;
     position: relative;
     z-index: 1;
   }
@@ -30,6 +30,11 @@ ion-toolbar {
 ion-list-header {
   font-size: 16px;
   min-height: 25px;
+}
+
+ion-card {
+  box-shadow: none !important;
+  --background: #FFF;
 }
 
 ion-button.btn-contact {
