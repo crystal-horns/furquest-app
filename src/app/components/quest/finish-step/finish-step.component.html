@@ -1,24 +1,33 @@
 <ion-header translucent no-border>
   <ion-toolbar>
     <ion-buttons slot="end">
-      <ion-button (click)="dismissModal()"><ion-icon icon="close"></ion-icon></ion-button>
+      <ion-button (click)="dismissModal(false)"><ion-icon icon="close"></ion-icon></ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen>
-  <div *ngIf="step.step.resolution_type == 2">
-    Single
-  </div>
+  <h3 text-center padding-horizontal no-margin> {{ 'step.finish.title' | translate }} </h3>
+  <p text-center padding no-margin> {{ 'step.finish.subtitle' | translate }} </p>
 
-  <div *ngIf="step.step.resolution_type == 3">
-    Many
-  </div>
+  <form [formGroup]="formPuzzleResolution">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div formArrayName="answers">
+            <ion-item *ngFor="let answer of answers.controls, let i = index">
+              <ion-label position="floating">{{ 'step.finish.answer' | translate }} {{ step.step.resolution_count > 1 ? (i+1) : '' }}</ion-label>
+              <ion-input formControlName="{{i}}" required="required"></ion-input>
+            </ion-item>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>
 
-<ion-footer>
-  <ion-buttons>
-    <ion-button slot="center" (click)="dismissModal()" expand="full" fill="solid" color="tertiary" text-center size="lg">
-      {{ 'step.finishBtn' | translate }}
-    </ion-button>
-  </ion-buttons>
+<ion-footer no-border>
+  <ion-button (click)="submitFormPuzzleResolution()" expand="full" fill="solid" color="tertiary"
+      text-center size="large" no-margin [disabled]="formPuzzleResolution.invalid">
+    {{ 'step.finish.btn' | translate }}
+  </ion-button>
 </ion-footer>

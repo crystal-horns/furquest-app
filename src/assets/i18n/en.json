@@ -36,22 +36,6 @@
     }
   },
 
-  "quests": {
-    "no-quests": "Oops, no quests for you yet.",
-    "current": "Current Quest",
-    "past": "Past Quests"
-  },
-
-  "quest": {
-    "steps": "Steps",
-    "current-step": "Current Step"
-  },
-
-  "step": {
-    "tips": "Tips",
-    "finishBtn": "Finish Step"
-  },
-
   "profile":  {
     "title": {
       "contacts": "Contacts",
@@ -65,7 +49,6 @@
       "editPicture": "Edit picture"
     }
   },
-
   "profileEdit":{
     "personalData": {
       "name": "Name",
@@ -78,6 +61,37 @@
     },
     "alertMessages": {
       "success": "Profile updated with success!"
+    }
+  },
+
+  "quests": {
+    "no-quests": "Oops, no quests for you yet.",
+    "current": "Current Quest",
+    "past": "Past Quests"
+  },
+  "quest": {
+    "steps": "Steps",
+    "current-step": "Current Step"
+  },
+  "step": {
+    "tips": "Tips",
+    "rewards": {
+      "title": "Rewards",
+      "nextStep": "Next step"
+    },
+    "finish": {
+      "title": "Oh, so you managed to solve the puzzle?",
+      "subtitle": "Input your solution below and press the button to check it",
+      "answer": "Answer ",
+      "btn": "Check solution",
+      "errors": {
+        "ALREADY_FINISHED": "Oops, this step was finished already!",
+        "WRONG_RESOLUTION": "Oh no, looks like your solution isn't right :("
+      },
+      "success": {
+        "title": "Congrats!",
+        "msg": "You solved this puzzle and unlocked new rewards!"
+      }
     }
   }
 }

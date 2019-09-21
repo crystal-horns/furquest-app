@@ -3,7 +3,7 @@ export interface Step {
     quest_id: number;
     name: string;
     resolution: string;
-    resolution_type: number;
+    resolution_count: number;
     content: string;
     lat: number;
     long: number;

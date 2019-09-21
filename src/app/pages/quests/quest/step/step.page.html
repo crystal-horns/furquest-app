@@ -8,20 +8,45 @@
 </ion-header>
 
 <ion-content>
-  <ion-fab vertical="top" horizontal="end" slot="fixed" edge>
+  <ion-fab *ngIf="!stepRewards" vertical="top" horizontal="end" slot="fixed" edge>
     <ion-fab-button color="tertiary" (click)="finishStep()">
       <ion-icon icon="flag"></ion-icon>
     </ion-fab-button>
   </ion-fab>
   <ion-grid no-padding *ngIf="step">
+    <!-- Rewards -->
+    <ion-row *ngIf="stepRewards">
+      <ion-col sizeMd="6" pushMd="3">
+        <ion-list-header> {{ 'step.rewards.title' | translate }} </ion-list-header>
+
+        <ion-grid no-padding>
+          <ion-row no-padding>
+            <ion-col [size]="reward.key != 'nextStep' ? 3 : 12" *ngFor="let reward of stepRewards | keyvalue">
+              <ion-button *ngIf="reward.key != 'nextStep'" expand="full" fill="outline" class="btn-reward">
+                <ion-icon *ngIf="reward.key != 'nextStep'" size="large" slot="icon-only" [className]="reward.value.reward_type.type"
+                          name="trophy"></ion-icon>
+              </ion-button>
+
+              <ion-button *ngIf="reward.key == 'nextStep'" (click)="goStep(reward.value.user_quest_id, reward.value.id)"
+                expand="full" class="btn-reward next-step">
+                {{ 'step.rewards.nextStep' | translate }}
+                <ion-icon size="large" slot="end" name="play"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+
+    <!-- Tips -->
     <ion-row>
       <ion-col sizeMd="6" pushMd="3">
-        <ion-list>
-          <ion-list-header> {{ 'step.tips' | translate }} </ion-list-header>
-          <ion-item no-padding *ngFor="let tip of step.user_quest_step_tip.reverse()">
-            <ion-text padding>{{ tip.tip.content}}</ion-text>
-          </ion-item>
-        </ion-list>
+        <ion-list-header> {{ 'step.tips' | translate }} </ion-list-header>
+        <ion-card margin-bottom *ngFor="let tip of step.user_quest_step_tip.reverse()">
+          <ion-card-content padding>
+            <ion-text>{{ tip.tip.content}}</ion-text>
+          </ion-card-content>
+        </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>

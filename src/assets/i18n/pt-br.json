@@ -36,22 +36,6 @@
     }
   },
 
-  "quests": {
-    "no-quests": "Oops, você ainda não tem nenhuma missão.",
-    "current": "Missão Atual",
-    "past": "Missões passadas"
-  },
-
-  "quest": {
-    "steps": "Etapas",
-    "current-step": "Etapa atual"
-  },
-
-  "step": {
-    "tips": "Dicas",
-    "finishBtn": "Finalizar Passo"
-  },
-
   "profile":  {
     "title": {
       "contacts": "Contatos",
@@ -65,7 +49,6 @@
       "editPicture": "Editar foto"
     }
   },
-
   "profileEdit":{
     "personalData": {
       "name": "Nome",
@@ -78,6 +61,37 @@
     },
     "alertMessages": {
       "success": "Perfil atualizado com sucesso!"
+    }
+  },
+
+  "quests": {
+    "no-quests": "Oops, você ainda não tem nenhuma missão.",
+    "current": "Missão Atual",
+    "past": "Missões passadas"
+  },
+  "quest": {
+    "steps": "Etapas",
+    "current-step": "Etapa atual"
+  },
+  "step": {
+    "tips": "Dicas",
+    "rewards": {
+      "title": "Recompensas",
+      "nextStep": "Próximo passo"
+    },
+    "finish": {
+      "title": "Oh, então você conseguiu desvendar o enigma?",
+      "subtitle": "Insira sua resposta abaixo e pressione o botão para validar",
+      "answer": "Resposta ",
+      "btn": "Validar solução",
+      "errors": {
+        "ALREADY_FINISHED": "Epa, esse passo já foi finalizado!",
+        "WRONG_RESOLUTION": "Parece que a solução apresentada não esta correta :("
+      },
+      "success": {
+        "title": "Parabéns!",
+        "msg": "Você conseguiu solucionar o enigma e liberou novas recompensas!"
+      }
     }
   }
 }

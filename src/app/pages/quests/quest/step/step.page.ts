@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {IonRouterOutlet, ModalController} from '@ionic/angular';
-import {UserQuest} from '../../../../models/UserQuest';
-import {environment} from '../../../../../environments/environment';
 import {UserQuestStep} from '../../../../models/UserQuestStep';
 import {StepsService} from '../../../../services/steps.service';
 import {FinishStepComponent} from '../../../../components/quest/finish-step/finish-step.component';
@@ -15,6 +13,7 @@ import {FinishStepComponent} from '../../../../components/quest/finish-step/fini
 export class StepPage implements OnInit {
   step: UserQuestStep;
   canGoBack = false;
+  private stepRewards: object[];
 
   constructor(
       private router: Router,
@@ -31,24 +30,30 @@ export class StepPage implements OnInit {
     const quets = this.activetedRoute.snapshot.paramMap.get('questId');
     const step = this.activetedRoute.snapshot.paramMap.get('stepId');
     this.step = await this.stepsService.getSingle(quets, step);
+    this.stepRewards = await this.stepsService.getRewards(quets, step);
+  }
+
+  goStep(quest, step) {
+      this.router.navigate([`quests/${quest}/${step}`]);
   }
 
   async finishStep() {
-    switch (this.step.step.resolution_type) {
-        // QRCode
-        case 1:
-            break;
-        // Single and Many
-        case 2:
-        case 3:
-            const modal = await this.modalCtrl.create({
-                component: FinishStepComponent,
-                componentProps: {
-                    step: this.step
-                }
-            });
-            return await modal.present();
-    }
+      if (this.step.step.resolution_count === 0) {
+          //
+      } else {
+          const modal = await this.modalCtrl.create({
+              component: FinishStepComponent,
+              componentProps: {
+                  step: this.step
+              }
+          });
+          modal.onDidDismiss()
+              .then((data) => {
+                  if (data) {
+                      this.stepRewards = data as any;
+                  }
+              });
+          return await modal.present();
+      }
   }
-
 }
