@@ -7,16 +7,22 @@ ion-toolbar, ion-buttons, ion-menu-button {
   --color: #F7F7F7;
 }
 
-ion-list-header {
-  font-size: 16px;
-  min-height: 25px;
-}
-
-ion-button.btn-reward {
-  height: 60px;
+.reward-item {
+  &.glyph {
+    ion-label {
+      font-size: 12px;
+      color: #555;
+      text-align: center;
+      display: block;
+      padding-top: 5px;
+    }
+  }
 
   &.next-step {
-    --background: #F2941B;
+    height: 60px;
+    --background: #ffcc35;
+    color: #555;
+    --box-shadow: 0;
     margin: 5px -10px;
   }
 }
@@ -24,4 +30,8 @@ ion-button.btn-reward {
 ion-card {
   box-shadow: none !important;
   --background: #FFF;
+}
+
+#map_container {
+  height: 250px;
 }

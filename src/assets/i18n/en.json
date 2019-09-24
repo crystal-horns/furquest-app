@@ -7,7 +7,7 @@
       "personalData": "Edit Profile",
       "guild": "Guild",
       "events": "Quests",
-      "steps": "Steps",
+      "steps": "Puzzles",
       "tips": "Tips",
       "about": "About"
     },
@@ -70,14 +70,15 @@
     "past": "Past Quests"
   },
   "quest": {
-    "steps": "Steps",
-    "current-step": "Current Step"
+    "steps": "Puzzles",
+    "current-step": "Current Puzzle"
   },
   "step": {
+    "history": "History",
     "tips": "Tips",
     "rewards": {
       "title": "Rewards",
-      "nextStep": "Next step"
+      "nextStep": "Next puzzle"
     },
     "finish": {
       "title": "Oh, so you managed to solve the puzzle?",
@@ -85,7 +86,7 @@
       "answer": "Answer ",
       "btn": "Check solution",
       "errors": {
-        "ALREADY_FINISHED": "Oops, this step was finished already!",
+        "ALREADY_FINISHED": "Oops, this puzzle was finished already!",
         "WRONG_RESOLUTION": "Oh no, looks like your solution isn't right :("
       },
       "success": {

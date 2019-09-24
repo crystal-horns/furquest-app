@@ -7,7 +7,7 @@
       "personalData": "Editar Perfil",
       "guild": "Guild",
       "events": "Missões",
-      "steps": "Passos",
+      "steps": "Enigmas",
       "tips": "Dicas",
       "about": "Sobre"
     },
@@ -70,14 +70,15 @@
     "past": "Missões passadas"
   },
   "quest": {
-    "steps": "Etapas",
-    "current-step": "Etapa atual"
+    "steps": "Enigmas",
+    "current-step": "Enigma atual"
   },
   "step": {
+    "history": "História",
     "tips": "Dicas",
     "rewards": {
       "title": "Recompensas",
-      "nextStep": "Próximo passo"
+      "nextStep": "Próximo enigma"
     },
     "finish": {
       "title": "Oh, então você conseguiu desvendar o enigma?",
@@ -85,7 +86,7 @@
       "answer": "Resposta ",
       "btn": "Validar solução",
       "errors": {
-        "ALREADY_FINISHED": "Epa, esse passo já foi finalizado!",
+        "ALREADY_FINISHED": "Epa, esse enigma já foi finalizado!",
         "WRONG_RESOLUTION": "Parece que a solução apresentada não esta correta :("
       },
       "success": {

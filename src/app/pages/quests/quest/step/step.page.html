@@ -13,22 +13,33 @@
       <ion-icon icon="flag"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  <ion-grid no-padding *ngIf="step">
+  <ion-grid no-padding padding-top *ngIf="step">
     <!-- Rewards -->
     <ion-row *ngIf="stepRewards">
-      <ion-col sizeMd="6" pushMd="3">
+      <ion-col sizeMd="6" pushMd="3" size="12" *ngIf="!!step.step.content">
+        <ion-list-header> {{ 'step.history' | translate }} </ion-list-header>
+          <ion-card>
+            <ion-card-content padding>
+              <ion-text>{{ step.step.content }}</ion-text>
+            </ion-card-content>
+          </ion-card>
+      </ion-col>
+
+      <ion-col sizeMd="6" pushMd="3" size="12">
         <ion-list-header> {{ 'step.rewards.title' | translate }} </ion-list-header>
 
         <ion-grid no-padding>
-          <ion-row no-padding>
+          <ion-row no-padding justify-content-center>
             <ion-col [size]="reward.key != 'nextStep' ? 3 : 12" *ngFor="let reward of stepRewards | keyvalue">
-              <ion-button *ngIf="reward.key != 'nextStep'" expand="full" fill="outline" class="btn-reward">
-                <ion-icon *ngIf="reward.key != 'nextStep'" size="large" slot="icon-only" [className]="reward.value.reward_type.type"
-                          name="trophy"></ion-icon>
-              </ion-button>
+                <div *ngIf="reward.key != 'nextStep'">
+                    <div *ngIf="reward.value.reward_type.type == 'glyph'" [class]="'reward-item ' + reward.value.reward_type.type">
+                        <ion-img [src]="reward.value.value"></ion-img>
+                        <ion-label>GLYPH</ion-label>
+                    </div>
+                </div>
 
               <ion-button *ngIf="reward.key == 'nextStep'" (click)="goStep(reward.value.user_quest_id, reward.value.id)"
-                expand="full" class="btn-reward next-step">
+                expand="full" class="reward-item next-step">
                 {{ 'step.rewards.nextStep' | translate }}
                 <ion-icon size="large" slot="end" name="play"></ion-icon>
               </ion-button>
@@ -43,9 +54,11 @@
       <ion-col sizeMd="6" pushMd="3">
         <ion-list-header> {{ 'step.tips' | translate }} </ion-list-header>
         <ion-card margin-bottom *ngFor="let tip of step.user_quest_step_tip.reverse()">
-          <ion-card-content padding>
+          <ion-card-content padding *ngIf="!tip.tip.map">
             <ion-text>{{ tip.tip.content}}</ion-text>
           </ion-card-content>
+
+          <ion-card-content id="map_container" *ngIf="tip.tip.map"></ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>

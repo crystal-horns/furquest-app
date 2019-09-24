@@ -8,8 +8,8 @@ ion-buttons, ion-menu-button {
 }
 
 .header {
-  padding-top: 35px;
-  padding-bottom: 50px;
+  padding-top: 20px;
+  padding-bottom: 45px;
   background: linear-gradient(135deg, #5B56C2, #88498D);
   color: #F7F7F7;
   position: relative;
@@ -23,9 +23,4 @@ ion-buttons, ion-menu-button {
     border-left: 1000px solid transparent;
     border-bottom: 80px solid #F7F7F7;
   }
-}
-
-ion-list-header {
-  font-size: 16px;
-  min-height: 25px;
 }

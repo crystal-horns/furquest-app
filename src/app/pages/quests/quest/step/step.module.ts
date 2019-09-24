@@ -8,7 +8,6 @@ import { IonicModule } from '@ionic/angular';
 import { StepPage } from './step.page';
 import {TranslateModule} from '@ngx-translate/core';
 import {QuestModule} from '../../../../components/quest/quest.module';
-import {ObjectKeysPipe} from '../../../../pipes/object-keys.pipe';
 
 const routes: Routes = [
   {

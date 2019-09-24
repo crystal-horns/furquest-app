@@ -1,0 +1,7 @@
+{
+  "appId": "com.crystalhorns.furquest",
+  "appName": "FurQuest",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
