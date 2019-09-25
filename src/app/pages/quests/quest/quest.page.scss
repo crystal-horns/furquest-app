@@ -36,3 +36,16 @@ ion-toolbar {
     padding-left: 10px;
   }
 }
+
+ion-card {
+  box-shadow: none !important;
+  --background: #FFF;
+  color: #FFF;
+  height: 100px;
+}
+ion-card.done {
+  --background: #197AF2;
+}
+ion-card.current {
+  --background: #04CC47;
+}

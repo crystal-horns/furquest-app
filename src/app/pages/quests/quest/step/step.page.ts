@@ -51,6 +51,7 @@ export class StepPage implements OnInit {
     const quets = this.activetedRoute.snapshot.paramMap.get('questId');
     const step = this.activetedRoute.snapshot.paramMap.get('stepId');
     this.step = await this.stepsService.getSingle(quets, step);
+    this.step.user_quest_step_tip = this.step.user_quest_step_tip.reverse();
     this.stepRewards = await this.stepsService.getRewards(quets, step);
 
     await this.loadMap();

@@ -28,6 +28,7 @@ export class QuestPage implements OnInit {
 
     const id = this.activetedRoute.snapshot.paramMap.get('questId');
     this.quest = await this.questsService.getSingle(id);
+    this.quest.user_quest_steps = this.quest.user_quest_steps.reverse();
   }
 
   goStep(id) {
