@@ -8,6 +8,15 @@
 </ion-header>
 
 <ion-content>
+  <div *ngIf="scannedData">
+    <p>
+      Scanned Code Text : <b>{{ scannedData["text"] }}</b>
+    </p>
+    <p>
+      Scanned Code Format : <b>{{ scannedData["format"] }}</b>
+    </p>
+  </div>
+
   <ion-fab *ngIf="!stepRewards" vertical="top" horizontal="end" slot="fixed" edge>
     <ion-fab-button color="tertiary" (click)="finishStep()">
       <ion-icon icon="flag"></ion-icon>
@@ -54,9 +63,7 @@
       <ion-col sizeMd="6" pushMd="3">
         <ion-list-header> {{ 'step.tips' | translate }} </ion-list-header>
         <ion-card margin-bottom *ngFor="let tip of step.user_quest_step_tip.reverse()">
-          <ion-card-content padding *ngIf="!tip.tip.map">
-            <ion-text>{{ tip.tip.content}}</ion-text>
-          </ion-card-content>
+          <ion-card-content padding *ngIf="!tip.tip.map" [innerHTML]="tip.tip.content"></ion-card-content>
 
           <ion-card-content id="map_container" *ngIf="tip.tip.map"></ion-card-content>
         </ion-card>

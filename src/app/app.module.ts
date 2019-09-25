@@ -19,6 +19,7 @@ import {UserModule} from './components/user/user.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { environment } from '../environments/environment';
+import {BarcodeScanner} from '@ionic-native/barcode-scanner/ngx';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -55,7 +56,8 @@ export function createTranslateLoader(http: HttpClient) {
             provide: HTTP_INTERCEPTORS,
             useClass: TokenInterceptor,
             multi: true
-        }
+        },
+        BarcodeScanner
     ],
     bootstrap: [AppComponent]
 })

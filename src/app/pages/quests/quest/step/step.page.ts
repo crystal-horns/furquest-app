@@ -1,9 +1,13 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {IonRouterOutlet, ModalController, Platform} from '@ionic/angular';
+import {IonRouterOutlet, ModalController} from '@ionic/angular';
 import {UserQuestStep} from '../../../../models/UserQuestStep';
 import {StepsService} from '../../../../services/steps.service';
 import {FinishStepComponent} from '../../../../components/quest/finish-step/finish-step.component';
+import {
+  BarcodeScannerOptions,
+  BarcodeScanner
+} from '@ionic-native/barcode-scanner/ngx';
 
 declare var google;
 
@@ -13,11 +17,17 @@ declare var google;
   styleUrls: ['./step.page.scss'],
 })
 export class StepPage implements OnInit {
-  step: UserQuestStep;
   canGoBack = false;
-  stepRewards: object[];
+  // Step data
+  step: UserQuestStep;
+  // Maps
   map;
   markers = [];
+  // QRcode
+  scannedData: {};
+  barcodeScannerOptions: BarcodeScannerOptions;
+  // Reawrds
+  stepRewards: object[];
 
   constructor(
     private router: Router,
@@ -25,19 +35,24 @@ export class StepPage implements OnInit {
     private routerOutlet: IonRouterOutlet,
     private stepsService: StepsService,
     public modalCtrl: ModalController,
-    private platform: Platform
-  ) { }
+    private barcodeScanner: BarcodeScanner
+  ) {
+    this.barcodeScannerOptions = {
+      showTorchButton: true,
+      showFlipCameraButton: true
+    };
+  }
 
-  async ngOnInit() {
-    this.canGoBack = this.routerOutlet &&
-    this.routerOutlet.canGoBack();
+  async ngOnInit() { }
+
+  async ionViewWillEnter() {
+    this.canGoBack = this.routerOutlet && this.routerOutlet.canGoBack();
 
     const quets = this.activetedRoute.snapshot.paramMap.get('questId');
     const step = this.activetedRoute.snapshot.paramMap.get('stepId');
     this.step = await this.stepsService.getSingle(quets, step);
     this.stepRewards = await this.stepsService.getRewards(quets, step);
 
-    await this.platform.ready();
     await this.loadMap();
   }
 
@@ -47,22 +62,39 @@ export class StepPage implements OnInit {
 
   async finishStep() {
     if (this.step.step.resolution_count === 0) {
-      //
+      this.scanCode();
     } else {
-      const modal = await this.modalCtrl.create({
-        component: FinishStepComponent,
-        componentProps: {
-          step: this.step
-        }
-      });
-      modal.onDidDismiss()
+      this.showModal();
+    }
+  }
+
+  scanCode() {
+    this.barcodeScanner
+        .scan()
+        .then(barcodeData => {
+          alert('Barcode data ' + JSON.stringify(barcodeData));
+          this.scannedData = barcodeData;
+        })
+        .catch(err => {
+          console.log('Error', err);
+        });
+  }
+
+  async showModal() {
+    const modal = await this.modalCtrl.create({
+      component: FinishStepComponent,
+      componentProps: {
+        step: this.step
+      }
+    });
+    modal.onDidDismiss()
         .then((data) => {
           if (data) {
-            this.stepRewards = data as any;
+            this.stepRewards = data.data as object[];
+            console.log(this.stepRewards);
           }
         });
-      return await modal.present();
-    }
+    return await modal.present();
   }
 
   loadMap() {
