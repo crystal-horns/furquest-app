@@ -75,7 +75,11 @@
   },
   "step": {
     "history": "História",
-    "tips": "Dicas",
+    "tips": {
+      "title": "Dicas",
+      "time": "Proxima dica em ",
+      "next": "Receber Dica"
+    },
     "rewards": {
       "title": "Recompensas",
       "nextStep": "Próximo enigma"

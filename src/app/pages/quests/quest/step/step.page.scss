@@ -35,3 +35,16 @@ ion-card {
 #map_container {
   height: 250px;
 }
+
+.loading-tip {
+  color: #FFF;
+  background: var(--ion-color-tertiary);
+  &>span {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  ion-progress-bar {
+    --buffer-background: #BAA7FF;
+  }
+}

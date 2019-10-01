@@ -75,7 +75,11 @@
   },
   "step": {
     "history": "History",
-    "tips": "Tips",
+    "tips": {
+      "title": "Tips",
+      "time": "Next Tip in",
+      "next": "Get Tip"
+    },
     "rewards": {
       "title": "Rewards",
       "nextStep": "Next puzzle"

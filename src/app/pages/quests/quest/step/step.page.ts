@@ -8,6 +8,7 @@ import {
   BarcodeScannerOptions,
   BarcodeScanner
 } from '@ionic-native/barcode-scanner/ngx';
+import {TipsService} from '../../../../services/tips.service';
 
 declare var google;
 
@@ -18,8 +19,14 @@ declare var google;
 })
 export class StepPage implements OnInit {
   canGoBack = false;
+  math = Math;
   // Step data
   step: UserQuestStep;
+  // Tips
+  timeNextTip = 0;
+  delayNextTip = 0;
+  porcTimeNextTip = 0;
+  nextTip = false;
   // Maps
   map;
   markers = [];
@@ -30,12 +37,13 @@ export class StepPage implements OnInit {
   stepRewards: object[];
 
   constructor(
-    private router: Router,
-    private activetedRoute: ActivatedRoute,
-    private routerOutlet: IonRouterOutlet,
-    private stepsService: StepsService,
-    public modalCtrl: ModalController,
-    private barcodeScanner: BarcodeScanner
+      private stepsService: StepsService,
+      private tipsService: TipsService,
+      private router: Router,
+      private activetedRoute: ActivatedRoute,
+      private routerOutlet: IonRouterOutlet,
+      public modalCtrl: ModalController,
+      private barcodeScanner: BarcodeScanner
   ) {
     this.barcodeScannerOptions = {
       showTorchButton: true,
@@ -43,15 +51,18 @@ export class StepPage implements OnInit {
     };
   }
 
-  async ngOnInit() { }
+  async ngOnInit() {}
 
   async ionViewWillEnter() {
     this.canGoBack = this.routerOutlet && this.routerOutlet.canGoBack();
 
     const quets = this.activetedRoute.snapshot.paramMap.get('questId');
     const step = this.activetedRoute.snapshot.paramMap.get('stepId');
-    this.step = await this.stepsService.getSingle(quets, step);
-    this.step.user_quest_step_tip = this.step.user_quest_step_tip.reverse();
+    this.stepsService.getSingle(quets, step).then(res => {
+      this.step = res;
+      this.calcTimerNextTip();
+    });
+    // this.step.user_quest_step_tip = this.step.user_quest_step_tip.reverse();
     this.stepRewards = await this.stepsService.getRewards(quets, step);
 
     await this.loadMap();
@@ -92,10 +103,53 @@ export class StepPage implements OnInit {
         .then((data) => {
           if (data) {
             this.stepRewards = data.data as object[];
-            console.log(this.stepRewards);
           }
         });
     return await modal.present();
+  }
+
+  calcTimerNextTip() {
+    if (this.step.status == 1) {
+      return;
+    }
+
+    const user_quest_step_tips = this.step.user_quest_step_tip;
+    if (user_quest_step_tips.length) {
+      const user_quest_step_tip = user_quest_step_tips.reverse()[0];
+      this.delayNextTip = user_quest_step_tip.tip.delay;
+      const created = new Date(user_quest_step_tip.created_at);
+      this.timeNextTip = this.delayNextTip - this.math.floor(( (new Date()).getTime() - created.getTime() ) / 1000);
+      this.porcTimeNextTip = (this.delayNextTip - this.timeNextTip) / this.delayNextTip;
+
+      if(this.timeNextTip > 0) {
+        this.timerNextTipTick();
+      } else {
+        this.nextTip = true;
+      }
+    } else {
+      this.nextTip = true;
+    }
+  }
+
+  timerNextTipTick() {
+    setTimeout(x => {
+      this.timeNextTip -= 1;
+      this.porcTimeNextTip = (this.delayNextTip - this.timeNextTip) / this.delayNextTip;
+
+      if(this.timeNextTip > 0) {
+        this.nextTip = false;
+        this.timerNextTipTick();
+      } else {
+        this.nextTip = true;
+      }
+    }, 1000);
+  }
+
+  async getNextTip() {
+    this.tipsService.nextTip(this.step.user_quest_id, this.step.id).then(tips => {
+      this.step.user_quest_step_tip = tips;
+      this.calcTimerNextTip();
+    });
   }
 
   loadMap() {
