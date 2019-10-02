@@ -4,6 +4,7 @@ import {UsersService} from '../../services/users.service';
 import {User} from '../../models/User';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-profile',
@@ -13,6 +14,7 @@ import {TranslateService} from '@ngx-translate/core';
 export class ProfilePage implements OnInit {
   user: User;
   canGoBack = false;
+  userImagePath = `${environment.resourceUrl}users/`;
 
   constructor(
     private router: Router,

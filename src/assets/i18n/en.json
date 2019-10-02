@@ -63,6 +63,9 @@
       "success": "Profile updated with success!"
     }
   },
+  "guilds": {
+    "members": "Members"
+  },
 
   "quests": {
     "no-quests": "Oops, no quests for you yet.",

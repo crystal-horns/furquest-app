@@ -1,12 +1,45 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>guild</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button *ngIf="canGoBack" [ngClass]="{canGoBack: canGoBack}"></ion-back-button>
+    <ion-menu-button *ngIf="!canGoBack"></ion-menu-button>
+  </ion-buttons>
+  <ion-title *ngIf="guild">{{ guild.name }}</ion-title>
+</ion-toolbar>
 
 <ion-content>
+  <ion-grid no-padding *ngIf="guild">
+    <ion-row no-padding>
+      <ion-col no-padding padding-bottom>
+        <div class="header"
+             [ngStyle]="{'background-image': 'url(' + guildsImagePath + guild.id + '/' + guild.flag + ')'}">
+        </div>
+      </ion-col>
+    </ion-row>
 
+    <ion-row>
+      <ion-col sizeMd="6" pushMd="3">
+        <ion-list-header margin-bottom> {{ 'guilds.members' | translate }} </ion-list-header>
+        <ion-grid no-padding>
+          <ion-row no-padding>
+            <ion-col no-padding *ngFor="let user of guild.users" size="12">
+              <ion-card no-margin margin-horizontal margin-bottom (click)="openProfile(user.pivot.user_id)">
+                <ion-card-content>
+                  <ion-avatar slot="start">
+                    <ion-img [src]="(user.photo ? userImagePath + user.pivot.user_id + '/' + user.photo : '')"></ion-img>
+                  </ion-avatar>
+                  <ion-label>
+                    <div>
+                      <h3>{{ user.social_name || user.name }}</h3>
+                      <p *ngIf="user.species">{{ user.species }}</p>
+                    </div>
+                  </ion-label>
+                  <ion-icon icon="ios-arrow-forward" slot="end"></ion-icon>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

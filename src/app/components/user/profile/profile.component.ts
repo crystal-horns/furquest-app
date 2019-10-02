@@ -12,7 +12,7 @@ import {environment} from '../../../../environments/environment';
 })
 export class ProfileComponent implements OnInit {
   userData: User;
-  imgPath = `${environment.resourceUrl}/users/`;
+  imgPath = `${environment.resourceUrl}users/`;
 
   constructor(
       private router: Router,

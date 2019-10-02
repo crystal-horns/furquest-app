@@ -51,7 +51,7 @@ export class AppComponent {
             },
             {
               title: 'app.titles.guild',
-              url: '/guild'
+              url: `/guild/${user.guilds[0].id}`
             },
             {
               title: 'app.titles.events',

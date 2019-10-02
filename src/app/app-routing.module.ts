@@ -27,7 +27,7 @@ const routes: Routes = [
         ],
         canActivate: [AuthGuardService]
     },
-    {path: 'guild', loadChildren: './pages/guild/guild.module#GuildPageModule', canActivate: [AuthGuardService]},
+    {path: 'guild/:guildId', loadChildren: './pages/guild/guild.module#GuildPageModule', canActivate: [AuthGuardService]},
     {
         path: 'quests',
         children: [

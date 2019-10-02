@@ -62,6 +62,9 @@
     "alertMessages": {
       "success": "Perfil atualizado com sucesso!"
     }
+  },,
+  "guilds": {
+    "members": "Membros"
   },
 
   "quests": {
