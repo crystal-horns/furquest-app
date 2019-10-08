@@ -62,7 +62,7 @@
     "alertMessages": {
       "success": "Perfil atualizado com sucesso!"
     }
-  },,
+  },
   "guilds": {
     "members": "Membros"
   },
@@ -73,6 +73,7 @@
     "past": "Missões passadas"
   },
   "quest": {
+    "history": "História",
     "steps": "Enigmas",
     "current-step": "Enigma atual"
   },
@@ -93,6 +94,7 @@
       "answer": "Resposta ",
       "btn": "Validar solução",
       "errors": {
+        "empty": "Parece que sua resposta está em branco, tente novamente.",
         "ALREADY_FINISHED": "Epa, esse enigma já foi finalizado!",
         "WRONG_RESOLUTION": "Parece que a solução apresentada não esta correta :("
       },

@@ -13,7 +13,9 @@ import {IonRouterOutlet} from "@ionic/angular";
 export class QuestPage implements OnInit {
   quest: UserQuest;
   imagePath = environment.resourceUrl + "quests/";
-  canGoBack: boolean = false;
+  canGoBack = false;
+
+  historyExpand = false;
 
   constructor(
       private router: Router,
@@ -33,5 +35,9 @@ export class QuestPage implements OnInit {
 
   goStep(id) {
     this.router.navigate([`quests/${this.quest.id}/${id}`]);
+  }
+
+  toggleHistoryExpand() {
+    this.historyExpand = !this.historyExpand;
   }
 }

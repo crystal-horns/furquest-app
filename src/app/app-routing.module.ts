@@ -52,6 +52,7 @@ const routes: Routes = [
         canActivate: [AuthGuardService]
     },
   { path: 'loading', loadChildren: './pages/loading/loading.module#LoadingPageModule' },
+  { path: 'about', loadChildren: './pages/about/about.module#AboutPageModule' },
 ];
 
 @NgModule({

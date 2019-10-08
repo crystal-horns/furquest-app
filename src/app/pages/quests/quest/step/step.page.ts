@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {IonRouterOutlet, ModalController} from '@ionic/angular';
+import {AlertController, IonRouterOutlet, ModalController} from '@ionic/angular';
 import {UserQuestStep} from '../../../../models/UserQuestStep';
 import {StepsService} from '../../../../services/steps.service';
 import {FinishStepComponent} from '../../../../components/quest/finish-step/finish-step.component';
@@ -9,6 +9,7 @@ import {
   BarcodeScanner
 } from '@ionic-native/barcode-scanner/ngx';
 import {TipsService} from '../../../../services/tips.service';
+import {TranslateService} from '@ngx-translate/core';
 
 declare var google;
 
@@ -31,7 +32,6 @@ export class StepPage implements OnInit {
   map;
   markers = [];
   // QRcode
-  scannedData: {};
   barcodeScannerOptions: BarcodeScannerOptions;
   // Reawrds
   stepRewards: object[];
@@ -43,7 +43,9 @@ export class StepPage implements OnInit {
       private activetedRoute: ActivatedRoute,
       private routerOutlet: IonRouterOutlet,
       public modalCtrl: ModalController,
-      private barcodeScanner: BarcodeScanner
+      private barcodeScanner: BarcodeScanner,
+      private translate: TranslateService,
+      private alertCtrl: AlertController
   ) {
     this.barcodeScannerOptions = {
       showTorchButton: true,
@@ -61,8 +63,9 @@ export class StepPage implements OnInit {
     this.stepsService.getSingle(quets, step).then(res => {
       this.step = res;
       this.calcTimerNextTip();
+
+      this.step.user_quest_step_tip = this.step.user_quest_step_tip.reverse();
     });
-    // this.step.user_quest_step_tip = this.step.user_quest_step_tip.reverse();
     this.stepRewards = await this.stepsService.getRewards(quets, step);
 
     await this.loadMap();
@@ -84,12 +87,39 @@ export class StepPage implements OnInit {
     this.barcodeScanner
         .scan()
         .then(barcodeData => {
-          alert('Barcode data ' + JSON.stringify(barcodeData));
-          this.scannedData = barcodeData;
+          this.processQrCode(barcodeData.text);
         })
         .catch(err => {
           console.log('Error', err);
+          this.processQrCode(prompt('Informe o código abaixo do QRCode:'));
         });
+  }
+  async processQrCode(response) {
+    if (response) {
+      this.stepsService.finishStep(this.step.user_quest_id, this.step.id, {answers: [response]})
+          .then(async res => {
+            const alert = await this.alertCtrl.create({
+              header: this.translate.instant(`step.finish.success.title`),
+              message: this.translate.instant(`step.finish.success.msg`),
+              buttons: ['Hurray!']
+            });
+            await alert.present();
+          }).catch(async res => {
+        const alert = await this.alertCtrl.create({
+          header: 'Oops...',
+          message: this.translate.instant(`step.finish.errors.${res.error.msg}`),
+          buttons: ['OK']
+        });
+        await alert.present();
+      });
+    } else {
+      const alert = await this.alertCtrl.create({
+        header: 'Oops...',
+        message: this.translate.instant(`step.finish.errors.empty`),
+        buttons: ['OK']
+      });
+      await alert.present();
+    }
   }
 
   async showModal() {

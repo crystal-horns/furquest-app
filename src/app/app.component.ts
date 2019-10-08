@@ -82,4 +82,8 @@ export class AppComponent {
   logout() {
     this.authService.logout();
   }
+
+  goAbout() {
+    this.router.navigate(['about']);
+  }
 }

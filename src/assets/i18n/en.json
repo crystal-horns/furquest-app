@@ -73,6 +73,7 @@
     "past": "Past Quests"
   },
   "quest": {
+    "history": "History",
     "steps": "Puzzles",
     "current-step": "Current Puzzle"
   },
@@ -93,6 +94,7 @@
       "answer": "Answer ",
       "btn": "Check solution",
       "errors": {
+        "empty": "Looks like you provided a blank response. Please, try again.",
         "ALREADY_FINISHED": "Oops, this puzzle was finished already!",
         "WRONG_RESOLUTION": "Oh no, looks like your solution isn't right :("
       },

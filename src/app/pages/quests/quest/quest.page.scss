@@ -81,3 +81,11 @@ ion-card {
     --background: #15993c;
   }
 }
+
+.history-cont {
+  span.expandToggle {
+    border-bottom: 1px solid #CCC;
+    width: 100%;
+    display: block;
+  }
+}
