@@ -27,7 +27,8 @@ export class QuestPage implements OnInit {
   async ngOnInit() {
     this.canGoBack = this.routerOutlet &&
         this.routerOutlet.canGoBack();
-
+  }
+  async ionViewWillEnter() {
     const id = this.activetedRoute.snapshot.paramMap.get('questId');
     this.quest = await this.questsService.getSingle(id);
     this.quest.user_quest_steps = this.quest.user_quest_steps.reverse();

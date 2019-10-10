@@ -38,31 +38,36 @@ export class ProfilePage implements OnInit {
   async presentProfileMenu() {
     const menu = await this.actionSheetController.create({
       header: this.translateService.instant('profile.menu.title'),
-      buttons: [{
-        text: this.translateService.instant('profile.menu.changePassword'),
-        icon: 'key',
-        handler: () => {
-          this.router.navigate(['profile/change-password']);
-        }
-      }, {
-        text: this.translateService.instant('profile.menu.edit'),
-        icon: 'create',
-        handler: () => {
-          this.router.navigate(['profile/edit']);
-        }
-      }, {
-        text: this.translateService.instant('profile.menu.editContacts'),
-        icon: 'people',
-        handler: () => {
-          this.router.navigate(['profile/edit-contacts']);
-        }
-      }, {
-        text: this.translateService.instant('profile.menu.editPicture'),
-        icon: 'camera',
-        handler: () => {
-          this.router.navigate(['profile/edit']);
-        }
-      }]
+      buttons: [
+        // {
+        //   text: this.translateService.instant('profile.menu.changePassword'),
+        //   icon: 'key',
+        //   handler: () => {
+        //     this.router.navigate(['profile/change-password']);
+        //   }
+        // },
+        {
+          text: this.translateService.instant('profile.menu.edit'),
+          icon: 'create',
+          handler: () => {
+            this.router.navigate(['profile/edit']);
+          }
+        },
+        {
+          text: this.translateService.instant('profile.menu.editContacts'),
+          icon: 'people',
+          handler: () => {
+            this.router.navigate(['profile/edit-contacts']);
+          }
+        },
+        // {
+        //   text: this.translateService.instant('profile.menu.editPicture'),
+        //   icon: 'camera',
+        //   handler: () => {
+        //     this.router.navigate(['profile/edit']);
+        //   }
+        // }
+      ]
     });
     await menu.present();
   }
