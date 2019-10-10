@@ -5,6 +5,8 @@
       "home": "Home",
       "profile": "Profile",
       "personalData": "Edit Profile",
+      "contacts": "Edit Contacts",
+      "changePassword": "Change Password",
       "guild": "Guild",
       "events": "Quests",
       "steps": "Puzzles",
@@ -15,7 +17,11 @@
     "loading": "Loading...",
     "alerts": {
       "success": "Success!",
-      "error": "Oops..."
+      "error": "Oops...",
+      "btn": {
+        "ok": "OK",
+        "cancel": "Cancel"
+      }
     },
     "alertMessages": {
       "error": "Something went wrong, please, try again."
@@ -61,6 +67,26 @@
     },
     "alertMessages": {
       "success": "Profile updated with success!"
+    }
+  },
+  "profileContacts": {
+    "delete": {
+      "header": "Confirm Action",
+      "message": "Are you sure you want to remove this contact?"
+    },
+    "addContact": {
+      "title": "Add Contact",
+      "placeholder": "Select contact's type",
+      "btn": "Add"
+    },
+    "save": {
+      "success": {
+        "title": "Success!",
+        "msg": "Contacts updated with success!"
+      },
+      "error": {
+
+      }
     }
   },
   "guilds": {

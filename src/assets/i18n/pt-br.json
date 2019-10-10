@@ -5,6 +5,8 @@
       "home": "Home",
       "profile": "Perfil",
       "personalData": "Editar Perfil",
+      "contacts": "Editar Contatos",
+      "changePassword": "Mudar a Senha",
       "guild": "Guild",
       "events": "Missões",
       "steps": "Enigmas",
@@ -15,7 +17,11 @@
     "loading": "Carregando...",
     "alerts": {
       "success": "Sucesso!",
-      "error": "Oops..."
+      "error": "Oops...",
+      "btn": {
+        "ok": "OK",
+        "cancel": "Cancelar"
+      }
     },
     "alertMessages": {
       "error": "Algo deu errado, por favor, tente novamente."
@@ -60,7 +66,30 @@
       "document_type": "Tipo Documento"
     },
     "alertMessages": {
-      "success": "Perfil atualizado com sucesso!"
+      "success": "Perfil atualizado com sucesso!",
+      "error": {
+
+      }
+    }
+  },
+  "profileContacts": {
+    "delete": {
+      "header": "Confirmar ação",
+      "message": "Você tem certeza de que deseja remover esse contato?"
+    },
+    "addContact": {
+      "title": "Adicionar Contato",
+      "placeholder": "Selecione o Tipo do Contato",
+      "btn": "Adicionar"
+    },
+    "save": {
+      "success": {
+        "title": "Sucesso!",
+        "msg": "Contatos atualizados com sucesso!"
+      },
+      "error": {
+
+      }
     }
   },
   "guilds": {

@@ -106,17 +106,17 @@ export class StepPage implements OnInit {
             await alert.present();
           }).catch(async res => {
         const alert = await this.alertCtrl.create({
-          header: 'Oops...',
+          header: this.translate.instant(`app.alerts.error`),
           message: this.translate.instant(`step.finish.errors.${res.error.msg}`),
-          buttons: ['OK']
+          buttons: [this.translate.instant(`app.alerts.btn.ok`)]
         });
         await alert.present();
       });
     } else {
       const alert = await this.alertCtrl.create({
-        header: 'Oops...',
+        header: this.translate.instant(`app.alerts.error`),
         message: this.translate.instant(`step.finish.errors.empty`),
-        buttons: ['OK']
+        buttons: [this.translate.instant(`app.alerts.btn.ok`)]
       });
       await alert.present();
     }

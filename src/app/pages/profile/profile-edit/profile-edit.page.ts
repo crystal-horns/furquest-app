@@ -39,7 +39,7 @@ export class ProfileEditPage implements OnInit {
     const alert = await this.alertController.create({
       header,
       message,
-      buttons: ['Okay']
+      buttons: [this.translate.instant(`app.alerts.btn.ok`)]
     });
 
     await alert.present();

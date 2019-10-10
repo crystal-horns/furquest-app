@@ -10,8 +10,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="user">
-  <form #form="ngForm" (ngSubmit)="save()">
+<ion-content>
+  <form *ngIf="user" #form="ngForm" (ngSubmit)="save()">
     <input type="submit" id="submit" value="Submit" style="display:none"/>
 
     <ion-grid>

@@ -48,9 +48,9 @@ export class FinishStepComponent implements OnInit {
       this.dismissModal(res);
     }).catch(async res => {
       const alert = await this.alertCtrl.create({
-        header: 'Oops...',
+        header: this.translate.instant(`app.alerts.error`),
         message: this.translate.instant(`step.finish.errors.${res.error.msg}`),
-        buttons: ['OK']
+        buttons: [this.translate.instant(`app.alerts.btn.ok`)]
       });
       await alert.present();
     });

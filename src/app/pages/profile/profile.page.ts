@@ -28,7 +28,9 @@ export class ProfilePage implements OnInit {
   async ngOnInit() {
     this.canGoBack = this.routerOutlet &&
         this.routerOutlet.canGoBack();
+  }
 
+  async ionViewWillEnter() {
     const id = this.activetedRoute.snapshot.paramMap.get('id');
     this.user = await this.usersService.getUser(id);
   }
