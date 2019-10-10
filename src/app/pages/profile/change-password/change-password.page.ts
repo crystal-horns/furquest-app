@@ -12,4 +12,7 @@ export class ChangePasswordPage implements OnInit {
   ngOnInit() {
   }
 
+  save() {
+
+  }
 }
