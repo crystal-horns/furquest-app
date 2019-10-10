@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'app.titles.personalData' | translate }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button><label for="submit"><ion-icon icon='save' size="large"></ion-icon></label></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form *ngIf="user" #form="ngForm" (ngSubmit)="save()">
+    <input type="submit" id="submit" value="Submit" style="display:none"/>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">{{ 'profileEdit.personalData.name' | translate }}</ion-label>
+            <ion-input name="name" [(ngModel)]="user.name" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">{{ 'profileEdit.personalData.social_name' | translate }}</ion-label>
+            <ion-input name="social_name" [(ngModel)]="user.social_name"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">{{ 'profileEdit.personalData.species' | translate }}</ion-label>
+            <ion-input name="species" [(ngModel)]="user.species"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">{{ 'profileEdit.personalData.bio' | translate }}</ion-label>
+            <ion-textarea name="bio" [(ngModel)]="user.bio"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <hr>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">{{ 'profileEdit.personalData.document' | translate }}</ion-label>
+            <ion-input name="document" [(ngModel)]="user.document"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">{{ 'profileEdit.personalData.document_type' | translate }}</ion-label>
+            <ion-select placeholder="{{ 'profileEdit.personalData.document_type' | translate }}"
+              name="document_type" [(ngModel)]="user.document_type">
+              <ion-select-option value="rg">RG</ion-select-option>
+              <ion-select-option value="cpf">CPF</ion-select-option>
+              <ion-select-option value="passport">Passport</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <p padding no-margin>
+            <ion-text color="medium">
+              {{ 'profileEdit.personalData.document_warn' | translate }}
+            </ion-text>
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
+

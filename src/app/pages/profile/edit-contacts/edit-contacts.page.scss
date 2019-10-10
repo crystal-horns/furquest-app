@@ -1,0 +1,25 @@
+ion-toolbar {
+  --background: linear-gradient(135deg, #5B56C2, #6763db);
+}
+ion-toolbar, ion-buttons, ion-menu-button {
+  color: #F7F7F7;
+  --ion-toolbar-color: #F7F7F7;
+  --color: #F7F7F7;
+}
+ion-card {
+  box-shadow: none !important;
+  --background: #FFF;
+  ion-card-content {
+    padding-top: 3px;
+    ion-button.remove-contact-btn {
+      position: absolute;
+      z-index: 3;
+      right: 0;
+    }
+  }
+}
+ion-item {
+  --background: #FFF;
+  --padding-start: 0;
+  --ion-safe-area-left: 0;
+}

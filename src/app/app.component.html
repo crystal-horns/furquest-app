@@ -5,7 +5,7 @@
         <ion-grid no-padding="">
           <ion-row class="ion-align-items-end">
             <ion-col class="sidebar-profile">
-              <app-profile></app-profile>
+              <app-profile-comp></app-profile-comp>
             </ion-col>
           </ion-row>
           <ion-row>
@@ -27,7 +27,7 @@
       <ion-footer>
         <ion-toolbar>
           <ion-buttons slot="start">
-            <ion-button fill="clear">
+            <ion-button fill="clear" (click)="goAbout()">
               {{ 'app.titles.about' | translate }}
             </ion-button>
           </ion-buttons>

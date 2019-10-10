@@ -4,14 +4,28 @@
       "login": "Login",
       "home": "Home",
       "profile": "Perfil",
+      "personalData": "Editar Perfil",
+      "contacts": "Editar Contatos",
+      "changePassword": "Mudar a Senha",
       "guild": "Guild",
       "events": "Missões",
-      "steps": "Passos",
+      "steps": "Enigmas",
       "tips": "Dicas",
       "about": "Sobre"
     },
     "logout": "Logout",
-    "loading": "Carregando..."
+    "loading": "Carregando...",
+    "alerts": {
+      "success": "Sucesso!",
+      "error": "Oops...",
+      "btn": {
+        "ok": "OK",
+        "cancel": "Cancelar"
+      }
+    },
+    "alertMessages": {
+      "error": "Algo deu errado, por favor, tente novamente."
+    }
   },
 
   "login": {
@@ -28,18 +42,95 @@
     }
   },
 
+  "profile":  {
+    "title": {
+      "contacts": "Contatos",
+      "bio": "Biografia"
+    },
+    "menu": {
+      "title": "Menu",
+      "changePassword": "Mudar senha",
+      "edit": "Editar perfil",
+      "editContacts": "Editar contatos",
+      "editPicture": "Editar foto"
+    }
+  },
+  "profileEdit":{
+    "personalData": {
+      "name": "Nome",
+      "social_name": "Fursona",
+      "species": "Espécie",
+      "bio": "Bio",
+      "document_warn": "Seu documento não será divulgado, salvo apenas para fins legais",
+      "document": "Document",
+      "document_type": "Tipo Documento"
+    },
+    "alertMessages": {
+      "success": "Perfil atualizado com sucesso!",
+      "error": {
+
+      }
+    }
+  },
+  "profileContacts": {
+    "delete": {
+      "header": "Confirmar ação",
+      "message": "Você tem certeza de que deseja remover esse contato?"
+    },
+    "addContact": {
+      "title": "Adicionar Contato",
+      "placeholder": "Selecione o Tipo do Contato",
+      "btn": "Adicionar"
+    },
+    "save": {
+      "success": {
+        "title": "Sucesso!",
+        "msg": "Contatos atualizados com sucesso!"
+      },
+      "error": {
+
+      }
+    }
+  },
+  "guilds": {
+    "members": "Membros"
+  },
+
   "quests": {
     "no-quests": "Oops, você ainda não tem nenhuma missão.",
     "current": "Missão Atual",
     "past": "Missões passadas"
   },
-
   "quest": {
-    "steps": "Etapas",
-    "current-step": "Etapa atual"
+    "history": "História",
+    "steps": "Enigmas",
+    "current-step": "Enigma atual"
   },
-
   "step": {
-    "tips": "Dicas"
+    "history": "História",
+    "tips": {
+      "title": "Dicas",
+      "time": "Proxima dica em ",
+      "next": "Receber Dica"
+    },
+    "rewards": {
+      "title": "Recompensas",
+      "nextStep": "Próximo enigma"
+    },
+    "finish": {
+      "title": "Oh, então você conseguiu desvendar o enigma?",
+      "subtitle": "Insira sua resposta abaixo e pressione o botão para validar",
+      "answer": "Resposta ",
+      "btn": "Validar solução",
+      "errors": {
+        "empty": "Parece que sua resposta está em branco, tente novamente.",
+        "ALREADY_FINISHED": "Epa, esse enigma já foi finalizado!",
+        "WRONG_RESOLUTION": "Parece que a solução apresentada não esta correta :("
+      },
+      "success": {
+        "title": "Parabéns!",
+        "msg": "Você conseguiu solucionar o enigma e liberou novas recompensas!"
+      }
+    }
   }
 }

@@ -78,6 +78,16 @@ export class AuthService {
   }
 
   /**
+   * Update stored user
+   * @param user
+   */
+  setUserData(user) {
+    this.storage.set('USER_DATA', user).then(() => {
+      return true;
+    });
+  }
+
+  /**
    * Return Authetication state object
    * @return BehaviorSubject
    */

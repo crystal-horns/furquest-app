@@ -4,14 +4,28 @@
       "login": "Login",
       "home": "Home",
       "profile": "Profile",
+      "personalData": "Edit Profile",
+      "contacts": "Edit Contacts",
+      "changePassword": "Change Password",
       "guild": "Guild",
       "events": "Quests",
-      "steps": "Steps",
+      "steps": "Puzzles",
       "tips": "Tips",
       "about": "About"
     },
     "logout": "Logout",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "alerts": {
+      "success": "Success!",
+      "error": "Oops...",
+      "btn": {
+        "ok": "OK",
+        "cancel": "Cancel"
+      }
+    },
+    "alertMessages": {
+      "error": "Something went wrong, please, try again."
+    }
   },
 
   "login": {
@@ -28,18 +42,92 @@
     }
   },
 
+  "profile":  {
+    "title": {
+      "contacts": "Contacts",
+      "bio": "Bio"
+    },
+    "menu": {
+      "title": "Menu",
+      "changePassword": "Change password",
+      "edit": "Edit profile",
+      "editContacts": "Edit contacts",
+      "editPicture": "Edit picture"
+    }
+  },
+  "profileEdit":{
+    "personalData": {
+      "name": "Name",
+      "social_name": "Fursona",
+      "species": "Species",
+      "bio": "Bio",
+      "document_warn": "Your document will not be shown, stored only for legal reasons",
+      "document": "Document",
+      "document_type": "Document Type"
+    },
+    "alertMessages": {
+      "success": "Profile updated with success!"
+    }
+  },
+  "profileContacts": {
+    "delete": {
+      "header": "Confirm Action",
+      "message": "Are you sure you want to remove this contact?"
+    },
+    "addContact": {
+      "title": "Add Contact",
+      "placeholder": "Select contact's type",
+      "btn": "Add"
+    },
+    "save": {
+      "success": {
+        "title": "Success!",
+        "msg": "Contacts updated with success!"
+      },
+      "error": {
+
+      }
+    }
+  },
+  "guilds": {
+    "members": "Members"
+  },
+
   "quests": {
     "no-quests": "Oops, no quests for you yet.",
     "current": "Current Quest",
     "past": "Past Quests"
   },
-
   "quest": {
-    "steps": "Steps",
-    "current-step": "Current Step"
+    "history": "History",
+    "steps": "Puzzles",
+    "current-step": "Current Puzzle"
   },
-
   "step": {
-    "tips": "Tips"
+    "history": "History",
+    "tips": {
+      "title": "Tips",
+      "time": "Next Tip in",
+      "next": "Get Tip"
+    },
+    "rewards": {
+      "title": "Rewards",
+      "nextStep": "Next puzzle"
+    },
+    "finish": {
+      "title": "Oh, so you managed to solve the puzzle?",
+      "subtitle": "Input your solution below and press the button to check it",
+      "answer": "Answer ",
+      "btn": "Check solution",
+      "errors": {
+        "empty": "Looks like you provided a blank response. Please, try again.",
+        "ALREADY_FINISHED": "Oops, this puzzle was finished already!",
+        "WRONG_RESOLUTION": "Oh no, looks like your solution isn't right :("
+      },
+      "success": {
+        "title": "Congrats!",
+        "msg": "You solved this puzzle and unlocked new rewards!"
+      }
+    }
   }
 }

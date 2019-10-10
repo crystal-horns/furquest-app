@@ -1,27 +1,48 @@
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button *ngIf="canGoBack" [ngClass]="{canGoBack: canGoBack}"></ion-back-button>
+    <ion-menu-button *ngIf="!canGoBack"></ion-menu-button>
+  </ion-buttons>
+  <ion-title *ngIf="quest">{{ quest.quest_route.quest.name }}</ion-title>
+</ion-toolbar>
+
 <ion-content>
   <ion-grid no-padding *ngIf="quest">
     <ion-row no-padding>
-      <ion-col no-padding>
+      <ion-col no-padding padding-bottom>
         <div class="header"
            [ngStyle]="{'background-image': 'url(' + imagePath + quest.quest_route.quest_id + '/' + quest.quest_route.quest.image + ')'}">
-          <ion-buttons slot="start">
-            <ion-back-button *ngIf="canGoBack" [ngClass]="{canGoBack: canGoBack}"></ion-back-button>
-            <ion-menu-button *ngIf="!canGoBack"></ion-menu-button>
-            <ion-label>{{ quest.quest_route.quest.name }}</ion-label>
-          </ion-buttons>
         </div>
+<!--        <div class="loading-quest">-->
+<!--          <ion-list-header> Default at 50% </ion-list-header>-->
+<!--          <ion-progress-bar color="light" value="0.5"></ion-progress-bar>-->
+<!--        </div>-->
       </ion-col>
     </ion-row>
 
+<!--    <ion-row *ngIf="quest.quest_route.quest.history">-->
+<!--      <ion-col (click)="toggleHistoryExpand()">-->
+<!--        <ion-list-header margin-bottom> {{ 'q uest.history' | translate }} </ion-list-header>-->
+<!--        <ion-text [class.historyExpand]="historyExpand">{{quest.quest_route.quest.history}}</ion-text>-->
+<!--        <span [ngClass]="{'expandToggle': true, 'expanded': historyExpand}"></span>-->
+<!--      </ion-col>-->
+<!--    </ion-row>-->
+
     <ion-row>
       <ion-col sizeMd="6" pushMd="3">
-        <ion-list>
-          <ion-list-header> {{ 'quest.steps' | translate }} </ion-list-header>
-          <ion-item no-padding *ngFor="let step of quest.user_quest_steps.reverse()" (click)="goStep(step.id)">
-            <ion-label padding>{{ step.status ? step.step.name : ("quest.current-step" | translate) }}</ion-label>
-            <ion-icon [icon]="step.status ? 'checkmark-circle' : 'arrow-dropright-circle'" slot="end"></ion-icon>
-          </ion-item>
-        </ion-list>
+        <ion-list-header margin-bottom> {{ 'quest.steps' | translate }} </ion-list-header>
+        <ion-grid no-padding>
+          <ion-row no-padding>
+            <ion-col no-padding *ngFor="let step of quest.user_quest_steps" (click)="goStep(step.id)" size="12">
+              <ion-card [class]="step.status ? 'done' : 'current'" no-margin margin-horizontal margin-bottom>
+                <ion-card-content>
+                  <ion-label padding>{{ step.status ? step.step.name : ("quest.current-step" | translate) }}</ion-label>
+                  <ion-icon [icon]="step.status ? 'ios-checkmark-circle' : 'ios-arrow-dropright-circle'" slot="end"></ion-icon>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-col>
     </ion-row>
   </ion-grid>

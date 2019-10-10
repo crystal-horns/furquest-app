@@ -1,11 +1,10 @@
 ion-toolbar {
   --background: linear-gradient(135deg, #F2941B, #FFCC35);
-  color: #F7F7F7;
 }
-
-ion-list-header {
-  font-size: 16px;
-  min-height: 25px;
+ion-toolbar, ion-buttons, ion-menu-button {
+  color: #F7F7F7;
+  --ion-toolbar-color: #F7F7F7;
+  --color: #F7F7F7;
 }
 
 ion-label {

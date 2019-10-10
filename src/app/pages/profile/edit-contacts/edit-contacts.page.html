@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'app.titles.contacts' | translate }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button><label for="submit"><ion-icon icon='save' size="large"></ion-icon></label></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="contactsForm" (ngSubmit)="save()">
+    <input type="submit" id="submit" value="Submit" style="display:none"/>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <ion-card-content>
+              <ion-item>
+                <ion-label position="floating">{{ 'profileContacts.addContact.title' | translate }}</ion-label>
+                <ion-select [placeholder]="'profileContacts.addContact.placeholder' | translate" #contactType>
+                  <ion-select-option *ngFor="let type of contactTypes" [value]="type.id">{{ type.type | titlecase }}</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-button fill="outline" color="success" expand="block" (click)="addContact()" [disabled]="!contactType.value">
+                {{ 'profileContacts.addContact.btn' | translate }}
+                <ion-icon slot="end" name="add"></ion-icon>
+              </ion-button>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <hr>
+
+      <ion-row >
+        <ion-col *ngFor="let contact of contacts; let i = index" size="12">
+          <ion-card>
+            <ion-card-content>
+              <ion-button class="remove-contact-btn" fill="clear" slot="end" (click)="deleteContact(contact.id, i)">
+                <ion-icon slot="icon-only" name="trash" color="danger"></ion-icon>
+              </ion-button>
+              <ion-item>
+                <div formArrayName="contactsArray">
+                  <ion-label position="floating">{{ contact.contacts_type.type | titlecase }}</ion-label>
+                  <ion-input formControlName="{{i}}" required></ion-input>
+                </div>
+
+                <div formArrayName="idArray">
+                  <ion-input type="hidden" formControlName="{{i}}"></ion-input>
+                </div>
+                <div formArrayName="typesIdArray">
+                  <ion-input type="hidden" formControlName="{{i}}"></ion-input>
+                </div>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+</ion-content>

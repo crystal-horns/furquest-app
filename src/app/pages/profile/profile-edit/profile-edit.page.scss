@@ -1,0 +1,12 @@
+ion-toolbar {
+  --background: linear-gradient(135deg, #5B56C2, #6763db);
+}
+ion-toolbar, ion-buttons, ion-menu-button {
+  color: #F7F7F7;
+  --ion-toolbar-color: #F7F7F7;
+  --color: #F7F7F7;
+}
+
+p {
+  font-size: .8rem;
+}

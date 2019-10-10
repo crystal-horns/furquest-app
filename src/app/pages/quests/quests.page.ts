@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {QuestsService} from "../../services/quests.service";
-import {UserQuest} from "../../models/UserQuest";
-import {environment} from "../../../environments/environment";
-import {Router} from "@angular/router";
+import {QuestsService} from '../../services/quests.service';
+import {UserQuest} from '../../models/UserQuest';
+import {environment} from '../../../environments/environment';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-events',
@@ -12,7 +12,7 @@ import {Router} from "@angular/router";
 export class QuestsPage implements OnInit {
   current: UserQuest;
   quests: UserQuest[];
-  imagePath = environment.resourceUrl + "quests/";
+  imagePath = environment.resourceUrl + 'quests/';
 
   constructor(
       private router: Router,

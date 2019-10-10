@@ -1,13 +1,62 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button *ngIf="canGoBack"></ion-back-button>
-      <ion-menu-button *ngIf="!canGoBack"></ion-menu-button>
-    </ion-buttons>
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button *ngIf="canGoBack"></ion-back-button>
+    <ion-menu-button *ngIf="!canGoBack"></ion-menu-button>
+  </ion-buttons>
+  <ion-buttons slot="end">
+    <ion-button (click)="presentProfileMenu()" *ngIf="user && user.current"><ion-icon icon='more'></ion-icon></ion-button>
+  </ion-buttons>
+</ion-toolbar>
 
-    <ion-title>{{ 'app.titles.profile' | translate }}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content *ngIf="user">
+  <ion-grid no-padding>
+    <ion-row no-padding>
+      <ion-col no-padding>
+        <div class="header profile-page">
+          <div class="header-background"></div>
+          <div class="header-content">
+            <ion-avatar class="profile">
+              <ion-img [src]="(user.photo ? userImagePath + user.id + '/' + user.photo : '')"></ion-img>
+            </ion-avatar>
+            <h2 text-center>{{ user.social_name || user.name }}</h2>
+            <h4 text-center no-margin *ngIf="user.species">{{ user.species }}</h4>
+            <h4 text-center no-margin *ngIf="user.guilds">Guild {{ user.guilds[0].name }}</h4>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
 
-<ion-content>
+    <ion-row>
+      <ion-col>
+        <ion-grid>
+          <ion-row>
+            <ion-list-header margin-top>
+              {{ 'profile.title.contacts' | translate }}
+            </ion-list-header>
+
+            <ion-col size="3" *ngFor="let contact of user.user_contacts">
+              <ion-button [href]="contact.contacts_type.mask ? contact.contacts_type.mask.replace('#VALUE#', contact.value) : contact.value"
+                  target="_blank" expand="full" [class]="'btn-contact ' + contact.contacts_type.type">
+                <ion-icon size="large" slot="icon-only" [className]="contact.contacts_type.type"
+                 [name]="contact.contacts_type.icon"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+
+          <ion-row *ngIf="user.bio">
+            <ion-list-header margin-top>
+              {{ 'profile.title.bio' | translate }}
+            </ion-list-header>
+            <ion-col no-padding>
+              <ion-card>
+                <ion-card-content>
+                  {{ user.bio }}
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

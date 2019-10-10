@@ -1,10 +1,15 @@
 ion-buttons {
   margin-bottom: -50px;
-  color: #F7F7F7;
 }
+ion-buttons, ion-menu-button {
+  color: #F7F7F7;
+  --ion-toolbar-color: #F7F7F7;
+  --color: #F7F7F7;
+}
+
 .header {
   padding-top: 35px;
-  padding-bottom: 50px;
+  padding-bottom: 45px;
   background: linear-gradient(135deg, #5B56C2, #88498D);
   color: #F7F7F7;
   position: relative;
@@ -18,9 +23,4 @@ ion-buttons {
     border-left: 1000px solid transparent;
     border-bottom: 80px solid #F7F7F7;
   }
-}
-
-ion-list-header {
-  font-size: 16px;
-  min-height: 25px;
 }

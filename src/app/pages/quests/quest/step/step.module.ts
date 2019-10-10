@@ -6,7 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { StepPage } from './step.page';
-import {TranslateModule} from "@ngx-translate/core";
+import {TranslateModule} from '@ngx-translate/core';
+import {QuestModule} from '../../../../components/quest/quest.module';
 
 const routes: Routes = [
   {
@@ -21,8 +22,11 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    TranslateModule
+    TranslateModule,
+    QuestModule
   ],
-  declarations: [StepPage]
+  declarations: [
+      StepPage
+  ]
 })
 export class StepPageModule {}

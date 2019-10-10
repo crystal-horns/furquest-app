@@ -1,25 +1,77 @@
-<ion-header>
+<ion-header no-border>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title *ngIf="step">{{ step.status ? step.step.name : ("quest.current-step" | translate) }}</ion-title>
-    <ion-buttons slot="end">
-      <ion-button><ion-icon icon='barcode'></ion-icon></ion-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid no-padding *ngIf="step">
+  <ion-fab *ngIf="!stepRewards" vertical="top" horizontal="end" slot="fixed" edge>
+    <ion-fab-button color="tertiary" (click)="finishStep()">
+      <ion-icon icon="flag"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-grid no-padding padding-top *ngIf="step">
+    <!-- Rewards -->
+    <ion-row *ngIf="stepRewards">
+      <ion-col sizeMd="6" pushMd="3" size="12" *ngIf="!!step.step.content">
+        <ion-list-header> {{ 'step.history' | translate }} </ion-list-header>
+          <ion-card>
+            <ion-card-content padding>
+              <ion-text>{{ step.step.content }}</ion-text>
+            </ion-card-content>
+          </ion-card>
+      </ion-col>
+
+      <ion-col sizeMd="6" pushMd="3" size="12">
+        <ion-list-header> {{ 'step.rewards.title' | translate }} </ion-list-header>
+
+        <ion-grid no-padding>
+          <ion-row no-padding justify-content-center>
+            <ion-col [size]="reward.key != 'nextStep' ? 3 : 12" *ngFor="let reward of stepRewards | keyvalue">
+                <div *ngIf="reward.key != 'nextStep'">
+                    <div *ngIf="reward.value.reward_type.type == 'glyph'" [class]="'reward-item ' + reward.value.reward_type.type">
+                        <ion-img [src]="reward.value.value"></ion-img>
+                        <ion-label>GLYPH</ion-label>
+                    </div>
+                </div>
+
+              <ion-button *ngIf="reward.key == 'nextStep'" (click)="goStep(reward.value.user_quest_id, reward.value.id)"
+                expand="full" class="reward-item next-step">
+                {{ 'step.rewards.nextStep' | translate }}
+                <ion-icon size="large" slot="end" name="ios-arrow-dropright-circle"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+
+    <!-- Tips -->
     <ion-row>
       <ion-col sizeMd="6" pushMd="3">
-        <ion-list>
-          <ion-list-header> {{ 'step.tips' | translate }} </ion-list-header>
-          <ion-item no-padding *ngFor="let tip of step.user_quest_step_tip.reverse()">
-            <ion-text padding>{{ tip.tip.content}}</ion-text>
-          </ion-item>
-        </ion-list>
+
+        <ion-list-header> {{ 'step.tips.title' | translate }} </ion-list-header>
+        <div class="loading-tip" *ngIf="!nextTip && !stepRewards" padding margin-horizontal margin-bottom>
+          <span text-center>
+            {{ 'step.tips.time' | translate }}
+            {{ math.floor(timeNextTip/60) | number: '2.' }}:{{ (timeNextTip % 60) | number: '2.' }}
+          </span>
+          <ion-progress-bar color="light" [value]="porcTimeNextTip"></ion-progress-bar>
+        </div>
+        <div class="next-tip" *ngIf="nextTip && !stepRewards" padding-bottom>
+          <ion-button (click)="getNextTip()" expand="full" class="btn-next-tip">
+            {{ 'step.tips.next' | translate }}
+            <ion-icon size="large" slot="end" name="search"></ion-icon>
+          </ion-button>
+        </div>
+        <ion-card margin-bottom *ngFor="let tip of step.user_quest_step_tip">
+          <ion-card-content padding *ngIf="!tip.tip.map" [innerHTML]="tip.tip.content"></ion-card-content>
+
+          <ion-card-content id="map_container" *ngIf="tip.tip.map"></ion-card-content>
+        </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
