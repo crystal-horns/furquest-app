@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: '//furquest.crystalhorns.com/api/',
-  resourceUrl: '//furquest.crystalhorns.com/storage/'
+  apiUrl: 'https://furquest.crystalhorns.com/api/',
+  resourceUrl: 'https://furquest.crystalhorns.com/storage/'
 };

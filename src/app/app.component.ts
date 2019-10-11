@@ -36,34 +36,36 @@ export class AppComponent {
       // Sets i18n
       this.languageService.setInitialAppLanguage();
 
-      // Set Sidebar Menus
-      this.appPages = [];
-      this.authService.getUserData().then((user: User) => {
-        this.appPages =
-          [
-            {
-              title: 'app.titles.home',
-              url: '/home'
-            },
-            {
-              title: 'app.titles.profile',
-              url: `/profile/${user.id}`
-            },
-            {
-              title: 'app.titles.guild',
-              url: `/guild/${user.guilds[0].id}`
-            },
-            {
-              title: 'app.titles.events',
-              url: '/quests'
-            }
-          ];
-      });
-
       // Initializates app on the right page according to Auth
       this.authService.getAuthState().subscribe(state => {
         if (state == 1) {
           this.router.navigate(['home']);
+
+          // Set Sidebar Menus
+          this.appPages = [];
+          this.authService.getUserData().then((user: User) => {
+            this.appPages =
+                [
+                  {
+                    title: 'app.titles.home',
+                    url: '/home'
+                  },
+                  {
+                    title: 'app.titles.profile',
+                    url: `/profile/${user.id}`
+                  },
+                  {
+                    title: 'app.titles.guild',
+                    url: `/guild/${user.guilds[0].id}`
+                  },
+                  {
+                    title: 'app.titles.events',
+                    url: '/quests'
+                  }
+                ];
+          });
+
+          // Enable Sidebar
           this.menuCtrl.enable(true);
         } else if (state == 2) {
           this.router.navigate(['']);
@@ -74,6 +76,8 @@ export class AppComponent {
       this.router.events.subscribe((event: RouterEvent) => {
         if (event instanceof NavigationEnd && (event.url === '/' || event.url === '')) {
           this.menuCtrl.enable(false);
+        } else {
+          this.menuCtrl.enable(true);
         }
       });
     });
