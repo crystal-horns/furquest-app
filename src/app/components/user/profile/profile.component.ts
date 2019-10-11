@@ -20,8 +20,12 @@ export class ProfileComponent implements OnInit {
       private authService: AuthService
   ) { }
 
-  async ngOnInit() {
-    this.userData = await this.authService.getUserData();
+  ngOnInit() {
+    this.authService.getAuthState().subscribe(async state => {
+      if (state == 1) {
+        this.userData = await this.authService.getUserData();
+      }
+    });
   }
 
   openProfile() {
