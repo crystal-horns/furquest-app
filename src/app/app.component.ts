@@ -31,6 +31,8 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
+      this.statusBar.styleLightContent();
+      this.statusBar.backgroundColorByHexString('#703C74');
       this.splashScreen.hide();
 
       // Sets i18n
