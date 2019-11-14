@@ -50,6 +50,7 @@
     "cordova-serve": "^3.0.0",
     "cordova-sqlite-storage": "^3.4.0",
     "core-js": "^2.5.4",
+    "ngx-spinner": "^8.0.3",
     "phonegap-plugin-barcodescanner": "^8.1.0",
     "rxjs": "~6.5.1",
     "shelljs": "^0.8.3",

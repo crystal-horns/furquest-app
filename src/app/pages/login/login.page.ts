@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {AlertController, LoadingController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-login',
@@ -15,23 +16,22 @@ export class LoginPage implements OnInit {
       private loadingCtrl: LoadingController,
       private alertCtrl: AlertController,
       private translate: TranslateService,
-      private authService: AuthService
+      private authService: AuthService,
+      private spinner: NgxSpinnerService
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   async login(form) {
-    const loading = await this.loadingCtrl.create({
-      message: this.translate.instant('app.loading'),
-      duration: 2000
-    });
-    await loading.present();
+    await this.spinner.show('generalLoading');
 
     if (!this.authService.login(form.value)) {
-      this.alertCtrl.create({
+      await this.alertCtrl.create({
         header: 'Oops!',
         message: this.translate.instant('app.login.error')
       });
+
+      await this.spinner.hide('generalLoading');
     }
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-home',
@@ -9,10 +10,14 @@ import {Router} from '@angular/router';
 export class HomePage implements OnInit {
 
   constructor(
-      private router: Router
+      private router: Router,
+      private spinner: NgxSpinnerService
   ) { }
 
-  ngOnInit() {
+  ngOnInit() {  }
+
+  async ionViewWillEnter() {
+    await this.spinner.hide('generalLoading');
   }
 
   goQuests() {

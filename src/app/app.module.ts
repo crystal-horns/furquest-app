@@ -25,6 +25,7 @@ import {Camera} from '@ionic-native/camera/ngx';
 import {File} from '@ionic-native/file/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
+import {NgxSpinnerModule} from 'ngx-spinner';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -50,7 +51,8 @@ export function createTranslateLoader(http: HttpClient) {
         }),
         UserModule,
         ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-        AngularCropperjsModule
+        AngularCropperjsModule,
+        NgxSpinnerModule
     ],
     providers: [
         StatusBar,

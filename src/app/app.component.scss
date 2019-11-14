@@ -15,3 +15,36 @@ ion-app {
   text-transform: uppercase;
   color: #555;
 }
+
+::ng-deep ngx-spinner {
+  .la-ball-pulse-rise {
+    left: 55% !important;
+    position: relative !important;
+    top: 35% !important;
+
+    & > div {
+      width: 40px !important;
+      height: 40px !important;
+      background-color: transparent !important;
+      background-size: contain;
+      background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB3aWR0aD0iMTc5MiIg%0D%0AaGVpZ2h0PSIxNzkyIiB2aWV3Qm94PSIwIDAgMTc5MiAxNzkyIiB4bWxucz0iaHR0cDovL3d3dy53%0D%0AMy5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik04NDQgNDcycTAgNjAtMTkgMTEzLjV0LTYzIDkyLjUt%0D%0AMTA1IDM5cS03NiAwLTEzOC01Ny41dC05Mi0xMzUuNS0zMC0xNTFxMC02MCAxOS0xMTMuNXQ2My05%0D%0AMi41IDEwNS0zOXE3NyAwIDEzOC41IDU3LjV0OTEuNSAxMzUgMzAgMTUxLjV6bS0zNDIgNDgzcTAg%0D%0AODAtNDIgMTM5dC0xMTkgNTlxLTc2IDAtMTQxLjUtNTUuNXQtMTAwLjUtMTMzLjUtMzUtMTUycTAt%0D%0AODAgNDItMTM5LjV0MTE5LTU5LjVxNzYgMCAxNDEuNSA1NS41dDEwMC41IDEzNCAzNSAxNTIuNXpt%0D%0AMzk0LTI3cTExOCAwIDI1NSA5Ny41dDIyOSAyMzcgOTIgMjU0LjVxMCA0Ni0xNyA3Ni41dC00OC41%0D%0AIDQ1LTY0LjUgMjAtNzYgNS41cS02OCAwLTE4Ny41LTQ1dC0xODIuNS00NXEtNjYgMC0xOTIuNSA0%0D%0ANC41dC0yMDAuNSA0NC41cS0xODMgMC0xODMtMTQ2IDAtODYgNTYtMTkxLjV0MTM5LjUtMTkyLjUg%0D%0AMTg3LjUtMTQ2IDE5My01OXptMjM5LTIxMXEtNjEgMC0xMDUtMzl0LTYzLTkyLjUtMTktMTEzLjVx%0D%0AMC03NCAzMC0xNTEuNXQ5MS41LTEzNSAxMzguNS01Ny41cTYxIDAgMTA1IDM5dDYzIDkyLjUgMTkg%0D%0AMTEzLjVxMCA3My0zMCAxNTF0LTkyIDEzNS41LTEzOCA1Ny41em00MzItMTA0cTc3IDAgMTE5IDU5%0D%0ALjV0NDIgMTM5LjVxMCA3NC0zNSAxNTJ0LTEwMC41IDEzMy41LTE0MS41IDU1LjVxLTc3IDAtMTE5%0D%0ALTU5dC00Mi0xMzlxMC03NCAzNS0xNTIuNXQxMDAuNS0xMzQgMTQxLjUtNTUuNXoiLz48L3N2Zz4=);
+
+      filter: invert(1);
+
+      &:first-child, &:nth-child(4), &:last-child {
+        display: none !important;
+      }
+
+      &:nth-child(3) {
+        left: 15px !important;
+      }
+    }
+  }
+
+  .loading-text {
+    position: relative !important;
+    top: 55% !important;
+    max-width: 400px;
+    text-align: center;
+  }
+}
