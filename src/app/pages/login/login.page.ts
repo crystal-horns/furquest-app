@@ -9,6 +9,8 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  private showLogin = false;
+
   constructor(
       private loadingCtrl: LoadingController,
       private alertCtrl: AlertController,
@@ -31,5 +33,9 @@ export class LoginPage implements OnInit {
         message: this.translate.instant('app.login.error')
       });
     }
+  }
+
+  showLoginEvent() {
+    this.showLogin = !this.showLogin;
   }
 }

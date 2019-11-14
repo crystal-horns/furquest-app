@@ -3,32 +3,71 @@ form {
   display: flex!important;
   align-content: center!important;
   align-items: center!important;
+  overflow: hidden;
 
-  background: #54428E;
-  animation: colorchange 20s infinite;
-  -webkit-animation: colorchange 20s infinite;
+  background: rgba(84, 66, 142, .3);
+  //animation: colorchange 20s infinite;
+  //-webkit-animation: colorchange 20s infinite;
+
+  position: relative;
+  z-index: 1;
 }
 
 @keyframes colorchange
 {
-  0%   {background: #54428E;}
-  20%  {background: #3A77BC;}
-  40%  {background: #628AC6;}
-  60%  {background: #4CA399;}
-  80%  {background: #F4E285;}
-  100% {background: #54428E;}
+  0%   {background: rgba(84, 66, 142, .5);}
+  20%  {background: rgba(58, 119, 188, .5);}
+  40%  {background: rgba(98, 138, 198, .5);}
+  60%  {background: rgba(76, 163, 153, .5);}
+  80%  {background: rgba(244, 226, 133, .5);}
+  100% {background: rgba(84, 66, 142, .5);}
 }
 
 @-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
 {
-  0%   {background: #54428E;}
-  20%  {background: #3A77BC;}
-  40%  {background: #628AC6;}
-  60%  {background: #4CA399;}
-  80%  {background: #F4E285;}
-  100% {background: #54428E;}
+  0%   {background: rgba(84, 66, 142, .5);}
+  20%  {background: rgba(58, 119, 188, .5);}
+  40%  {background: rgba(98, 138, 198, .5);}
+  60%  {background: rgba(76, 163, 153, .5);}
+  80%  {background: rgba(244, 226, 133, .5);}
+  100% {background: rgba(84, 66, 142, .5);}
+}
+#myVideo {
+  position: fixed;
+  z-index: 0;
+  left: -50%;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 ion-card, ion-item {
   --background: #FFF;
+}
+
+.icon-login {
+  transform: translate(0, 75%);
+  transition: .3s;
+}
+.form-login {
+  transform: translate(0px, 200%);
+  transition: .3s;
+}
+ion-footer {
+  position: absolute;
+  bottom: 0;
+  --ion-background-color: transparent;
+  transition: .3s;
+  &:before {
+    display: none;
+  }
+  .showLogin {
+    bottom: -50px;
+  }
+}
+
+.showLogin {
+  .icon-login, .form-login {
+    transform: unset;
+  }
 }

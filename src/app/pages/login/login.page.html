@@ -1,11 +1,15 @@
-<ion-content>
+<ion-content [ngClass]="{'showLogin': showLogin}">
+  <video autoplay muted loop id="myVideo">
+    <source src="assets/videos/video_login.mp4" type="video/mp4">
+  </video>
+
   <form #form="ngForm" (ngSubmit)="login(form)">
     <ion-grid>
       <ion-row>
-        <ion-col align-self-center pushMd="3" sizeMd="6" sizeSm="12" text-center>
-          <img src="assets/icon/logo-negative-typo.png" alt="FurQuest" width="230">
+        <ion-col pushMd="3" sizeMd="6" sizeSm="12" text-center>
+          <img src="assets/icon/logo-negative-typo.png" alt="FurQuest" width="170" class="icon-login">
           
-          <ion-card>
+          <ion-card class="form-login">
             <ion-card-content padding>
               <ion-item>
                 <ion-label position="floating">User</ion-label>
@@ -21,8 +25,14 @@
               <ion-button type="submit" size="large" fill="outline" [disabled]="form.invalid" expand="block">Login</ion-button>
             </div>
           </ion-card>
+
         </ion-col>
       </ion-row>
     </ion-grid>
   </form>
 </ion-content>
+<ion-footer [ngClass]="{'showLogin': showLogin}">
+  <ion-toolbar>
+    <ion-button margin expand="block" color="light" (click)="showLoginEvent()" *ngIf="!showLogin" mode="ios">Entrar pra caçada!</ion-button>
+  </ion-toolbar>
+</ion-footer>
