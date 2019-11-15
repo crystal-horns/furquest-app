@@ -16,22 +16,17 @@ export class LoginPage implements OnInit {
       private loadingCtrl: LoadingController,
       private alertCtrl: AlertController,
       private translate: TranslateService,
-      private authService: AuthService,
-      private spinner: NgxSpinnerService
+      private authService: AuthService
   ) { }
 
   ngOnInit() {}
 
   async login(form) {
-    await this.spinner.show('generalLoading');
-
     if (!this.authService.login(form.value)) {
       await this.alertCtrl.create({
         header: 'Oops!',
         message: this.translate.instant('app.login.error')
       });
-
-      await this.spinner.hide('generalLoading');
     }
   }
 
