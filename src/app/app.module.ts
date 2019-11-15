@@ -14,12 +14,18 @@ import {IonicStorageModule} from '@ionic/storage';
 import {HttpClientModule, HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import {TokenInterceptor} from './interceptors/token.interceptor';
 import {UserModule} from './components/user/user.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { environment } from '../environments/environment';
+import { AngularCropperjsModule } from 'angular-cropperjs';
 import {BarcodeScanner} from '@ionic-native/barcode-scanner/ngx';
+import {Camera} from '@ionic-native/camera/ngx';
+import {File} from '@ionic-native/file/ngx';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { FilePath } from '@ionic-native/file-path/ngx';
+import {NgxSpinnerModule} from 'ngx-spinner';
+import {interceptorProvider} from './interceptors/interceptor';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -44,7 +50,9 @@ export function createTranslateLoader(http: HttpClient) {
             }
         }),
         UserModule,
-        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+        AngularCropperjsModule,
+        NgxSpinnerModule
     ],
     providers: [
         StatusBar,
@@ -52,12 +60,12 @@ export function createTranslateLoader(http: HttpClient) {
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
         AuthService,
         AuthGuardService,
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: TokenInterceptor,
-            multi: true
-        },
-        BarcodeScanner
+        interceptorProvider,
+        BarcodeScanner,
+        Camera,
+        File,
+        WebView,
+        FilePath
     ],
     bootstrap: [AppComponent]
 })

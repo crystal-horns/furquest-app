@@ -7,6 +7,8 @@ import {AuthService} from "./services/auth.service";
 import {NavigationEnd, Router, RouterEvent} from "@angular/router";
 import {LanguageService} from "./services/language.service";
 import {User} from './models/User';
+import {LoadingService} from './services/loading.service';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-root',
@@ -23,13 +25,25 @@ export class AppComponent {
     private router: Router,
     private authService: AuthService,
     private languageService: LanguageService,
-    private menuCtrl: MenuController
+    private menuCtrl: MenuController,
+    private loadingService: LoadingService,
+    private spinner: NgxSpinnerService
   ) {
     this.initializeApp();
   }
 
   initializeApp() {
+    this.loadingService.push('loading_app');
+    this.loadingService.get().subscribe(async (stack) => {
+      if (stack.length === 0) {
+        await this.spinner.hide('generalLoading');
+      } else {
+        await this.spinner.show('generalLoading');
+      }
+    });
+
     this.platform.ready().then(() => {
+      this.loadingService.pop('loading_app');
       this.statusBar.styleDefault();
       this.statusBar.styleLightContent();
       this.statusBar.backgroundColorByHexString('#703C74');

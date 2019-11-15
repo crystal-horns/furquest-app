@@ -54,6 +54,8 @@
       <ion-col sizeMd="6" pushMd="3">
 
         <ion-list-header> {{ 'step.tips.title' | translate }} </ion-list-header>
+
+<!--        Next tip timer-->
         <div class="loading-tip" *ngIf="!nextTip && !stepRewards" padding margin-horizontal margin-bottom>
           <span text-center>
             {{ 'step.tips.time' | translate }}
@@ -61,12 +63,16 @@
           </span>
           <ion-progress-bar color="light" [value]="porcTimeNextTip"></ion-progress-bar>
         </div>
-        <div class="next-tip" *ngIf="nextTip && !stepRewards" padding-bottom>
-          <ion-button (click)="getNextTip()" expand="full" class="btn-next-tip">
+
+<!--        Next Tip BTN-->
+        <div margin-bottom>
+          <ion-button *ngIf="nextTip && !stepRewards" (click)="getNextTip()"
+                      expand="full" class="next-tip">
             {{ 'step.tips.next' | translate }}
             <ion-icon size="large" slot="end" name="search"></ion-icon>
           </ion-button>
         </div>
+
         <ion-card margin-bottom *ngFor="let tip of step.user_quest_step_tip">
           <ion-card-content padding *ngIf="!tip.tip.map" [innerHTML]="tip.tip.content"></ion-card-content>
 
