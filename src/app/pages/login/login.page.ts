@@ -10,7 +10,7 @@ import {NgxSpinnerService} from 'ngx-spinner';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  private showLogin = false;
+  showLogin = false;
 
   constructor(
       private loadingCtrl: LoadingController,
