@@ -1,7 +1,10 @@
 <ion-content [ngClass]="{'showLogin': showLogin}">
-  <video autoplay muted loop id="myVideo">
-    <source src="assets/videos/video_login.mp4" type="video/mp4">
-  </video>
+
+  <gl-background-video src="assets/videos/video_login.mp4" poster="assets/videos/video_login.png"></gl-background-video>
+
+<!--  <video autoplay muted loop id="myVideo">-->
+<!--    <source src="assets/videos/video_login.mp4" type="video/mp4">-->
+<!--  </video>-->
 
   <form #form="ngForm" (ngSubmit)="login(form)">
     <ion-grid>

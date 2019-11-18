@@ -4,5 +4,5 @@
     </ion-avatar>
     <h2 text-center>{{ userData.social_name || userData.name }}</h2>
     <h4 text-center no-margin *ngIf="userData.species">{{ userData.species }}</h4>
-    <h4 text-center no-margin *ngIf="userData.guilds">Guild {{ userData.guilds[0].name }}</h4>
+    <h4 text-center no-margin *ngIf="userData.guilds[0]">Guild {{ userData.guilds[0].name }}</h4>
 </div>

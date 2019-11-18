@@ -51,6 +51,7 @@
     "cordova-serve": "^3.0.0",
     "cordova-sqlite-storage": "^3.4.0",
     "core-js": "^2.6.10",
+    "gl-ionic-background-video": "0.0.5",
     "ng-animate": "^0.3.4",
     "ngx-spinner": "^8.0.3",
     "ngx-teximate": "^0.3.0",
