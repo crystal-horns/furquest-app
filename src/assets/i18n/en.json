@@ -25,6 +25,9 @@
     },
     "alertMessages": {
       "error": "Something went wrong, please, try again."
+    },
+    "btn": {
+      "close": "Close"
     }
   },
 
@@ -127,7 +130,8 @@
       "success": {
         "title": "Congrats!",
         "msg": "You solved this puzzle and unlocked new rewards!"
-      }
+      },
+      "fallback": "Solve the Puzzle!\nOops, looks like your device can't read QRCodes.\n\nPlease, insert the code under QRCode:"
     }
   }
 }

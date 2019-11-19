@@ -5,6 +5,8 @@ import {QuestCurrentComponent} from './current/current.component';
 import {FinishStepComponent} from './finish-step/finish-step.component';
 import {TranslateModule} from '@ngx-translate/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {NextTipComponent} from './next-tip/next-tip.component';
+import {TeximateModule} from 'ngx-teximate';
 
 @NgModule({
   imports: [
@@ -12,10 +14,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     TranslateModule,
     FormsModule,
     ReactiveFormsModule,
-    IonicModule.forRoot()
+    IonicModule.forRoot(),
+    TeximateModule
   ],
-  declarations: [QuestCurrentComponent, FinishStepComponent],
-  exports: [QuestCurrentComponent, FinishStepComponent],
-  entryComponents: [FinishStepComponent]
+  declarations: [QuestCurrentComponent, FinishStepComponent, NextTipComponent],
+  exports: [QuestCurrentComponent, FinishStepComponent, NextTipComponent],
+  entryComponents: [FinishStepComponent, NextTipComponent]
 })
 export class QuestModule { }

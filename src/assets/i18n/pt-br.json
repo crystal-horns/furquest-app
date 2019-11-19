@@ -25,6 +25,9 @@
     },
     "alertMessages": {
       "error": "Algo deu errado, por favor, tente novamente."
+    },
+    "btn": {
+      "close": "Fechar"
     }
   },
 
@@ -130,7 +133,8 @@
       "success": {
         "title": "Parabéns!",
         "msg": "Você conseguiu solucionar o enigma e liberou novas recompensas!"
-      }
+      },
+      "fallback": "Solucionar Enigma!\nParece que seu dispositivo não suporta a leitura de QRCodes.\n\nPor favor, informe o código abaixo do QRCode:"
     }
   }
 }
