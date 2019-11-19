@@ -10,6 +10,7 @@ import {
 } from '@ionic-native/barcode-scanner/ngx';
 import {TipsService} from '../../../../services/tips.service';
 import {TranslateService} from '@ngx-translate/core';
+import {NextTipComponent} from '../../../../components/quest/next-tip/next-tip.component';
 
 declare var google;
 
@@ -85,13 +86,15 @@ export class StepPage implements OnInit {
 
   scanCode() {
     this.barcodeScanner
-        .scan()
+        .scan({
+          prompt: this.translate.instant('step.finish.fallback')
+        })
         .then(barcodeData => {
           this.processQrCode(barcodeData.text);
         })
         .catch(err => {
           console.log('Error', err);
-          this.processQrCode(prompt('Informe o código abaixo do QRCode:'));
+          this.processQrCode(prompt(this.translate.instant('step.finish.fallback')));
         });
   }
   async processQrCode(response) {
@@ -143,12 +146,12 @@ export class StepPage implements OnInit {
       return;
     }
 
-    const user_quest_step_tips = this.step.user_quest_step_tip;
+    let user_quest_step_tips = this.step.user_quest_step_tip;
     if (user_quest_step_tips.length) {
-      const user_quest_step_tip = user_quest_step_tips.reverse()[0];
+      let user_quest_step_tip = user_quest_step_tips.reverse()[0];
       this.delayNextTip = user_quest_step_tip.tip.delay;
-      const created = new Date(user_quest_step_tip.created_at);
-      this.timeNextTip = this.delayNextTip - this.math.floor(( (new Date()).getTime() - created.getTime() ) / 1000);
+      let created = Date.parse(user_quest_step_tip.created_at + ' GMT-3');
+      this.timeNextTip = this.delayNextTip - this.math.floor(( (new Date()).getTime() - created ) / 1000);
       this.porcTimeNextTip = (this.delayNextTip - this.timeNextTip) / this.delayNextTip;
 
       if(this.timeNextTip > 0) {
@@ -176,9 +179,17 @@ export class StepPage implements OnInit {
   }
 
   async getNextTip() {
-    this.tipsService.nextTip(this.step.user_quest_id, this.step.id).then(tips => {
+    this.tipsService.nextTip(this.step.user_quest_id, this.step.id).then(async tips => {
       this.step.user_quest_step_tip = tips;
       this.calcTimerNextTip();
+
+      const modal = await this.modalCtrl.create({
+        component: NextTipComponent,
+        componentProps: {
+          tip: tips.reverse()[0]
+        }
+      });
+      return await modal.present();
     });
   }
 

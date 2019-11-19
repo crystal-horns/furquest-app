@@ -26,6 +26,8 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {interceptorProvider} from './interceptors/interceptor';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {TeximateModule} from 'ngx-teximate';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -52,7 +54,9 @@ export function createTranslateLoader(http: HttpClient) {
         UserModule,
         ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
         AngularCropperjsModule,
-        NgxSpinnerModule
+        NgxSpinnerModule,
+        BrowserAnimationsModule,
+        TeximateModule
     ],
     providers: [
         StatusBar,
