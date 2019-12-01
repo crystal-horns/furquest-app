@@ -76,20 +76,22 @@ export class EditContactsPage implements OnInit {
   }
 
   addContact() {
-    const type = this.contactTypes.filter((value) => value.id === parseInt(this.contactTypeEl.value))[0];
-    const newContact = {
-      id: 0,
-      contacts_types_id: parseInt(this.contactTypeEl.value),
-      value: null,
-      contacts_type: type
-    };
+    if (this.contactTypeEl.value) {
+      const type = this.contactTypes.filter((value) => value.id === parseInt(this.contactTypeEl.value))[0];
+      const newContact = {
+        id: 0,
+        contacts_types_id: parseInt(this.contactTypeEl.value),
+        value: null,
+        contacts_type: type
+      };
 
-    this.contacts.push(newContact);
-    this.contactsArray.push(new FormControl(newContact.value));
-    this.idArray.push(new FormControl(newContact.id));
-    this.typesIdArray.push(new FormControl(newContact.contacts_types_id));
-    this.contactTypeEl.value = null;
-    this.changeDetector.detectChanges();
+      this.contacts.push(newContact);
+      this.contactsArray.push(new FormControl(newContact.value));
+      this.idArray.push(new FormControl(newContact.id));
+      this.typesIdArray.push(new FormControl(newContact.contacts_types_id));
+      this.contactTypeEl.value = null;
+      this.changeDetector.detectChanges();
+    }
   }
 
   save() {
