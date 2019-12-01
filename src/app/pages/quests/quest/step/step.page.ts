@@ -1,6 +1,6 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AlertController, IonRouterOutlet, ModalController} from '@ionic/angular';
+import {AlertController, IonRouterOutlet, ModalController, Platform} from '@ionic/angular';
 import {UserQuestStep} from '../../../../models/UserQuestStep';
 import {StepsService} from '../../../../services/steps.service';
 import {FinishStepComponent} from '../../../../components/quest/finish-step/finish-step.component';
@@ -12,6 +12,7 @@ import {TipsService} from '../../../../services/tips.service';
 import {TranslateService} from '@ngx-translate/core';
 import {NextTipComponent} from '../../../../components/quest/next-tip/next-tip.component';
 import {UserQuestStepTip} from '../../../../models/UserQuestStepTip';
+import {GoogleMaps, GoogleMap, GoogleMapsEvent, LatLng, MarkerOptions, Marker} from "@ionic-native/google-maps";
 
 declare var google;
 
@@ -49,7 +50,8 @@ export class StepPage implements OnInit {
       private barcodeScanner: BarcodeScanner,
       private translate: TranslateService,
       private alertCtrl: AlertController,
-      private changeDetector: ChangeDetectorRef
+      private changeDetector: ChangeDetectorRef,
+      public platform: Platform
   ) {
     this.barcodeScannerOptions = {
       showTorchButton: true,
@@ -72,6 +74,12 @@ export class StepPage implements OnInit {
 
     await this.loadMap();
   }
+
+  // ngAfterViewInit() {
+  //   this.platform.ready().then( () => {
+  //     this.loadMap();
+  //   });
+  // }
 
   goStep(quest, step) {
     this.router.navigate([`quests/${quest}/${step}`]);
@@ -103,6 +111,11 @@ export class StepPage implements OnInit {
       this.stepsService.finishStep(this.step.user_quest_id, this.step.id, {answers: [response]})
           .then(async res => {
             this.stepRewards = res as object[];
+            const quets = this.activetedRoute.snapshot.paramMap.get('questId');
+            const step = this.activetedRoute.snapshot.paramMap.get('stepId');
+            this.stepsService.getSingle(quets, step).then(stepRes => {
+              this.step = stepRes;
+            });
 
             const alert = await this.alertCtrl.create({
               header: this.translate.instant(`step.finish.success.title`),
@@ -206,24 +219,26 @@ export class StepPage implements OnInit {
     const mapTip = this.step.user_quest_step_tip.filter((value) => value.tip.map);
     const mapPoints = mapTip[0].tip.content.split(',');
 
-    const latLng = new google.maps.LatLng(mapPoints[0], mapPoints[1]);
+    const map = GoogleMaps.create( 'map_container' );
+    map.one( GoogleMapsEvent.MAP_READY ).then( ( data: any ) => {
 
-    const mapOptions = {
-      center: latLng,
-      zoom: 18,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
+      const coordinates: LatLng = new LatLng( parseFloat(mapPoints[0]), parseFloat(mapPoints[1]) );
 
-    this.map = new google.maps.Map(document.getElementById('map_container'), mapOptions);
+      const position = {
+        target: coordinates,
+        zoom: 21
+      };
 
-    this.markers.map(m => m.setMap(null));
-    this.markers = [];
+      map.animateCamera( position );
 
-    const marker = new google.maps.Marker({
-      map: this.map,
-      animation: google.maps.Animation.DROP,
-      position: latLng
+      const markerOptions: MarkerOptions = {
+        position: coordinates,
+      };
+
+      const gMarker = map.addMarker( markerOptions )
+          .then( ( gMarker: Marker ) => {
+            gMarker.showInfoWindow();
+          });
     });
-    this.markers.push(marker);
   }
 }

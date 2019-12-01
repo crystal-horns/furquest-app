@@ -25,11 +25,12 @@
     "@capacitor/core": "1.2.1",
     "@ionic-native/barcode-scanner": "^5.16.0",
     "@ionic-native/camera": "^5.16.0",
-    "@ionic-native/core": "^5.16.0",
+    "@ionic-native/core": "^5.17.1",
     "@ionic-native/crop": "^5.16.0",
     "@ionic-native/file": "^5.16.0",
     "@ionic-native/file-path": "^5.16.0",
     "@ionic-native/file-transfer": "^5.16.0",
+    "@ionic-native/google-maps": "^5.5.0",
     "@ionic-native/image-picker": "^5.16.0",
     "@ionic-native/ionic-webview": "^5.16.0",
     "@ionic-native/splash-screen": "^5.16.0",
@@ -48,6 +49,7 @@
     "cordova-plugin-file": "^6.0.2",
     "cordova-plugin-file-transfer": "^1.7.1",
     "cordova-plugin-filepath": "^1.5.6",
+    "cordova-plugin-googlemaps": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#multiple_maps",
     "cordova-plugin-telerik-imagepicker": "^2.3.3",
     "cordova-serve": "^3.0.0",
     "cordova-sqlite-storage": "^3.4.0",
@@ -116,7 +118,10 @@
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
       "cordova-sqlite-storage": {},
-      "cordova-plugin-filepath": {}
+      "cordova-plugin-filepath": {},
+      "cordova-plugin-googlemaps": {
+        "API_KEY_FOR_ANDROID": "AIzaSyC6-UgjugP97ly8YO1noVUMlWTp1EXb1r0"
+      }
     },
     "platforms": [
       "android",

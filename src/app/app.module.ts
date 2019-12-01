@@ -28,6 +28,7 @@ import {NgxSpinnerModule} from 'ngx-spinner';
 import {interceptorProvider} from './interceptors/interceptor';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TeximateModule} from 'ngx-teximate';
+import {GoogleMaps} from '@ionic-native/google-maps';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -69,7 +70,8 @@ export function createTranslateLoader(http: HttpClient) {
         Camera,
         File,
         WebView,
-        FilePath
+        FilePath,
+        GoogleMaps
     ],
     bootstrap: [AppComponent]
 })

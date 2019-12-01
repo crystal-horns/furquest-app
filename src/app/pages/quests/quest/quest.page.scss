@@ -57,8 +57,8 @@ ion-card {
 
   ion-icon {
     position: absolute;
-    top: -55px;
-    right: -60px;
+    top: -35px;
+    right: -45px;
     font-size: 210px;
   }
   ion-label {
@@ -74,7 +74,7 @@ ion-card {
     --background: #3f82d5;
     height: 85px;
     ion-icon {
-      top: -63px;
+      top: -43px;
     }
   }
   &.current {
