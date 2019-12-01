@@ -56,7 +56,7 @@
         <ion-list-header> {{ 'step.tips.title' | translate }} </ion-list-header>
 
 <!--        Next tip timer-->
-        <div class="loading-tip" *ngIf="!nextTip && !stepRewards" padding margin-horizontal margin-bottom>
+        <div class="loading-tip" *ngIf="!lastTip && !nextTip && !stepRewards" padding margin-horizontal margin-bottom>
           <span text-center>
             {{ 'step.tips.time' | translate }}
             {{ math.floor(timeNextTip/60) | number: '2.' }}:{{ (timeNextTip % 60) | number: '2.' }}
@@ -66,7 +66,7 @@
 
 <!--        Next Tip BTN-->
         <div margin-bottom>
-          <ion-button *ngIf="nextTip && !stepRewards" (click)="getNextTip()"
+          <ion-button *ngIf="!lastTip && nextTip && !stepRewards" (click)="getNextTip()"
                       expand="full" class="next-tip">
             {{ 'step.tips.next' | translate }}
             <ion-icon size="large" slot="end" name="search"></ion-icon>

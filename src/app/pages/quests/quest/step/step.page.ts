@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AlertController, IonRouterOutlet, ModalController} from '@ionic/angular';
 import {UserQuestStep} from '../../../../models/UserQuestStep';
@@ -11,6 +11,7 @@ import {
 import {TipsService} from '../../../../services/tips.service';
 import {TranslateService} from '@ngx-translate/core';
 import {NextTipComponent} from '../../../../components/quest/next-tip/next-tip.component';
+import {UserQuestStepTip} from '../../../../models/UserQuestStepTip';
 
 declare var google;
 
@@ -29,6 +30,7 @@ export class StepPage implements OnInit {
   delayNextTip = 0;
   porcTimeNextTip = 0;
   nextTip = false;
+  lastTip = false;
   // Maps
   map;
   markers = [];
@@ -46,7 +48,8 @@ export class StepPage implements OnInit {
       public modalCtrl: ModalController,
       private barcodeScanner: BarcodeScanner,
       private translate: TranslateService,
-      private alertCtrl: AlertController
+      private alertCtrl: AlertController,
+      private changeDetector: ChangeDetectorRef
   ) {
     this.barcodeScannerOptions = {
       showTorchButton: true,
@@ -64,8 +67,6 @@ export class StepPage implements OnInit {
     this.stepsService.getSingle(quets, step).then(res => {
       this.step = res;
       this.calcTimerNextTip();
-
-      this.step.user_quest_step_tip = this.step.user_quest_step_tip.reverse();
     });
     this.stepRewards = await this.stepsService.getRewards(quets, step);
 
@@ -101,6 +102,8 @@ export class StepPage implements OnInit {
     if (response) {
       this.stepsService.finishStep(this.step.user_quest_id, this.step.id, {answers: [response]})
           .then(async res => {
+            this.stepRewards = res as object[];
+
             const alert = await this.alertCtrl.create({
               header: this.translate.instant(`step.finish.success.title`),
               message: this.translate.instant(`step.finish.success.msg`),
@@ -150,14 +153,18 @@ export class StepPage implements OnInit {
     if (user_quest_step_tips.length) {
       let user_quest_step_tip = user_quest_step_tips.reverse()[0];
       this.delayNextTip = user_quest_step_tip.tip.delay;
-      let created = Date.parse(user_quest_step_tip.created_at + ' GMT-3');
-      this.timeNextTip = this.delayNextTip - this.math.floor(( (new Date()).getTime() - created ) / 1000);
-      this.porcTimeNextTip = (this.delayNextTip - this.timeNextTip) / this.delayNextTip;
+      if (this.delayNextTip) {
+        let created = Date.parse(user_quest_step_tip.created_at + ' GMT-3');
+        this.timeNextTip = this.delayNextTip - this.math.floor(((new Date()).getTime() - created) / 1000);
+        this.porcTimeNextTip = (this.delayNextTip - this.timeNextTip) / this.delayNextTip;
 
-      if(this.timeNextTip > 0) {
-        this.timerNextTipTick();
+        if (this.timeNextTip > 0) {
+          this.timerNextTipTick();
+        } else {
+          this.nextTip = true;
+        }
       } else {
-        this.nextTip = true;
+        this.lastTip = true;
       }
     } else {
       this.nextTip = true;
@@ -179,17 +186,19 @@ export class StepPage implements OnInit {
   }
 
   async getNextTip() {
-    this.tipsService.nextTip(this.step.user_quest_id, this.step.id).then(async tips => {
+    this.tipsService.nextTip(this.step.user_quest_id, this.step.id).then(async (tips: UserQuestStepTip[]) => {
       this.step.user_quest_step_tip = tips;
       this.calcTimerNextTip();
 
-      const modal = await this.modalCtrl.create({
-        component: NextTipComponent,
-        componentProps: {
-          tip: tips.reverse()[0]
-        }
-      });
-      return await modal.present();
+      if (!tips[0].tip.map) {
+        const modal = await this.modalCtrl.create({
+          component: NextTipComponent,
+          componentProps: {
+            tip: tips[0]
+          }
+        });
+        return await modal.present();
+      }
     });
   }
 
