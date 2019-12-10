@@ -6,6 +6,8 @@ form {
   overflow: hidden;
 
   background: rgba(84, 66, 142, .3);
+  background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.4)), url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAFklEQVQYV2NkwAIYyRb0BelE1w4WBAAK9wCgvT582AAAAABJRU5ErkJggg==) !important;
+  background-repeat: repeat;
   //animation: colorchange 20s infinite;
   //-webkit-animation: colorchange 20s infinite;
 

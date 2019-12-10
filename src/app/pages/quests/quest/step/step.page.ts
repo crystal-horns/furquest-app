@@ -66,9 +66,18 @@ export class StepPage implements OnInit {
 
     const quets = this.activetedRoute.snapshot.paramMap.get('questId');
     const step = this.activetedRoute.snapshot.paramMap.get('stepId');
-    this.stepsService.getSingle(quets, step).then(res => {
+    this.stepsService.getSingle(quets, step).then(async res => {
       this.step = res;
       this.calcTimerNextTip();
+
+
+      const modal = await this.modalCtrl.create({
+        component: NextTipComponent,
+        componentProps: {
+          tip: this.step.user_quest_step_tip[0]
+        }
+      });
+      return await modal.present();
     });
     this.stepRewards = await this.stepsService.getRewards(quets, step);
 
