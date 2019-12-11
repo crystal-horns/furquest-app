@@ -3,49 +3,81 @@
   src: url('/assets/fonts/VT323-Regular.ttf');
 }
 
-ion-toolbar {
-  --background: #95daff;
-  --color: #FFF;
-  ion-buttons {
-    button {
-      background: transparent;
-      border-radius: 25px;
-      padding: 12px;
-      position: relative;
-      right: 4px;
-      top: 1px;
-      font-size: 18px;
-      line-height: 10px;
-      color: #FFF;
-      transition: .3s;
+ion-header {
+  backdrop-filter: unset !important;
+  ion-toolbar {
+    --background: transparent;
+    --color: #FFF;
+    --backdrop-filter: unset;
 
-      &.contrast {
-        background: var(--ion-color-tertiary);
+    ion-buttons {
+      button {
+        background: transparent;
+        border-radius: 25px;
+        padding: 12px;
+        position: relative;
+        right: 4px;
+        top: 1px;
+        font-size: 18px;
+        line-height: 10px;
+        color: #FFF;
+        transition: .3s;
+
+        &.contrast {
+          background: var(--ion-color-tertiary);
+        }
       }
     }
   }
 }
 
 ion-content {
-  --background: #95daff url(/assets/images/bg-tip.png) no-repeat bottom;
+  --background: url(/assets/images/bg-tip.png) no-repeat bottom center/contain, url(/assets/images/bg-stars-tip.png), linear-gradient(0, #95daff, #528bff);
   font-family: 'VT323', Helvetica, Arial, sans-serif;
 
-  .sprite {width: 300px;
-    height: 300px;
+  h3 {
+    height: 40vh;
+    font-size: 24px;
+    position: absolute;
+    bottom: 15vh;
+    opacity: 0;
+    animation: show-bubble .7s ease-in-out 1.5s forwards;
+
+    @keyframes show-bubble {
+      from {
+        bottom: 15vh;
+        opacity: 0;
+      }
+      to {
+        bottom: 30vh;
+        opacity: 1;
+      }
+    }
+
+    teximate {
+      opacity: 0;
+    }
+  }
+
+  .sprite {
+    width: 100vw;
+    max-width: 450px;
+    height: 100vh;
     display: block;
     position: absolute;
     bottom: 0;
-    right: -100px;
+    right: -100%;
+    animation: show-char 1s ease-in-out .5s forwards;
 
     &.spocky {
       background: url(/assets/images/sprites/spocky.png) no-repeat bottom center/100%;
     }
-  }
-}
 
-h3 {
-  height: 320px;
-  font-size: 24px;
+    @keyframes show-char {
+      from {right: -100%;}
+      to {right: -38%;}
+    }
+  }
 }
 
 ion-footer {
