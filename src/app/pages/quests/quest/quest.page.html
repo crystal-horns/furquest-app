@@ -7,7 +7,7 @@
 </ion-toolbar>
 
 <ion-content>
-  <ion-grid no-padding *ngIf="quest">
+  <ion-grid no-padding *ngIf="quest" [class]="quest.quest_route.quest.theme">
     <ion-row no-padding>
       <ion-col no-padding padding-bottom>
         <div class="header"

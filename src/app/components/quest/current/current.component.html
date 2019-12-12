@@ -1,6 +1,6 @@
 <ion-card>
     <ion-card-content no-padding>
-        <div no-padding (click)="goCurrentQuest()" *ngIf="currentQuest"
+        <div no-padding (click)="goCurrentQuest()" *ngIf="currentQuest" [class]="currentQuest.quest_route.quest.theme"
              [ngStyle]="{'background-image': 'url(' + imagePath + currentQuest.quest_route.quest_id + '/' + currentQuest.quest_route.quest.image + ')'}">
             <ion-label>{{ currentQuest.quest_route.quest.name }}</ion-label>
         </div>

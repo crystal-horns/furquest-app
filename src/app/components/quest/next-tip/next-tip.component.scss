@@ -42,7 +42,7 @@ ion-content {
     position: absolute;
     bottom: 15vh;
     opacity: 0;
-    animation: show-bubble .7s ease-in-out 1.5s forwards;
+    animation: show-bubble .5s ease-in-out .8s forwards;
 
     @keyframes show-bubble {
       from {
@@ -68,7 +68,7 @@ ion-content {
     position: absolute;
     bottom: 0;
     right: -100%;
-    animation: show-char 1s ease-in-out .5s forwards;
+    animation: show-char .5s ease-out .3s forwards;
 
     &.spocky {
       background: url(/assets/images/sprites/spocky.png) no-repeat bottom center/100%;
