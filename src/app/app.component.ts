@@ -9,6 +9,7 @@ import {LanguageService} from "./services/language.service";
 import {User} from './models/User';
 import {LoadingService} from './services/loading.service';
 import {NgxSpinnerService} from 'ngx-spinner';
+import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 
 @Component({
   selector: 'app-root',
@@ -27,12 +28,14 @@ export class AppComponent {
     private languageService: LanguageService,
     private menuCtrl: MenuController,
     private loadingService: LoadingService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private screenOrientation: ScreenOrientation
   ) {
     this.initializeApp();
   }
 
   initializeApp() {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
     this.loadingService.push('loading_app');
     this.loadingService.get().subscribe(async (stack) => {
       if (stack.length === 0) {

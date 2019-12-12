@@ -24,7 +24,8 @@ ion-header {
         transition: .3s;
 
         &.contrast {
-          background: var(--ion-color-tertiary);
+          background: #FFF;
+          color: var(--ion-color-tertiary);
         }
       }
     }

@@ -11,7 +11,7 @@
   <h3 text-center padding-horizontal class="cbbl">
     <teximate [text]="tip.tip.content" [enter]="enterAnimation" (finish)="showClose = true"></teximate>
   </h3>
-  <span class="sprite spocky"></span>
+  <span [class]="'sprite ' + tip.tip.character"></span>
 </ion-content>
 
 <!--<ion-footer no-border *ngIf="showClose">-->

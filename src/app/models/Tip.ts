@@ -5,6 +5,7 @@ export interface Tip {
     content: string;
     map: number;
     delay: number;
+    character: string;
     created_at: string;
     updated_at: string;
     deleted_at: string;
