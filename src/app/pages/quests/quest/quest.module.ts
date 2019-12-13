@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 
 import { QuestPage } from './quest.page';
 import {TranslateModule} from "@ngx-translate/core";
-import {IonicHeaderParallaxModule} from 'ionic-header-parallax';
 
 const routes: Routes = [
   {
@@ -22,8 +21,7 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    TranslateModule,
-    IonicHeaderParallaxModule
+    TranslateModule
   ],
   declarations: [QuestPage]
 })

@@ -29,7 +29,8 @@
 
           <ion-card class="current" (click)="goQuest(current.id)">
             <ion-card-content no-padding [class]="current.quest_route.quest.theme"
-              [ngStyle]="{'background-image': 'url(' + imagePath + current.quest_route.quest_id + '/' + current.quest_route.quest.image + ')'}">
+              [ngStyle]="{'background-image': 'url(' + imagePath + current.quest_route.quest_id + '/' +
+              current.quest_route.quest.image.replace('###', 'full') + ')'}">
               <ion-label>{{ current.quest_route.quest.name }}</ion-label>
             </ion-card-content>
           </ion-card>

@@ -8,15 +8,12 @@ ion-toolbar, ion-buttons, ion-menu-button {
 }
 ion-toolbar {
   margin-bottom: -56px;
-}
-
-ion-content {
-  min-height: 100vh;
+  --ion-toolbar-background: transparent;
 }
 
 .header {
   color: #F7F7F7;
-  height: 130px;
+  height: 250px;
   background-size: cover;
   background-position: center;
   &:before {
@@ -26,7 +23,7 @@ ion-content {
     z-index: 0;
     background: rgba(17, 17, 17, 0.25);
     width: 100%;
-    height: 130px;
+    height: 250px;
   }
   ion-label {
     display: block;
