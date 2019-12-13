@@ -30,6 +30,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TeximateModule} from 'ngx-teximate';
 import {GoogleMaps} from '@ionic-native/google-maps';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+import {IonicHeaderParallaxModule} from 'ionic-header-parallax';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -58,7 +59,8 @@ export function createTranslateLoader(http: HttpClient) {
         AngularCropperjsModule,
         NgxSpinnerModule,
         BrowserAnimationsModule,
-        TeximateModule
+        TeximateModule,
+        IonicHeaderParallaxModule
     ],
     providers: [
         StatusBar,

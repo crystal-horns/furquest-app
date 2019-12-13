@@ -1,24 +1,26 @@
-<ion-toolbar>
-  <ion-buttons slot="start">
-    <ion-back-button *ngIf="canGoBack" [ngClass]="{canGoBack: canGoBack}"></ion-back-button>
-    <ion-menu-button *ngIf="!canGoBack"></ion-menu-button>
-  </ion-buttons>
-  <ion-title *ngIf="quest">{{ quest.quest_route.quest.name }}</ion-title>
-</ion-toolbar>
+<ion-header *ngIf="quest" parallax [imageUrl]="imagePath + quest.quest_route.quest_id + '/' + quest.quest_route.quest.image" maximumHeight="350" expandedColor="#AAA" titleColor="white">
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button *ngIf="canGoBack" [ngClass]="{canGoBack: canGoBack}"></ion-back-button>
+      <ion-menu-button *ngIf="!canGoBack"></ion-menu-button>
+    </ion-buttons>
+    <ion-title *ngIf="quest">{{ quest.quest_route.quest.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
   <ion-grid no-padding *ngIf="quest" [class]="quest.quest_route.quest.theme">
-    <ion-row no-padding>
-      <ion-col no-padding padding-bottom>
-        <div class="header"
-           [ngStyle]="{'background-image': 'url(' + imagePath + quest.quest_route.quest_id + '/' + quest.quest_route.quest.image + ')'}">
-        </div>
-<!--        <div class="loading-quest">-->
-<!--          <ion-list-header> Default at 50% </ion-list-header>-->
-<!--          <ion-progress-bar color="light" value="0.5"></ion-progress-bar>-->
+<!--    <ion-row no-padding>-->
+<!--      <ion-col no-padding padding-bottom>-->
+<!--        <div class="header"-->
+<!--           [ngStyle]="{'background-image': 'url(' + imagePath + quest.quest_route.quest_id + '/' + quest.quest_route.quest.image + ')'}">-->
 <!--        </div>-->
-      </ion-col>
-    </ion-row>
+<!--&lt;!&ndash;        <div class="loading-quest">&ndash;&gt;-->
+<!--&lt;!&ndash;          <ion-list-header> Default at 50% </ion-list-header>&ndash;&gt;-->
+<!--&lt;!&ndash;          <ion-progress-bar color="light" value="0.5"></ion-progress-bar>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--      </ion-col>-->
+<!--    </ion-row>-->
 
 <!--    <ion-row *ngIf="quest.quest_route.quest.history">-->
 <!--      <ion-col (click)="toggleHistoryExpand()">-->

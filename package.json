@@ -58,6 +58,7 @@
     "core-js": "^2.6.10",
     "es6-promise-plugin": "^4.2.2",
     "gl-ionic-background-video": "0.0.5",
+    "ionic-header-parallax": "^2.2.2",
     "ng-animate": "^0.3.4",
     "ngx-spinner": "^8.0.3",
     "ngx-teximate": "^0.3.0",
