@@ -77,7 +77,7 @@ export class UpdateAvatarComponent implements OnInit {
   }
 
   save() {
-    let croppedImgB64String: string = this.angularCropper.cropper.getCroppedCanvas().toDataURL('image/jpeg', (100 / 100));
+    const croppedImgB64String: string = this.angularCropper.cropper.getCroppedCanvas().toDataURL('image/jpeg', (100 / 100));
     this.croppedImage = croppedImgB64String;
   }
 
