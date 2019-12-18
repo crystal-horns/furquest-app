@@ -1,10 +1,10 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {User} from '../../../models/User';
 import {AuthService} from '../../../services/auth.service';
 import {AlertController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
 import {UsersService} from '../../../services/users.service';
-import {Observable} from 'rxjs';
+import {ImageCroppedEvent, ImageCropperComponent} from 'ngx-image-cropper';
 
 @Component({
   selector: 'app-edit-profile-picture',
@@ -13,7 +13,8 @@ import {Observable} from 'rxjs';
 })
 export class EditProfilePicturePage implements OnInit, AfterViewInit {
   user: User;
-  imageBase64 = null;
+  imageFile: any = '';
+  croppedImage: any = '';
 
   @ViewChild('inputcamera', {static: false}) cameraInput: ElementRef;
 
@@ -21,6 +22,7 @@ export class EditProfilePicturePage implements OnInit, AfterViewInit {
       private authService: AuthService,
       private usersService: UsersService,
       private alertController: AlertController,
+      private changeDetector: ChangeDetectorRef,
       private translate: TranslateService,
   ) { }
 
@@ -33,14 +35,15 @@ export class EditProfilePicturePage implements OnInit, AfterViewInit {
     element.onchange = () => {
       const reader = new FileReader();
       reader.onload = (r: any) => {
-        this.imageBase64 = r.target.result as string;
+        this.imageFile = r.target.result;
       };
       reader.readAsDataURL(element.files[0]);
     };
   }
 
-  imageCropped(event) {
-
+  imageCropped(event: ImageCroppedEvent) {
+    this.croppedImage = event.base64;
+    console.log(event);
   }
 
   async save() {

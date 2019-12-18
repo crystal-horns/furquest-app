@@ -19,17 +19,19 @@
         <ion-col>
           <ion-card class="ion-padding-top">
             <ion-card-content>
-              <image-cropper
-                [imageBase64]="imageBase64"
-                maintainAspectRatio="true"
-                aspectRatio="4 / 4"
-                format="png"
-                (imageCropped)="imageCropped($event)"
-                outputType="base64"
-              ></image-cropper>
+              <div>
+                <image-cropper
+                  *ngIf="imageFile"
+                  [imageBase64]="imageFile"
+                  [cropperMinWidth]="256"
+                  [roundCropper]="true"
+                  (imageCropped)="imageCropped($event)"
+                ></image-cropper>
+              </div>
+              <img [src]="croppedImage" />
 
-<!--              <img *ngIf="imageBase64" src="{{imageBase64}}" class="ion-padding-bottom"/>-->
-              <input #inputcamera id="inputcamera" type="file" accept="image/*" capture="camera" class="custom-fileinput"/>
+              <input id="inputcamera" type="file" accept="image/*" capture="camera" class="custom-fileinput"
+                     #inputcamera/>
               <label for="inputcamera">
                 <ion-icon slot="start" name="camera"></ion-icon>
                 {{ 'editPicture.btn.selectImage' | translate }}
