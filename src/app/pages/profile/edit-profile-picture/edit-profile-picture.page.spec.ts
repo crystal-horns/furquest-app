@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UpdateAvatarComponent } from './update-avatar.component';
+import { EditProfilePicturePage } from './edit-profile-picture.page';
 
-describe('UpdateAvatarComponent', () => {
-  let component: UpdateAvatarComponent;
-  let fixture: ComponentFixture<UpdateAvatarComponent>;
+describe('EditProfilePicturePage', () => {
+  let component: EditProfilePicturePage;
+  let fixture: ComponentFixture<EditProfilePicturePage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UpdateAvatarComponent ],
+      declarations: [ EditProfilePicturePage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UpdateAvatarComponent);
+    fixture = TestBed.createComponent(EditProfilePicturePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

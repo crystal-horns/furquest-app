@@ -21,6 +21,10 @@ const routes: Routes = [
                 loadChildren: './pages/profile/edit-contacts/edit-contacts.module#EditContactsPageModule'
             },
             {
+                path: 'edit-picture',
+                loadChildren: './pages/profile/edit-profile-picture/edit-profile-picture.module#EditProfilePicturePageModule'
+            },
+            {
                 path: ':id',
                 loadChildren: './pages/profile/profile.module#ProfilePageModule'
             }

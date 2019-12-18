@@ -60,13 +60,13 @@ export class ProfilePage implements OnInit {
             this.router.navigate(['profile/edit-contacts']);
           }
         },
-        // {
-        //   text: this.translateService.instant('profile.menu.editPicture'),
-        //   icon: 'camera',
-        //   handler: () => {
-        //     this.router.navigate(['profile/edit']);
-        //   }
-        // }
+        {
+          text: this.translateService.instant('profile.menu.editPicture'),
+          icon: 'camera',
+          handler: () => {
+            this.router.navigate(['profile/edit-picture']);
+          }
+        }
       ]
     });
     await menu.present();

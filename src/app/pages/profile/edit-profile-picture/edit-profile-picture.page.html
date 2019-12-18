@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'app.titles.profilePicture' | translate }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button><label for="submit"><ion-icon icon='save' size="large"></ion-icon></label></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="save()">
+    <input type="submit" id="submit" value="Submit" style="display:none"/>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-card class="ion-padding-top">
+            <ion-card-content>
+              <image-cropper
+                [imageBase64]="imageBase64"
+                maintainAspectRatio="true"
+                aspectRatio="4 / 4"
+                format="png"
+                (imageCropped)="imageCropped($event)"
+                outputType="base64"
+              ></image-cropper>
+
+<!--              <img *ngIf="imageBase64" src="{{imageBase64}}" class="ion-padding-bottom"/>-->
+              <input #inputcamera id="inputcamera" type="file" accept="image/*" capture="camera" class="custom-fileinput"/>
+              <label for="inputcamera">
+                <ion-icon slot="start" name="camera"></ion-icon>
+                {{ 'editPicture.btn.selectImage' | translate }}
+              </label>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

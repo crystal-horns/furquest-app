@@ -21,7 +21,6 @@ import { environment } from '../environments/environment';
 import { AngularCropperjsModule } from 'angular-cropperjs';
 import {BarcodeScanner} from '@ionic-native/barcode-scanner/ngx';
 import {Camera} from '@ionic-native/camera/ngx';
-import {File} from '@ionic-native/file/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import {NgxSpinnerModule} from 'ngx-spinner';
@@ -69,7 +68,6 @@ export function createTranslateLoader(http: HttpClient) {
         interceptorProvider,
         BarcodeScanner,
         Camera,
-        File,
         WebView,
         FilePath,
         GoogleMaps,
