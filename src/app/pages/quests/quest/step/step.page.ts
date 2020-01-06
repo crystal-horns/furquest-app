@@ -65,14 +65,9 @@ export class StepPage implements OnInit {
   async ionViewWillEnter() {
     this.canGoBack = this.routerOutlet && this.routerOutlet.canGoBack();
 
-    const modalFinishQuest = await this.modalCtrl.create({
-      component: FinishQuestComponent
-    });
-    return await modalFinishQuest.present();
-
     const quets = this.activetedRoute.snapshot.paramMap.get('questId');
     const step = this.activetedRoute.snapshot.paramMap.get('stepId');
-    this.stepsService.getSingle(quets, step).then(res => {
+    this.stepsService.getSingle(quets, step).then(async res => {
       this.step = res;
       this.calcTimerNextTip();
     });
@@ -117,18 +112,28 @@ export class StepPage implements OnInit {
       this.stepsService.finishStep(this.step.user_quest_id, this.step.id, {answers: [response]})
           .then(async res => {
             this.stepRewards = res as object[];
-            const quets = this.activetedRoute.snapshot.paramMap.get('questId');
+            const quest = this.activetedRoute.snapshot.paramMap.get('questId');
             const step = this.activetedRoute.snapshot.paramMap.get('stepId');
-            this.stepsService.getSingle(quets, step).then(stepRes => {
+            this.stepsService.getSingle(quest, step).then(stepRes => {
               this.step = stepRes;
             });
 
-            const alert = await this.alertCtrl.create({
-              header: this.translate.instant(`step.finish.success.title`),
-              message: this.translate.instant(`step.finish.success.msg`),
-              buttons: ['Hurray!']
-            });
-            await alert.present();
+            if (!(Object.keys(this.stepRewards).find(x => x === 'nextStep'))) {
+              const modalFinishQuest = await this.modalCtrl.create({
+                component: FinishQuestComponent
+              });
+              modalFinishQuest.onDidDismiss().then((data) => {
+                this.router.navigate([`quests/${quest}`], { replaceUrl: true });
+              });
+              await modalFinishQuest.present();
+            } else {
+              const alert = await this.alertCtrl.create({
+                header: this.translate.instant(`step.finish.success.title`),
+                message: this.translate.instant(`step.finish.success.msg`),
+                buttons: ['Hurray!']
+              });
+              await alert.present();
+            }
           }).catch(async res => {
         const alert = await this.alertCtrl.create({
           header: this.translate.instant(`app.alerts.error`),

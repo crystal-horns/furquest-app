@@ -26,7 +26,7 @@
       </ion-col>
 
       <ion-col sizeMd="6" pushMd="3" size="12">
-        <ion-list-header> {{ 'step.rewards.title' | translate }} </ion-list-header>
+        <ion-list-header *ngIf="stepRewards.length"> {{ 'step.rewards.title' | translate }} </ion-list-header>
 
         <ion-grid no-padding>
           <ion-row no-padding justify-content-center>
