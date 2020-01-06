@@ -13,6 +13,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {NextTipComponent} from '../../../../components/quest/next-tip/next-tip.component';
 import {UserQuestStepTip} from '../../../../models/UserQuestStepTip';
 import {GoogleMaps, GoogleMap, GoogleMapsEvent, LatLng, MarkerOptions, Marker} from "@ionic-native/google-maps";
+import {FinishQuestComponent} from '../../../../components/quest/finish-quest/finish-quest.component';
 
 declare var google;
 
@@ -64,6 +65,11 @@ export class StepPage implements OnInit {
   async ionViewWillEnter() {
     this.canGoBack = this.routerOutlet && this.routerOutlet.canGoBack();
 
+    const modalFinishQuest = await this.modalCtrl.create({
+      component: FinishQuestComponent
+    });
+    return await modalFinishQuest.present();
+
     const quets = this.activetedRoute.snapshot.paramMap.get('questId');
     const step = this.activetedRoute.snapshot.paramMap.get('stepId');
     this.stepsService.getSingle(quets, step).then(res => {
@@ -82,7 +88,7 @@ export class StepPage implements OnInit {
   // }
 
   goStep(quest, step) {
-    this.router.navigate([`quests/${quest}/${step}`]);
+    this.router.navigate([`quests/${quest}/${step}`], { replaceUrl: true });
   }
 
   async finishStep() {

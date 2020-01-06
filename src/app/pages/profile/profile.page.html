@@ -16,7 +16,7 @@
           <div class="header-background"></div>
           <div class="header-content">
             <ion-avatar class="profile">
-              <ion-img [src]="(user.photo ? userImagePath + user.id + '/' + user.photo : '')"></ion-img>
+              <ion-img [src]="(user.photo ? userImagePath + user.id + '/' + user.photo + '?random=' + randomToken : '')"></ion-img>
             </ion-avatar>
             <h2 text-center>{{ user.social_name || user.name }}</h2>
             <h4 text-center no-margin *ngIf="user.species">{{ user.species }}</h4>

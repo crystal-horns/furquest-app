@@ -9,7 +9,9 @@
 </ion-header>
 <ion-content fullscreen>
   <h3 text-center padding-horizontal class="cbbl">
-    <teximate [text]="tip.tip.content" [enter]="enterAnimation" (finish)="showClose = true"></teximate>
+    <span>
+      <teximate [text]="tip.tip.content" [enter]="enterAnimation" (finish)="showClose = true"></teximate>
+    </span>
   </h3>
   <span [class]="'sprite ' + tip.tip.character"></span>
 </ion-content>

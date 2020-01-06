@@ -41,4 +41,24 @@ export class UsersService {
     data = {...data, _method: 'PUT'};
     return this.http.post(`${this.usersUrl}/current/edit`, data, httpOptions).toPromise() as Promise<User>;
   }
+
+  updateProfilePicture(pic) {
+    const data: object = {
+      _method: 'PATCH',
+      photo: pic
+    };
+    return this.http.post(`${this.usersUrl}/current/photo`, data, httpOptions).toPromise() as Promise<any>;
+  }
+
+  changePassword(form) {
+    const data: object = {
+      _method: 'PUT'
+    };
+
+    for (const control in form) {
+      data[control] = form[control].value;
+    }
+
+    return this.http.post(`${this.usersUrl}/current/password`, data, httpOptions).toPromise() as Promise<any>;
+  }
 }

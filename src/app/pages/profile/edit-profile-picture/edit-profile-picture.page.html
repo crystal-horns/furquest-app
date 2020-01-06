@@ -23,12 +23,12 @@
                 <image-cropper
                   *ngIf="imageFile"
                   [imageBase64]="imageFile"
-                  [cropperMinWidth]="256"
-                  [roundCropper]="true"
+                  cropperMinWidth="250"
+                  resizeToWidth="250"
+                  roundCropper="true"
                   (imageCropped)="imageCropped($event)"
                 ></image-cropper>
               </div>
-              <img [src]="croppedImage" />
 
               <input id="inputcamera" type="file" accept="image/*" capture="camera" class="custom-fileinput"
                      #inputcamera/>

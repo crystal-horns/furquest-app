@@ -1,7 +1,7 @@
 import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {User} from '../../../models/User';
 import {AuthService} from '../../../services/auth.service';
-import {AlertController} from '@ionic/angular';
+import {AlertController, NavController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
 import {UsersService} from '../../../services/users.service';
 import {ImageCroppedEvent, ImageCropperComponent} from 'ngx-image-cropper';
@@ -24,6 +24,7 @@ export class EditProfilePicturePage implements OnInit, AfterViewInit {
       private alertController: AlertController,
       private changeDetector: ChangeDetectorRef,
       private translate: TranslateService,
+      private navCtrl: NavController
   ) { }
 
   async ngOnInit() {
@@ -43,13 +44,14 @@ export class EditProfilePicturePage implements OnInit, AfterViewInit {
 
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
-    console.log(event);
   }
 
   async save() {
-    this.usersService.saveUser(this.user).then(res => {
+    this.usersService.updateProfilePicture(this.croppedImage).then(res => {
+      this.user.photo = res.photo;
       this.authService.setUserData(this.user);
       this.presentAlert(this.translate.instant('app.alerts.success'), this.translate.instant('profileEdit.alertMessages.success'));
+      this.navCtrl.back();
     }).catch(res => {
       this.presentAlert(this.translate.instant('app.alerts.error'), this.translate.instant('app.alertMessages.error'));
     });

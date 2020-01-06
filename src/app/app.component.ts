@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 
-import {MenuController, Platform} from '@ionic/angular';
+import {IonRouterOutlet, MenuController, Platform} from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {AuthService} from "./services/auth.service";
@@ -18,6 +18,7 @@ import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 })
 export class AppComponent {
   public appPages;
+  @ViewChild(IonRouterOutlet, {static: false}) routerOutlet: IonRouterOutlet;
 
   constructor(
     private platform: Platform,
@@ -32,6 +33,12 @@ export class AppComponent {
     private screenOrientation: ScreenOrientation
   ) {
     this.initializeApp();
+
+    this.platform.backButton.subscribeWithPriority(0, () => {
+      if (this.routerOutlet && this.routerOutlet.canGoBack()) {
+        this.routerOutlet.pop();
+      }
+    });
   }
 
   initializeApp() {

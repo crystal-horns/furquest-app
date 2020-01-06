@@ -33,11 +33,28 @@ ion-header {
 }
 
 ion-content {
-  --background: url(/assets/images/bg-tip.png) no-repeat bottom center/contain, url(/assets/images/bg-stars-tip.png), linear-gradient(0, #95daff, #528bff);
+  --background: url(/assets/images/bg-tip.png) no-repeat bottom center/contain,
+  url(/assets/images/bg-stars-tip.png),
+  url(/assets/images/effect-end-quest.gif) repeat-x top center/contain,
+  linear-gradient(0, #95daff, #528bff);
   font-family: 'VT323', Helvetica, Arial, sans-serif;
 
+  &.end-quest {
+    --background: url(/assets/images/bg-tip.png) no-repeat bottom center/contain,
+    url(/assets/images/bg-stars-tip.png),
+    url(/assets/images/effect-end-quest.gif) repeat-x top center/contain,
+    linear-gradient(0, #95daff, #528bff);
+  }
+
+  h2 {
+    text-align: center;
+    color: #FFF;
+    font-size: 30px;
+    margin-top: 0;
+  }
+
   h3 {
-    height: 40vh;
+    height: 47vh;
     font-size: 24px;
     position: absolute;
     bottom: 15vh;
@@ -45,7 +62,7 @@ ion-content {
     animation: show-bubble .5s ease-in-out .8s forwards;
 
     span {
-      height: 40vh;
+      height: 47vh;
       display: block;
       padding-bottom: 10px;
       overflow-x: auto;
@@ -70,7 +87,7 @@ ion-content {
   .sprite {
     width: 100vw;
     max-width: 450px;
-    height: 100vh;
+    height: 42vh;
     display: block;
     position: absolute;
     bottom: 0;
