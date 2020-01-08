@@ -15,6 +15,7 @@ export class ProfilePage implements OnInit {
   user: User;
   canGoBack = false;
   userImagePath = `${environment.resourceUrl}users/`;
+  randomToken;
 
   constructor(
     private router: Router,
@@ -33,19 +34,20 @@ export class ProfilePage implements OnInit {
   async ionViewWillEnter() {
     const id = this.activetedRoute.snapshot.paramMap.get('id');
     this.user = await this.usersService.getUser(id);
+    this.randomToken = Math.random();
   }
 
   async presentProfileMenu() {
     const menu = await this.actionSheetController.create({
       header: this.translateService.instant('profile.menu.title'),
       buttons: [
-        // {
-        //   text: this.translateService.instant('profile.menu.changePassword'),
-        //   icon: 'key',
-        //   handler: () => {
-        //     this.router.navigate(['profile/change-password']);
-        //   }
-        // },
+        {
+          text: this.translateService.instant('profile.menu.changePassword'),
+          icon: 'key',
+          handler: () => {
+            this.router.navigate(['profile/change-password']);
+          }
+        },
         {
           text: this.translateService.instant('profile.menu.edit'),
           icon: 'create',
@@ -60,13 +62,13 @@ export class ProfilePage implements OnInit {
             this.router.navigate(['profile/edit-contacts']);
           }
         },
-        // {
-        //   text: this.translateService.instant('profile.menu.editPicture'),
-        //   icon: 'camera',
-        //   handler: () => {
-        //     this.router.navigate(['profile/edit']);
-        //   }
-        // }
+        {
+          text: this.translateService.instant('profile.menu.editPicture'),
+          icon: 'camera',
+          handler: () => {
+            this.router.navigate(['profile/edit-picture']);
+          }
+        }
       ]
     });
     await menu.present();

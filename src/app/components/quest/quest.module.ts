@@ -7,6 +7,7 @@ import {TranslateModule} from '@ngx-translate/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NextTipComponent} from './next-tip/next-tip.component';
 import {TeximateModule} from 'ngx-teximate';
+import {FinishQuestComponent} from './finish-quest/finish-quest.component';
 
 @NgModule({
   imports: [
@@ -17,8 +18,8 @@ import {TeximateModule} from 'ngx-teximate';
     IonicModule.forRoot(),
     TeximateModule
   ],
-  declarations: [QuestCurrentComponent, FinishStepComponent, NextTipComponent],
-  exports: [QuestCurrentComponent, FinishStepComponent, NextTipComponent],
-  entryComponents: [FinishStepComponent, NextTipComponent]
+  declarations: [QuestCurrentComponent, FinishStepComponent, NextTipComponent, FinishQuestComponent],
+  exports: [QuestCurrentComponent, FinishStepComponent, NextTipComponent, FinishQuestComponent],
+  entryComponents: [FinishStepComponent, NextTipComponent, FinishQuestComponent]
 })
 export class QuestModule { }

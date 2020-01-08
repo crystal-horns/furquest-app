@@ -13,6 +13,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {NextTipComponent} from '../../../../components/quest/next-tip/next-tip.component';
 import {UserQuestStepTip} from '../../../../models/UserQuestStepTip';
 import {GoogleMaps, GoogleMap, GoogleMapsEvent, LatLng, MarkerOptions, Marker} from "@ionic-native/google-maps";
+import {FinishQuestComponent} from '../../../../components/quest/finish-quest/finish-quest.component';
 
 declare var google;
 
@@ -66,7 +67,7 @@ export class StepPage implements OnInit {
 
     const quets = this.activetedRoute.snapshot.paramMap.get('questId');
     const step = this.activetedRoute.snapshot.paramMap.get('stepId');
-    this.stepsService.getSingle(quets, step).then(res => {
+    this.stepsService.getSingle(quets, step).then(async res => {
       this.step = res;
       this.calcTimerNextTip();
     });
@@ -82,7 +83,7 @@ export class StepPage implements OnInit {
   // }
 
   goStep(quest, step) {
-    this.router.navigate([`quests/${quest}/${step}`]);
+    this.router.navigate([`quests/${quest}/${step}`], { replaceUrl: true });
   }
 
   async finishStep() {
@@ -111,18 +112,28 @@ export class StepPage implements OnInit {
       this.stepsService.finishStep(this.step.user_quest_id, this.step.id, {answers: [response]})
           .then(async res => {
             this.stepRewards = res as object[];
-            const quets = this.activetedRoute.snapshot.paramMap.get('questId');
+            const quest = this.activetedRoute.snapshot.paramMap.get('questId');
             const step = this.activetedRoute.snapshot.paramMap.get('stepId');
-            this.stepsService.getSingle(quets, step).then(stepRes => {
+            this.stepsService.getSingle(quest, step).then(stepRes => {
               this.step = stepRes;
             });
 
-            const alert = await this.alertCtrl.create({
-              header: this.translate.instant(`step.finish.success.title`),
-              message: this.translate.instant(`step.finish.success.msg`),
-              buttons: ['Hurray!']
-            });
-            await alert.present();
+            if (!(Object.keys(this.stepRewards).find(x => x === 'nextStep'))) {
+              const modalFinishQuest = await this.modalCtrl.create({
+                component: FinishQuestComponent
+              });
+              modalFinishQuest.onDidDismiss().then((data) => {
+                this.router.navigate([`quests/${quest}`], { replaceUrl: true });
+              });
+              await modalFinishQuest.present();
+            } else {
+              const alert = await this.alertCtrl.create({
+                header: this.translate.instant(`step.finish.success.title`),
+                message: this.translate.instant(`step.finish.success.msg`),
+                buttons: ['Hurray!']
+              });
+              await alert.present();
+            }
           }).catch(async res => {
         const alert = await this.alertCtrl.create({
           header: this.translate.instant(`app.alerts.error`),

@@ -7,16 +7,23 @@
 </ion-toolbar>
 
 <ion-content>
-  <ion-grid no-padding *ngIf="quest">
+  <ion-grid no-padding *ngIf="quest" [class]="quest.quest_route.quest.theme">
     <ion-row no-padding>
       <ion-col no-padding padding-bottom>
         <div class="header"
            [ngStyle]="{'background-image': 'url(' + imagePath + quest.quest_route.quest_id + '/' + quest.quest_route.quest.image + ')'}">
         </div>
-<!--        <div class="loading-quest">-->
-<!--          <ion-list-header> Default at 50% </ion-list-header>-->
-<!--          <ion-progress-bar color="light" value="0.5"></ion-progress-bar>-->
-<!--        </div>-->
+        <div class="loading-quest" *ngIf="progress < 1">
+          <ion-list-header> {{ 'quest.progress' | translate }} </ion-list-header>
+          <ion-progress-bar color="light" [value]="progress"></ion-progress-bar>
+        </div>
+
+        <div *ngIf="progress >= 1">
+          <ion-button (click)="finishQuest()" expand="full" class="finish-quest">
+            {{ 'quest.finish' | translate }}
+            <ion-icon size="large" slot="end" name="flag"></ion-icon>
+          </ion-button>
+        </div>
       </ion-col>
     </ion-row>
 

@@ -1,0 +1,20 @@
+<ion-header translucent no-border>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <button (click)="dismissModal(false)" [ngClass]="{contrast: showClose}">
+        <ion-icon icon="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <h2 class="wiggle">
+    <span class="rainbow">{{ 'quest.finish-quest.title' | translate }}</span>
+  </h2>
+  <h3 text-center padding-horizontal class="cbbl">
+    <span>
+      <teximate [text]="trans.instant('quest.finish-quest.content')" [enter]="enterAnimation" (finish)="showClose = true"></teximate>
+    </span>
+  </h3>
+  <span class="sprite spocky"></span>
+</ion-content>

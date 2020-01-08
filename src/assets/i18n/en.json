@@ -6,6 +6,7 @@
       "profile": "Profile",
       "personalData": "Edit Profile",
       "contacts": "Edit Contacts",
+      "profilePicture": "Change Profile Picture",
       "changePassword": "Change Password",
       "guild": "Guild",
       "events": "Quests",
@@ -44,6 +45,11 @@
       "more": "See all quests"
     }
   },
+  "about": {
+    "version": "App Version",
+    "privacy": "Privacy Policy",
+    "developer": "Developed by"
+  },
 
   "profile":  {
     "title": {
@@ -70,6 +76,17 @@
     },
     "alertMessages": {
       "success": "Profile updated with success!"
+    },
+    "password": {
+      "old": "Current Password",
+      "new": "New Password",
+      "confirm": "Confirm Password",
+      "error": "Password doesn't match"
+    }
+  },
+  "editPicture": {
+    "btn": {
+      "selectImage": "Select an Image"
     }
   },
   "profileContacts": {
@@ -103,8 +120,14 @@
   },
   "quest": {
     "history": "History",
+    "progress": "Quest Progress",
+    "finish": "Quest Finished!",
     "steps": "Puzzles",
-    "current-step": "Current Puzzle"
+    "current-step": "Current Puzzle",
+    "finish-quest": {
+      "title": "Congratulations!",
+      "content": "You've finished the quest!\n\nNow, go back to the furmeet and look for a Staff to attempt to open the chest.\nRemember, you have 5 minutes to figure out the lock passcode, if you fail, you'll have to wait for another chance, after everyone try.\n\nGood Luck :D"
+    }
   },
   "step": {
     "history": "History",

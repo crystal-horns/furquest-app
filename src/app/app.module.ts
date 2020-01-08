@@ -21,7 +21,6 @@ import { environment } from '../environments/environment';
 import { AngularCropperjsModule } from 'angular-cropperjs';
 import {BarcodeScanner} from '@ionic-native/barcode-scanner/ngx';
 import {Camera} from '@ionic-native/camera/ngx';
-import {File} from '@ionic-native/file/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import {NgxSpinnerModule} from 'ngx-spinner';
@@ -29,6 +28,8 @@ import {interceptorProvider} from './interceptors/interceptor';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TeximateModule} from 'ngx-teximate';
 import {GoogleMaps} from '@ionic-native/google-maps';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+import {ImageCropperModule} from 'ngx-image-cropper';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -57,7 +58,8 @@ export function createTranslateLoader(http: HttpClient) {
         AngularCropperjsModule,
         NgxSpinnerModule,
         BrowserAnimationsModule,
-        TeximateModule
+        TeximateModule,
+        ImageCropperModule
     ],
     providers: [
         StatusBar,
@@ -68,10 +70,10 @@ export function createTranslateLoader(http: HttpClient) {
         interceptorProvider,
         BarcodeScanner,
         Camera,
-        File,
         WebView,
         FilePath,
-        GoogleMaps
+        GoogleMaps,
+        ScreenOrientation
     ],
     bootstrap: [AppComponent]
 })

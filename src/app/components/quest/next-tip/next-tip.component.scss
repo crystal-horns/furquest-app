@@ -1,0 +1,99 @@
+@font-face {
+  font-family: 'VT323';
+  src: url('/assets/fonts/VT323-Regular.ttf');
+}
+
+ion-header {
+  backdrop-filter: unset !important;
+  ion-toolbar {
+    --background: transparent;
+    --color: #FFF;
+    --backdrop-filter: unset;
+
+    ion-buttons {
+      button {
+        background: transparent;
+        border-radius: 25px;
+        padding: 12px;
+        position: relative;
+        right: 4px;
+        top: 1px;
+        font-size: 18px;
+        line-height: 10px;
+        color: #FFF;
+        transition: .3s;
+
+        &.contrast {
+          background: #FFF;
+          color: var(--ion-color-tertiary);
+        }
+      }
+    }
+  }
+}
+
+ion-content {
+  --background: url(/assets/images/bg-tip.png) no-repeat bottom center/contain, url(/assets/images/bg-stars-tip.png), linear-gradient(0, #95daff, #528bff);
+  font-family: 'VT323', Helvetica, Arial, sans-serif;
+
+  h3 {
+    height: 40vh;
+    font-size: 24px;
+    position: absolute;
+    bottom: 15vh;
+    opacity: 0;
+    animation: show-bubble .5s ease-in-out .8s forwards;
+
+    span {
+      height: 40vh;
+      display: block;
+      padding-bottom: 10px;
+      overflow-x: auto;
+    }
+
+    @keyframes show-bubble {
+      from {
+        bottom: 15vh;
+        opacity: 0;
+      }
+      to {
+        bottom: 30vh;
+        opacity: 1;
+      }
+    }
+
+    teximate {
+      opacity: 0;
+    }
+  }
+
+  .sprite {
+    width: 100vw;
+    max-width: 450px;
+    height: 43vh;
+    max-height: 315px;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: -100%;
+    animation: show-char .5s ease-out .3s forwards;
+
+    &.spocky {
+      background: url(/assets/images/sprites/spocky.gif) no-repeat bottom center/contain;
+    }
+
+    @keyframes show-char {
+      from {right: -100%;}
+      to {right: -25%;}
+    }
+  }
+}
+
+ion-footer {
+  position: absolute;
+  bottom: 0;
+}
+
+
+// ComicBubbles - https://github.com/kaisermann/comicbubbles
+.cbbl,.cbbl::after,.cbbl::before{transition:all .3s ease;box-sizing:border-box}.cbbl,.cbbl.-hover:hover.-control a,.cbbl.-hover:hover.-control button,.cbbl.-hover:hover.-control input[type=submit]{color:#000}.cbbl{position:relative;display:inline-block;margin:10px 14px 29px 11px;text-align:center;background-color:#fff;padding:5px;box-shadow:0 -3px #fff,0 -6px #000,3px 0 #fff,3px -3px #000,6px 0 #000,0 3px #fff,0 6px #000,-3px 0 #fff,-3px 3px #000,-6px 0 #000,-3px -3px #000,3px 3px #000,3px 9px #aaa,6px 6px #aaa,9px 3px #aaa}.cbbl::after,.cbbl::before{content:'';display:block;position:absolute;left:45%}.cbbl::after{background:#fff;width:14px;height:6px;bottom:-20px;margin-left:6px;box-shadow:-3px 0 #000,3px 0 #000,3px 3px #fff,0 3px #000,6px 3px #000,9px 3px #aaa,3px 6px #000,6px 6px #000,9px 6px #aaa,6px 9px #aaa}.cbbl::before{width:20px;height:11px;background:#fff;bottom:-14px;border-left:3px solid #000;border-right:3px solid #000}.cbbl.-hover:hover{background-color:#eee;color:#000;box-shadow:0 -3px #eee,0 -6px #7bc8a4,3px 0 #eee,3px -3px #7bc8a4,6px 0 #7bc8a4,0 3px #eee,0 6px #7bc8a4,-3px 0 #eee,-3px 3px #7bc8a4,-6px 0 #7bc8a4,-3px -3px #7bc8a4,3px 3px #7bc8a4,3px 9px #cae9db,6px 6px #cae9db,9px 3px #cae9db}.cbbl.-hover:hover::before{background:#eee;border-left-color:#7bc8a4;border-right-color:#7bc8a4}.cbbl.-hover:hover::after{box-shadow:-3px 0 #7bc8a4,3px 0 #7bc8a4,3px 3px #eee,0 3px #7bc8a4,6px 3px #7bc8a4,9px 3px #cae9db,3px 6px #7bc8a4,6px 6px #7bc8a4,9px 6px #cae9db,6px 9px #cae9db,9px 9px #7bc8a4}.cbbl.-up{margin:29px 9px 10px 6px}.cbbl.-up::before{top:-11px;bottom:auto}.cbbl.-up::after{top:-14px;bottom:auto;box-shadow:-3px 0 #000,3px 0 #000,3px -3px #fff,0 -3px #000,6px -3px #000,3px -6px #000,6px -6px #000}.cbbl.-up.-hover:hover::after{box-shadow:-3px 0 #7bc8a4,3px 0 #7bc8a4,3px -3px #eee,0 -3px #7bc8a4,6px -3px #7bc8a4,3px -6px #7bc8a4,6px -6px #7bc8a4}.cbbl.-up.-right::after{box-shadow:3px 0 #000,-3px 0 #000,-3px -3px #fff,0 -3px #000,-6px -3px #000,-3px -6px #000,-6px -6px #000}.cbbl.-up.-right.-hover:hover::after{box-shadow:3px 0 #7bc8a4,-3px 0 #7bc8a4,-3px -3px #eee,0 -3px #7bc8a4,-6px -3px #7bc8a4,-3px -6px #7bc8a4,-6px -6px #7bc8a4}.cbbl.-right::after,.cbbl.-right::before{left:auto;right:20%}.cbbl.-right::after{margin-left:0;margin-right:6px;box-shadow:3px 0 #000,-3px 0 #000,-3px 3px #fff,0 3px #000,-6px 3px #000,-3px 6px #000,-6px 6px #000,-3px 9px #aaa,0 6px #aaa,3px 3px #aaa,6px 0 #aaa}.cbbl.-right.-hover:hover::after{box-shadow:3px 0 #7bc8a4,-3px 0 #7bc8a4,-3px 3px #eee,0 3px #7bc8a4,-6px 3px #7bc8a4,-3px 6px #7bc8a4,-6px 6px #7bc8a4,-3px 9px #cae9db,0 6px #cae9db,3px 3px #cae9db,6px 0 #cae9db}.cbbl.-no-selection{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.cbbl.-control{cursor:pointer}.cbbl.-control a,.cbbl.-control button,.cbbl.-control input[type=submit]{cursor:pointer;transition:color .3s ease}.cbbl.-control:active{transform:scale(.95)}

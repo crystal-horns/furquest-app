@@ -6,6 +6,7 @@
       "profile": "Perfil",
       "personalData": "Editar Perfil",
       "contacts": "Editar Contatos",
+      "profilePicture": "Mudar Foto de Perfil",
       "changePassword": "Mudar a Senha",
       "guild": "Guild",
       "events": "Missões",
@@ -44,6 +45,11 @@
       "more": "Ver todas as missões"
     }
   },
+  "about": {
+    "version": "Versão App",
+    "privacy": "Politica de Privacidade",
+    "developer": "Desenvolvido por"
+  },
 
   "profile":  {
     "title": {
@@ -73,6 +79,17 @@
       "error": {
 
       }
+    },
+    "password": {
+      "old": "Senha atual",
+      "new": "Nova senha",
+      "confirm": "Confirme a senha",
+      "error": "Senhas não conferem"
+    }
+  },
+  "editPicture": {
+    "btn": {
+      "selectImage": "Selecione uma imagem"
     }
   },
   "profileContacts": {
@@ -106,8 +123,14 @@
   },
   "quest": {
     "history": "História",
+    "progress": "Progresso da Missão",
+    "finish": "Missão Concluída!",
     "steps": "Enigmas",
-    "current-step": "Enigma atual"
+    "current-step": "Enigma atual",
+    "finish-quest": {
+      "title": "Parabéns!",
+      "content": "Vocês concluiram nossa caçada!\n\nAgora, vocês devem voltar para o local do Furmeet e procurar por um Staff do evento para tentar abrir o baú.\nLembre-se, vocês terão 5 minutos para tentar descobrir o código que abrirá o baú, caso não consigam, teram de esperar até que as outras guildas tenham tentado para tentar novamente.\n\nBoa sorte! :D"
+    }
   },
   "step": {
     "history": "História",

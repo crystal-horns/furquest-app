@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 
-import {MenuController, Platform} from '@ionic/angular';
+import {IonRouterOutlet, MenuController, Platform} from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {AuthService} from "./services/auth.service";
@@ -9,6 +9,7 @@ import {LanguageService} from "./services/language.service";
 import {User} from './models/User';
 import {LoadingService} from './services/loading.service';
 import {NgxSpinnerService} from 'ngx-spinner';
+import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,7 @@ import {NgxSpinnerService} from 'ngx-spinner';
 })
 export class AppComponent {
   public appPages;
+  @ViewChild(IonRouterOutlet, {static: false}) routerOutlet: IonRouterOutlet;
 
   constructor(
     private platform: Platform,
@@ -27,12 +29,20 @@ export class AppComponent {
     private languageService: LanguageService,
     private menuCtrl: MenuController,
     private loadingService: LoadingService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private screenOrientation: ScreenOrientation
   ) {
     this.initializeApp();
+
+    this.platform.backButton.subscribeWithPriority(0, () => {
+      if (this.routerOutlet && this.routerOutlet.canGoBack()) {
+        this.routerOutlet.pop();
+      }
+    });
   }
 
   initializeApp() {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
     this.loadingService.push('loading_app');
     this.loadingService.get().subscribe(async (stack) => {
       if (stack.length === 0) {

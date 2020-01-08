@@ -14,7 +14,7 @@ export class NextTipComponent implements OnInit {
   showClose = false;
   enterAnimation: TextAnimation = {
     animation: bounceIn,
-    delay: 30,
+    delay: 40,
     type: 'letter'
   };
 

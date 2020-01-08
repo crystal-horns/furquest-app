@@ -1,19 +1,24 @@
 <ion-header translucent no-border>
   <ion-toolbar>
     <ion-buttons slot="end">
-      <ion-button (click)="dismissModal(false)"><ion-icon icon="close"></ion-icon></ion-button>
+      <button (click)="dismissModal(false)" [ngClass]="{contrast: showClose}">
+        <ion-icon icon="close"></ion-icon>
+      </button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen>
-  <h3 text-center padding>
-    <teximate [text]="tip.tip.content" [enter]="enterAnimation" (finish)="showClose = true"></teximate>
+  <h3 text-center padding-horizontal class="cbbl">
+    <span>
+      <teximate [text]="tip.tip.content" [enter]="enterAnimation" (finish)="showClose = true"></teximate>
+    </span>
   </h3>
+  <span [class]="'sprite ' + tip.tip.character"></span>
 </ion-content>
 
-<ion-footer no-border *ngIf="showClose">
-  <ion-button (click)="dismissModal(false)" expand="full" fill="solid" color="tertiary"
-    text-center size="large" no-margin>
-    {{ 'app.btn.close' | translate }}
-  </ion-button>
-</ion-footer>
+<!--<ion-footer no-border *ngIf="showClose">-->
+<!--  <ion-button (click)="dismissModal(false)" expand="full" fill="solid" color="tertiary"-->
+<!--    text-center size="large" no-margin>-->
+<!--    {{ 'app.btn.close' | translate }}-->
+<!--  </ion-button>-->
+<!--</ion-footer>-->
