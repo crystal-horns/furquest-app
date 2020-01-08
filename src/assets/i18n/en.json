@@ -45,6 +45,11 @@
       "more": "See all quests"
     }
   },
+  "about": {
+    "version": "App Version",
+    "privacy": "Privacy Policy",
+    "developer": "Developed by"
+  },
 
   "profile":  {
     "title": {

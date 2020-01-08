@@ -1,14 +1,55 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button *ngIf="canGoBack" [ngClass]="{canGoBack: canGoBack}"></ion-back-button>
-      <ion-menu-button *ngIf="!canGoBack"></ion-menu-button>
-    </ion-buttons>
-    
-    <ion-title>About</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button *ngIf="canGoBack" [ngClass]="{canGoBack: canGoBack}"></ion-back-button>
+    <ion-menu-button *ngIf="!canGoBack"></ion-menu-button>
+  </ion-buttons>
+</ion-toolbar>
 
 <ion-content>
-  Under Development
+  <ion-grid>
+    <ion-row>
+      <ion-col pushMd="3" sizeMd="6" sizeSm="12" text-center>
+        <div class="icon-furquest">
+          <a href="https://crystalhorns.com">
+            <img src="assets/icon/logo-negative-typo.png" alt="FurQuest" width="250">
+          </a><br/><br/>
+          {{ 'about.developer' | translate }}<br />
+          <a href="https://crystalhorns.com" class="icon-crystalhorns">
+            <img src="assets/icon/logo_crystalhorns.png" alt="Crystal Horns" height="50">
+          </a><br />
+          <span class="copywrite">© 2020</span>
+        </div><br/>
+
+        <a href="https://t.me/FurQuest" class="social">
+          <ion-icon name="paper-plane" slot="start"></ion-icon>
+          @FurQuest
+        </a><br/>
+        <a href="https://fb.me/FurQuestBR" class="social">
+          <ion-icon name="logo-facebook" slot="start"></ion-icon>
+          FurQuestBR
+        </a><br/>
+        <a href="https://www.youtube.com/channel/UC4ZGkc5xTYqeP4fqqd_84UQ" class="social">
+          <ion-icon name="logo-youtube" slot="start"></ion-icon>
+          FurQuest
+        </a><br/>
+        <a href="https://t.me/joinchat/BK223kUUNeCXLxCyQpdxQw" class="social">
+          <ion-icon name="people" slot="start"></ion-icon>
+          Grupo Telegram
+        </a>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col pushMd="3" sizeMd="6" sizeSm="12" text-center>
+        <span class="copywrite" text-center>
+          <strong>{{ 'about.version' | translate }}: </strong> 0.0.0<br/>
+          <a href="https://app.termly.io/document/privacy-policy/6a5ce351-66cc-48f9-9287-7add09d49747">{{ 'about.privacy' | translate }}</a>
+        </span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

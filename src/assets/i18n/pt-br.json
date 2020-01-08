@@ -45,6 +45,11 @@
       "more": "Ver todas as missões"
     }
   },
+  "about": {
+    "version": "Versão App",
+    "privacy": "Politica de Privacidade",
+    "developer": "Desenvolvido por"
+  },
 
   "profile":  {
     "title": {
