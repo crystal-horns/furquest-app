@@ -44,6 +44,16 @@ ion-toolbar {
   ion-list-header {
     color: #FFF;
   }
+  ion-progress-bar {
+    --ion-color-base: var(--ion-color-tertiary) !important;
+  }
+}
+.finish-quest {
+  height: 60px;
+  --background: #32965D;
+  color: #F5F5F5;
+  --box-shadow: 0;
+  margin: -60px -10px 0;
 }
 
 ion-card {

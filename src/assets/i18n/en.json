@@ -115,6 +115,8 @@
   },
   "quest": {
     "history": "History",
+    "progress": "Quest Progress",
+    "finish": "Quest Finished!",
     "steps": "Puzzles",
     "current-step": "Current Puzzle",
     "finish-quest": {

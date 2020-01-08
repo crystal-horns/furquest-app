@@ -125,7 +125,8 @@ ion-content {
   .sprite {
     width: 100vw;
     max-width: 450px;
-    height: 42vh;
+    height: 43vh;
+    max-height: 315px;
     display: block;
     position: absolute;
     bottom: 0;
@@ -133,12 +134,12 @@ ion-content {
     animation: show-char .5s ease-out .3s forwards;
 
     &.spocky {
-      background: url(/assets/images/sprites/spocky.png) no-repeat bottom center/100%;
+      background: url(/assets/images/sprites/spocky.gif) no-repeat bottom center/contain;
     }
 
     @keyframes show-char {
       from {right: -100%;}
-      to {right: -38%;}
+      to {right: -25%;}
     }
   }
 }

@@ -118,6 +118,8 @@
   },
   "quest": {
     "history": "História",
+    "progress": "Progresso da Missão",
+    "finish": "Missão Concluída!",
     "steps": "Enigmas",
     "current-step": "Enigma atual",
     "finish-quest": {
