@@ -42,7 +42,7 @@ export class AppComponent {
   }
 
   initializeApp() {
-    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
     this.loadingService.push('loading_app');
     this.loadingService.get().subscribe(async (stack) => {
       if (stack.length === 0) {

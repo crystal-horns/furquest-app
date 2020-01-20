@@ -34,8 +34,7 @@ export class StepPage implements OnInit {
   nextTip = false;
   lastTip = false;
   // Maps
-  map;
-  markers = [];
+  map: any = false;
   // QRcode
   barcodeScannerOptions: BarcodeScannerOptions;
   // Reawrds
@@ -227,6 +226,22 @@ export class StepPage implements OnInit {
   }
 
   loadMap() {
+    const mapTip = this.step.user_quest_step_tip.filter((value) => value.tip.map);
+    const mapPoints = mapTip[0].tip.content.split(',');
+    this.map = {
+      lat: parseFloat(mapPoints[0]),
+      lng: parseFloat(mapPoints[1]),
+      zoom: 18,
+      markers: [
+        {
+          lat: parseFloat(mapPoints[0]),
+          lng: parseFloat(mapPoints[1]),
+        }
+      ]
+    };
+  }
+
+  loadMapOld() {
     const mapTip = this.step.user_quest_step_tip.filter((value) => value.tip.map);
     const mapPoints = mapTip[0].tip.content.split(',');
 

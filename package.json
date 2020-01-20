@@ -1,6 +1,6 @@
 {
   "name": "FurQuest",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Crystal Horns",
   "homepage": "https://crystalhorns.com/",
   "scripts": {
@@ -13,6 +13,7 @@
   },
   "private": true,
   "dependencies": {
+    "@agm/core": "^1.1.0",
     "@angular/animations": "^8.2.14",
     "@angular/common": "~8.1.2",
     "@angular/compiler": "~8.1.2",
