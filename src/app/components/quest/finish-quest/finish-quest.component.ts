@@ -19,7 +19,7 @@ export class FinishQuestComponent implements OnInit {
 
   constructor(
       private modalCtrl: ModalController,
-      private trans: TranslateService
+      public trans: TranslateService
   ) { }
 
   ngOnInit() {}

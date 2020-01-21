@@ -33,6 +33,7 @@
   },
 
   "login": {
+    "cta": "Join the Quest!",
     "user": "User",
     "password": "Password",
     "login-btn": "Login",

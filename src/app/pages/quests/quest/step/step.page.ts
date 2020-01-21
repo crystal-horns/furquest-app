@@ -69,10 +69,11 @@ export class StepPage implements OnInit {
     this.stepsService.getSingle(quets, step).then(async res => {
       this.step = res;
       this.calcTimerNextTip();
-    });
-    this.stepRewards = await this.stepsService.getRewards(quets, step);
 
-    await this.loadMap();
+      this.loadMap();
+    });
+
+    this.stepRewards = await this.stepsService.getRewards(quets, step);
   }
 
   // ngAfterViewInit() {
@@ -239,6 +240,7 @@ export class StepPage implements OnInit {
         }
       ]
     };
+    console.log(this.map);
   }
 
   loadMapOld() {

@@ -33,6 +33,7 @@
   },
 
   "login": {
+    "cta": "Entrar para a caçada!",
     "user": "Usuário",
     "password": "Senha",
     "login-btn": "Login",

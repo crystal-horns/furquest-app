@@ -5,6 +5,7 @@
  import {TranslateService} from '@ngx-translate/core';
  import {ContactType} from '../../../models/ContactType';
  import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
+ import {User} from '../../../models/User';
 
 @Component({
   selector: 'app-edit-contacts',
@@ -100,6 +101,17 @@ export class EditContactsPage implements OnInit {
       contacts_types_id: this.typesIdArray.value,
       value: this.contactsArray.value
     }).then(async res => {
+      this.contacts = res as UserContact[];
+
+      this.contactsArray.clear();
+      this.idArray.clear();
+      this.typesIdArray.clear();
+      for (const contact of this.contacts) {
+        this.contactsArray.push(new FormControl(contact.value));
+        this.idArray.push(new FormControl(contact.id));
+        this.typesIdArray.push(new FormControl(contact.contacts_types_id));
+      }
+
       const alert = await this.alertController.create({
         header: this.translate.instant(`app.alerts.success`),
         message: this.translate.instant(`profileContacts.save.success.msg`),
