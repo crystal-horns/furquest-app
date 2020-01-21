@@ -36,6 +36,6 @@
 </ion-content>
 <ion-footer [ngClass]="{'showLogin': showLogin}">
   <ion-toolbar>
-    <ion-button margin expand="block" color="light" (click)="showLoginEvent()" *ngIf="!showLogin" mode="ios">Entrar pra caçada!</ion-button>
+    <ion-button margin expand="block" color="light" (click)="showLoginEvent()" *ngIf="!showLogin" mode="ios">{{ 'login.cta' | translate }}</ion-button>
   </ion-toolbar>
 </ion-footer>

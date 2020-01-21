@@ -46,7 +46,8 @@
               <ion-item>
                 <div formArrayName="contactsArray">
                   <ion-label position="floating">{{ contact.contacts_type.type | titlecase }}</ion-label>
-                  <ion-input formControlName="{{i}}" required></ion-input>
+                  <ion-input formControlName="{{i}}" required
+                     [placeholder]=" ('profileContacts.placeholder.' + contact.contacts_type.type) | translate "></ion-input>
                 </div>
 
                 <div formArrayName="idArray">

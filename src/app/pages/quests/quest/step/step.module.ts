@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { StepPage } from './step.page';
 import {TranslateModule} from '@ngx-translate/core';
 import {QuestModule} from '../../../../components/quest/quest.module';
+import {AgmCoreModule} from '@agm/core';
 
 const routes: Routes = [
   {
@@ -17,14 +18,15 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    RouterModule.forChild(routes),
-    TranslateModule,
-    QuestModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        RouterModule.forChild(routes),
+        TranslateModule,
+        QuestModule,
+        AgmCoreModule
+    ],
   declarations: [
       StepPage
   ]

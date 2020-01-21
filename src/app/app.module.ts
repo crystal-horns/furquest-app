@@ -30,6 +30,7 @@ import {TeximateModule} from 'ngx-teximate';
 import {GoogleMaps} from '@ionic-native/google-maps';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import {ImageCropperModule} from 'ngx-image-cropper';
+import {AgmCoreModule} from '@agm/core';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -59,7 +60,10 @@ export function createTranslateLoader(http: HttpClient) {
         NgxSpinnerModule,
         BrowserAnimationsModule,
         TeximateModule,
-        ImageCropperModule
+        ImageCropperModule,
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyC6-UgjugP97ly8YO1noVUMlWTp1EXb1r0'
+        })
     ],
     providers: [
         StatusBar,

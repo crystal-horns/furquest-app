@@ -76,7 +76,18 @@
         <ion-card margin-bottom *ngFor="let tip of step.user_quest_step_tip">
           <ion-card-content padding *ngIf="!tip.tip.map" [innerHTML]="tip.tip.content"></ion-card-content>
 
-          <ion-card-content id="map_container" *ngIf="tip.tip.map"></ion-card-content>
+          <ion-card-content id="map_container" *ngIf="tip.tip.map && map">
+            <agm-map
+              [latitude]="map.lat"
+              [longitude]="map.lng"
+              [zoom]="map.zoom">
+              <agm-marker
+                  *ngFor="let m of map.markers; let i = index"
+                  [latitude]="m.lat"
+                  [longitude]="m.lng">
+              </agm-marker>
+            </agm-map>
+          </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
