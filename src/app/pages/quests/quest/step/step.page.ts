@@ -34,8 +34,7 @@ export class StepPage implements OnInit {
   nextTip = false;
   lastTip = false;
   // Maps
-  map;
-  markers = [];
+  map: any = false;
   // QRcode
   barcodeScannerOptions: BarcodeScannerOptions;
   // Reawrds
@@ -70,10 +69,11 @@ export class StepPage implements OnInit {
     this.stepsService.getSingle(quets, step).then(async res => {
       this.step = res;
       this.calcTimerNextTip();
-    });
-    this.stepRewards = await this.stepsService.getRewards(quets, step);
 
-    await this.loadMap();
+      this.loadMap();
+    });
+
+    this.stepRewards = await this.stepsService.getRewards(quets, step);
   }
 
   // ngAfterViewInit() {
@@ -227,6 +227,23 @@ export class StepPage implements OnInit {
   }
 
   loadMap() {
+    const mapTip = this.step.user_quest_step_tip.filter((value) => value.tip.map);
+    const mapPoints = mapTip[0].tip.content.split(',');
+    this.map = {
+      lat: parseFloat(mapPoints[0]),
+      lng: parseFloat(mapPoints[1]),
+      zoom: 18,
+      markers: [
+        {
+          lat: parseFloat(mapPoints[0]),
+          lng: parseFloat(mapPoints[1]),
+        }
+      ]
+    };
+    console.log(this.map);
+  }
+
+  loadMapOld() {
     const mapTip = this.step.user_quest_step_tip.filter((value) => value.tip.map);
     const mapPoints = mapTip[0].tip.content.split(',');
 

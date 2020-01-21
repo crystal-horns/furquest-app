@@ -33,6 +33,7 @@
   },
 
   "login": {
+    "cta": "Entrar para a caçada!",
     "user": "Usuário",
     "password": "Senha",
     "login-btn": "Login",
@@ -93,6 +94,15 @@
     }
   },
   "profileContacts": {
+    "placeholder": {
+      "phone": "Insira seu telefone",
+      "telegram": "Insira seu usuario sem '@'",
+      "furaffinity": "Insira seu usuario",
+      "twitter": "Insira seu usuario without @",
+      "facebook": "Insira apenas o fim do link do perfil",
+      "deviantart": "Insira seu usuario",
+      "other": "Insira seu contato"
+    },
     "delete": {
       "header": "Confirmar ação",
       "message": "Você tem certeza de que deseja remover esse contato?"

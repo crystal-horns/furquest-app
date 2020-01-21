@@ -35,7 +35,7 @@
             </ion-list-header>
 
             <ion-col size="3" *ngFor="let contact of user.user_contacts">
-              <ion-button [href]="contact.contacts_type.mask ? contact.contacts_type.mask.replace('#VALUE#', contact.value) : contact.value"
+              <ion-button [href]="contact.value.indexOf('http') !== -1 ? contact.value.replace('@', '') : ( contact.contacts_type.mask ? contact.contacts_type.mask.replace('#VALUE#', contact.value.replace('@', '')) : contact.value.replace('@', '') )"
                   target="_blank" expand="full" [class]="'btn-contact ' + contact.contacts_type.type">
                 <ion-icon size="large" slot="icon-only" [className]="contact.contacts_type.type"
                  [name]="contact.contacts_type.icon"></ion-icon>
