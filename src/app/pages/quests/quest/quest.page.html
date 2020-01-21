@@ -7,6 +7,9 @@
 </ion-toolbar>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-grid no-padding *ngIf="quest" [class]="quest.quest_route.quest.theme">
     <ion-row no-padding>
       <ion-col no-padding padding-bottom>

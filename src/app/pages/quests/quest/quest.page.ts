@@ -60,4 +60,10 @@ export class QuestPage implements OnInit {
     });
     await modalFinishQuest.present();
   }
+
+  doRefresh(e) {
+    this.ionViewWillEnter().then(() => {
+      e.target.complete();
+    });
+  }
 }

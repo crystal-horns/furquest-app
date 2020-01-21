@@ -73,14 +73,12 @@ export class StepPage implements OnInit {
       this.loadMap();
     });
 
-    this.stepRewards = await this.stepsService.getRewards(quets, step);
+    try {
+      this.stepRewards = await this.stepsService.getRewards(quets, step);
+    } catch (e) {
+      console.error(e);
+    }
   }
-
-  // ngAfterViewInit() {
-  //   this.platform.ready().then( () => {
-  //     this.loadMap();
-  //   });
-  // }
 
   goStep(quest, step) {
     this.router.navigate([`quests/${quest}/${step}`], { replaceUrl: true });
@@ -228,45 +226,25 @@ export class StepPage implements OnInit {
 
   loadMap() {
     const mapTip = this.step.user_quest_step_tip.filter((value) => value.tip.map);
-    const mapPoints = mapTip[0].tip.content.split(',');
-    this.map = {
-      lat: parseFloat(mapPoints[0]),
-      lng: parseFloat(mapPoints[1]),
-      zoom: 18,
-      markers: [
-        {
-          lat: parseFloat(mapPoints[0]),
-          lng: parseFloat(mapPoints[1]),
-        }
-      ]
-    };
-    console.log(this.map);
+    if (mapTip[0]) {
+      const mapPoints = mapTip[0].tip.content.split(',');
+      this.map = {
+        lat: parseFloat(mapPoints[0]),
+        lng: parseFloat(mapPoints[1]),
+        zoom: 18,
+        markers: [
+          {
+            lat: parseFloat(mapPoints[0]),
+            lng: parseFloat(mapPoints[1]),
+          }
+        ]
+      };
+    }
   }
 
-  loadMapOld() {
-    const mapTip = this.step.user_quest_step_tip.filter((value) => value.tip.map);
-    const mapPoints = mapTip[0].tip.content.split(',');
-
-    const map = GoogleMaps.create( 'map_container' );
-    map.one( GoogleMapsEvent.MAP_READY ).then( ( data: any ) => {
-
-      const coordinates: LatLng = new LatLng( parseFloat(mapPoints[0]), parseFloat(mapPoints[1]) );
-
-      const position = {
-        target: coordinates,
-        zoom: 21
-      };
-
-      map.animateCamera( position );
-
-      const markerOptions: MarkerOptions = {
-        position: coordinates,
-      };
-
-      const gMarker = map.addMarker( markerOptions )
-          .then( ( gMarker: Marker ) => {
-            gMarker.showInfoWindow();
-          });
+  doRefresh(e) {
+    this.ionViewWillEnter().then(() => {
+      e.target.complete();
     });
   }
 }
