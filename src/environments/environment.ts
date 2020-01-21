@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: '//furquest.lh/api/',
-  resourceUrl: '//furquest.lh/storage/'
+  apiUrl: 'https://furquest.crystalhorns.com/api/',
+  resourceUrl: 'https://furquest.crystalhorns.com/storage/'
 };
 
 /*

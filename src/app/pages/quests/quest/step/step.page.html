@@ -8,6 +8,10 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <ion-fab *ngIf="!stepRewards" vertical="top" horizontal="end" slot="fixed" edge>
     <ion-fab-button color="tertiary" (click)="finishStep()">
       <ion-icon icon="flag"></ion-icon>
