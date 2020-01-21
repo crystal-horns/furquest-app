@@ -91,6 +91,15 @@
     }
   },
   "profileContacts": {
+    "placeholder": {
+      "phone": "Input your phone number",
+      "telegram": "Input your user without '@'",
+      "furaffinity": "Input your user",
+      "twitter": "Input your user without @",
+      "facebook": "Input only the end of your profile link",
+      "deviantart": "Input your user",
+      "other": "Input your contact"
+    },
     "delete": {
       "header": "Confirm Action",
       "message": "Are you sure you want to remove this contact?"
