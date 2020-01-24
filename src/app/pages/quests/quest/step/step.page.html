@@ -20,15 +20,6 @@
   <ion-grid no-padding padding-top *ngIf="step">
     <!-- Rewards -->
     <ion-row *ngIf="stepRewards">
-      <ion-col sizeMd="6" pushMd="3" size="12" *ngIf="!!step.step.content">
-        <ion-list-header> {{ 'step.history' | translate }} </ion-list-header>
-          <ion-card>
-            <ion-card-content padding>
-              <ion-text>{{ step.step.content }}</ion-text>
-            </ion-card-content>
-          </ion-card>
-      </ion-col>
-
       <ion-col sizeMd="6" pushMd="3" size="12">
         <ion-list-header *ngIf="stepRewards.length"> {{ 'step.rewards.title' | translate }} </ion-list-header>
 
@@ -50,6 +41,15 @@
             </ion-col>
           </ion-row>
         </ion-grid>
+      </ion-col>
+
+      <ion-col sizeMd="6" pushMd="3" size="12" *ngIf="!!step.step.content">
+        <ion-list-header> {{ 'step.history' | translate }} </ion-list-header>
+        <ion-card>
+          <ion-card-content padding>
+            <ion-text [innerHTML]="step.step.content"></ion-text>
+          </ion-card-content>
+        </ion-card>
       </ion-col>
     </ion-row>
 
@@ -78,19 +78,21 @@
         </div>
 
         <ion-card margin-bottom *ngFor="let tip of step.user_quest_step_tip">
-          <ion-card-content padding *ngIf="!tip.tip.map" [innerHTML]="tip.tip.content"></ion-card-content>
+          <ion-card-content padding>
+            <p [innerHTML]="tip.tip.content"></p>
 
-          <ion-card-content id="map_container" *ngIf="tip.tip.map && map">
-            <agm-map
-              [latitude]="map.lat"
-              [longitude]="map.lng"
-              [zoom]="map.zoom">
-              <agm-marker
-                  *ngFor="let m of map.markers; let i = index"
-                  [latitude]="m.lat"
-                  [longitude]="m.lng">
-              </agm-marker>
-            </agm-map>
+            <div id="map_container" *ngIf="tip.tip.map && map">
+              <agm-map
+                [latitude]="map.lat"
+                [longitude]="map.lng"
+                [zoom]="map.zoom">
+                <agm-marker
+                    *ngFor="let m of map.markers; let i = index"
+                    [latitude]="m.lat"
+                    [longitude]="m.lng">
+                </agm-marker>
+              </agm-map>
+            </div>
           </ion-card-content>
         </ion-card>
       </ion-col>

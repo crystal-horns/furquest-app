@@ -30,6 +30,10 @@ ion-toolbar, ion-buttons, ion-menu-button {
 ion-card {
   box-shadow: none !important;
   --background: #FFF;
+
+  ion-card-content {
+    white-space: pre-wrap;
+  }
 }
 
 #map_container, agm-map {

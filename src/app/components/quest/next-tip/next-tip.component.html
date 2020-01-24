@@ -8,7 +8,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen>
-  <h3 text-center padding-horizontal class="cbbl">
+  <h3 text-center padding-horizontal [class]="'cbbl ' + tip.tip.character">
     <span>
       <teximate [text]="tip.tip.content" [enter]="enterAnimation" (finish)="showClose = true"></teximate>
     </span>

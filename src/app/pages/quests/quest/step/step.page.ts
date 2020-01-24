@@ -75,9 +75,7 @@ export class StepPage implements OnInit {
 
     try {
       this.stepRewards = await this.stepsService.getRewards(quets, step);
-    } catch (e) {
-      console.error(e);
-    }
+    } catch (e) {}
   }
 
   goStep(quest, step) {
@@ -94,18 +92,16 @@ export class StepPage implements OnInit {
 
   scanCode() {
     this.barcodeScanner
-        .scan({
-          prompt: this.translate.instant('step.finish.fallback')
-        })
+        .scan()
         .then(barcodeData => {
           this.processQrCode(barcodeData.text);
         })
         .catch(err => {
           console.log('Error', err);
-          this.processQrCode(prompt(this.translate.instant('step.finish.fallback')));
+          this.processQrCode(prompt(this.translate.instant('step.finish.fallback')), true);
         });
   }
-  async processQrCode(response) {
+  async processQrCode(response, prompt?) {
     if (response) {
       this.stepsService.finishStep(this.step.user_quest_id, this.step.id, {answers: [response]})
           .then(async res => {
@@ -141,12 +137,16 @@ export class StepPage implements OnInit {
         await alert.present();
       });
     } else {
-      const alert = await this.alertCtrl.create({
-        header: this.translate.instant(`app.alerts.error`),
-        message: this.translate.instant(`step.finish.errors.empty`),
-        buttons: [this.translate.instant(`app.alerts.btn.ok`)]
-      });
-      await alert.present();
+      if (prompt) {
+        const alert = await this.alertCtrl.create({
+          header: this.translate.instant(`app.alerts.error`),
+          message: this.translate.instant(`step.finish.errors.empty`),
+          buttons: [this.translate.instant(`app.alerts.btn.ok`)]
+        });
+        await alert.present();
+      } else {
+        this.processQrCode(prompt(this.translate.instant('step.finish.fallback')), true);
+      }
     }
   }
 
@@ -227,15 +227,14 @@ export class StepPage implements OnInit {
   loadMap() {
     const mapTip = this.step.user_quest_step_tip.filter((value) => value.tip.map);
     if (mapTip[0]) {
-      const mapPoints = mapTip[0].tip.content.split(',');
       this.map = {
-        lat: parseFloat(mapPoints[0]),
-        lng: parseFloat(mapPoints[1]),
+        lat: parseFloat(this.step.step.lat.toString()),
+        lng: parseFloat(this.step.step.long.toString()),
         zoom: 18,
         markers: [
           {
-            lat: parseFloat(mapPoints[0]),
-            lng: parseFloat(mapPoints[1]),
+            lat: parseFloat(this.step.step.lat.toString()),
+            lng: parseFloat(this.step.step.long.toString()),
           }
         ]
       };
