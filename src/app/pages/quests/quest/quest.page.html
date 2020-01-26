@@ -47,6 +47,7 @@
               <ion-card [class]="step.status ? 'done' : 'current'" no-margin margin-horizontal margin-bottom>
                 <ion-card-content>
                   <ion-label padding>{{ step.status ? step.step.name : ("quest.current-step" | translate) }}</ion-label>
+                  <span  class="dot"></span>
                   <ion-icon [icon]="step.status ? 'ios-checkmark-circle' : 'ios-arrow-dropright-circle'" slot="end"></ion-icon>
                 </ion-card-content>
               </ion-card>

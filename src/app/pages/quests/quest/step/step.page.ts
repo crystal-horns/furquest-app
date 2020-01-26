@@ -105,29 +105,7 @@ export class StepPage implements OnInit {
     if (response) {
       this.stepsService.finishStep(this.step.user_quest_id, this.step.id, {answers: [response]})
           .then(async res => {
-            this.stepRewards = res as object[];
-            const quest = this.activetedRoute.snapshot.paramMap.get('questId');
-            const step = this.activetedRoute.snapshot.paramMap.get('stepId');
-            this.stepsService.getSingle(quest, step).then(stepRes => {
-              this.step = stepRes;
-            });
-
-            if (!(Object.keys(this.stepRewards).find(x => x === 'nextStep'))) {
-              const modalFinishQuest = await this.modalCtrl.create({
-                component: FinishQuestComponent
-              });
-              modalFinishQuest.onDidDismiss().then((data) => {
-                this.router.navigate([`quests/${quest}`], { replaceUrl: true });
-              });
-              await modalFinishQuest.present();
-            } else {
-              const alert = await this.alertCtrl.create({
-                header: this.translate.instant(`step.finish.success.title`),
-                message: this.translate.instant(`step.finish.success.msg`),
-                buttons: ['Hurray!']
-              });
-              await alert.present();
-            }
+            this.processFinishStep(res);
           }).catch(async res => {
         const alert = await this.alertCtrl.create({
           header: this.translate.instant(`app.alerts.error`),
@@ -160,10 +138,42 @@ export class StepPage implements OnInit {
     modal.onDidDismiss()
         .then((data) => {
           if (data) {
-            this.stepRewards = data.data as object[];
+            this.processFinishStep(data.data);
           }
         });
     return await modal.present();
+  }
+
+  async processFinishStep(res) {
+    if (!res) {
+      return;
+    }
+
+    this.stepRewards = res as object[];
+    const quest = this.activetedRoute.snapshot.paramMap.get('questId');
+    const step = this.activetedRoute.snapshot.paramMap.get('stepId');
+    this.stepsService.getSingle(quest, step).then(stepRes => {
+      this.step = stepRes;
+
+      this.loadMap();
+    });
+
+    if (!(Object.keys(this.stepRewards).find(x => x === 'nextStep'))) {
+      const modalFinishQuest = await this.modalCtrl.create({
+        component: FinishQuestComponent
+      });
+      modalFinishQuest.onDidDismiss().then((data) => {
+        this.router.navigate([`quests/${quest}`], { replaceUrl: true });
+      });
+      await modalFinishQuest.present();
+    } else {
+      const alert = await this.alertCtrl.create({
+        header: this.translate.instant(`step.finish.success.title`),
+        message: this.translate.instant(`step.finish.success.msg`),
+        buttons: ['Hurray!']
+      });
+      await alert.present();
+    }
   }
 
   calcTimerNextTip() {
@@ -220,6 +230,8 @@ export class StepPage implements OnInit {
           }
         });
         return await modal.present();
+      } else {
+        this.loadMap();
       }
     });
   }

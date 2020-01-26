@@ -38,11 +38,13 @@ ion-content {
 
   h3 {
     height: 45vh;
+    width: 95%;
     font-size: 24px;
     position: absolute;
     top: 22vh;
     opacity: 0;
     animation: show-bubble .5s ease-in-out .8s forwards;
+    z-index: 1;
 
     &.silve {
       top: 12vh;
@@ -76,14 +78,14 @@ ion-content {
 
   .sprite {
     width: 100vw;
-    max-width: 450px;
-    height: 45vh;
-    max-height: 315px;
+    max-width: 400px;
+    height: 50vh;
     display: block;
     position: absolute;
     bottom: 0;
     right: -100%;
     animation: show-char .5s ease-out .3s forwards;
+    z-index: 3;
 
     &.spocky {
       background: url(/assets/images/sprites/spocky.gif) no-repeat bottom center/50%;

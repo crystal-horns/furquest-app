@@ -106,6 +106,15 @@ export class AppComponent {
           this.menuCtrl.enable(true);
         }
       });
+
+      this.platform.backButton.subscribeWithPriority(0, () => {
+        if (this.routerOutlet && this.routerOutlet.canGoBack()) {
+          this.routerOutlet.pop();
+        } else if (this.router.url === '/home' || this.router.url === '/') {
+          // or if that doesn't work, try
+          navigator['app'].exitApp();
+        }
+      });
     });
   }
 
